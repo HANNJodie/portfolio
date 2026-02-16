@@ -37,6 +37,7 @@
   }
 
   &__upcoming {
+    margin-top: $space-lg;
     margin-bottom: $space-3xl;
     @include flex-column;
     align-items: center;

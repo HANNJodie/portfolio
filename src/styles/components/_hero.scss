@@ -72,7 +72,7 @@
     color: $color-text-muted;
     display: flex;
     justify-content: center;
-
+    
     @include respond-to(tablet) {
       font-size: $font-size-xl;
     }
@@ -104,9 +104,15 @@
     font-size: $font-size-lg;
     color: $color-text-muted;
     line-height: 1.75;
+    z-index: 10;
+    border-radius: $radius-2xl;
+    background: rgba($color-bg, 0.75);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
 
     @include respond-to(tablet) {
       font-size: $font-size-xl;
+      padding: $space-md;
     }
   }
 
@@ -120,7 +126,7 @@
 
   &__scroll-indicator {
     position: absolute;
-    bottom: $space-2xl;
+    bottom: $space-md;
     left: 0;
     right: 0;
     width: fit-content;
