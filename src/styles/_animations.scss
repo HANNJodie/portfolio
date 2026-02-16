@@ -15,10 +15,11 @@
 
 // Wave animation for letters
 @keyframes wave {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-6px); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(3px); }
+  0% { transform: translateY(0); }
+  5% { transform: translateY(-6px); }
+  10% { transform: translateY(0); }
+  15% { transform: translateY(3px); }
+  20%, 100% { transform: translateY(0); }
 }
 
 @keyframes pulse-glow {
