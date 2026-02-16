@@ -106,13 +106,13 @@
     line-height: 1.75;
     z-index: 10;
     border-radius: $radius-2xl;
-    background: rgba($color-bg, 0.75);
-    backdrop-filter: blur(3px);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
 
     @include respond-to(tablet) {
       font-size: $font-size-xl;
       padding: $space-md;
+      background: rgba($color-bg, 0.75);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
     }
   }
 
@@ -228,24 +228,15 @@
   }
 
   // ----------------------------------
-  // Responsive: hide some bubbles on mobile
+  // Responsive: hide bubbles on mobile
   // ----------------------------------
   @include mobile-only {
-    &__bubble {
-      // Smaller on mobile
-      transform: scale(0.6);
-
-      &--7,
-      &--8 {
-        display: none;
-      }
+    &__bubbles {
+      display: none;
     }
 
     &__portrait {
-      width: 110px;
-      height: 110px;
-      bottom: 12%;
-      right: 4%;
+      display: none;
     }
   }
 }
