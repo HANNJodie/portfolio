@@ -1,0 +1,210 @@
+// ============================================
+// About Page Styles
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.about {
+  padding-top: 100px;
+
+  &__hero {
+    @include container;
+    @include section-padding;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  &__photo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $space-2xl;
+  }
+
+  &__photo {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    padding: 4px;
+    background: $gradient-aurora;
+    background-size: 300% 300%;
+    animation: gradient-shift 6s ease infinite;
+
+    @include respond-to(tablet) {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  &__photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__label {
+    font-family: $font-display;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: $color-violet;
+    margin-bottom: $space-lg;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2rem, 5vw, $font-size-5xl);
+    font-weight: 800;
+    @include gradient-text;
+    margin-bottom: $space-2xl;
+  }
+
+  &__bio {
+    font-size: $font-size-lg;
+    color: $color-text;
+    line-height: 1.85;
+    max-width: 70ch;
+    margin: 0 auto $space-xl;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  // Contact Section
+  &__contact {
+    @include container;
+    @include section-padding;
+    max-width: 900px;
+    background: $color-bg-alt;
+    border-radius: $radius-2xl;
+    text-align: center;
+    margin: 0 auto $space-4xl;
+    padding-left: $space-2xl;
+    padding-right: $space-2xl;
+  }
+
+  &__contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-lg;
+    margin-top: $space-2xl;
+  }
+
+  &__contact-item {
+    @include flex-center;
+    gap: $space-sm;
+    padding: $space-md $space-xl;
+    background: $color-surface;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $color-text;
+    transition: all $transition-fast;
+
+    &:hover {
+      border-color: $color-violet;
+      color: $color-violet;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: $color-violet;
+    }
+  }
+
+  // CV Section
+  &__cv {
+    @include container;
+    @include section-padding;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  &__cv-image {
+    border-radius: $radius-xl;
+    overflow: hidden;
+    border: 1px solid $color-border;
+    box-shadow: $shadow-lg;
+    margin: $space-2xl auto;
+    max-width: 600px;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: $shadow-xl;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Interests Section
+  &__interests {
+    @include container;
+    @include section-padding;
+    max-width: 900px;
+  }
+
+  &__interests-category {
+    margin-bottom: $space-3xl;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__interests-label {
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: $color-text-muted;
+    margin-bottom: $space-lg;
+  }
+
+  &__interests-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm;
+  }
+
+  &__interest-tag {
+    padding: $space-sm $space-md;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $color-text;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $color-bg-alt;
+      border-color: $color-border-hover;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Extra links
+  &__extra {
+    @include container;
+    @include section-padding;
+    text-align: center;
+    max-width: 900px;
+  }
+}

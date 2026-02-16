@@ -1,0 +1,200 @@
+// ============================================
+// Header Styles
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-header;
+  padding: $space-lg 0;
+  transition: all $transition-base;
+  @include glass(rgba(250, 250, 250, 0.85), 20px);
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    padding: $space-md 0;
+    border-bottom-color: $color-border;
+  }
+
+  &__inner {
+    @include container;
+    @include flex-between;
+  }
+
+  &__brand {
+    @include flex-column;
+    text-decoration: none;
+
+    &-title {
+      font-family: $font-display;
+      font-size: $font-size-xs;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: $color-text-muted;
+    }
+
+    &-name {
+      font-family: $font-display;
+      font-size: $font-size-lg;
+      font-weight: 700;
+      color: $color-text-heading;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include respond-to(tablet) {
+      display: flex;
+      align-items: center;
+      gap: $space-2xl;
+    }
+  }
+
+  &__link {
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $color-text-muted;
+    transition: color $transition-fast;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $gradient-aurora;
+      transition: width $transition-base;
+      border-radius: 1px;
+    }
+
+    &:hover,
+    &--active {
+      color: $color-text-heading;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+  }
+
+  &__lang {
+    font-family: $font-display;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $color-text-muted;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-sm;
+    transition: all $transition-fast;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-text-heading;
+      background: $color-surface-hover;
+    }
+
+    &--active {
+      color: $color-violet;
+    }
+  }
+
+  &__burger {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    transition: background $transition-fast;
+
+    @include respond-to(tablet) {
+      display: none;
+    }
+
+    &:hover {
+      background: $color-surface-hover;
+    }
+
+    span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: $color-text-heading;
+      position: relative;
+      transition: all $transition-base;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: $color-text-heading;
+        transition: all $transition-base;
+      }
+
+      &::before { top: -6px; }
+      &::after { bottom: -6px; }
+    }
+
+    &--open span {
+      background: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+// Mobile menu overlay
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: $z-header - 1;
+  @include glass(rgba(250, 250, 250, 0.95), 30px);
+  @include flex-center;
+
+  &__nav {
+    @include flex-column;
+    align-items: center;
+    gap: $space-2xl;
+  }
+
+  &__link {
+    font-family: $font-display;
+    font-size: $font-size-3xl;
+    font-weight: 700;
+    color: $color-text-heading;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color $transition-fast;
+
+    &:hover {
+      @include gradient-text;
+    }
+  }
+}

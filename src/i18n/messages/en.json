@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "title": "Jodie Hann — Game Designer",
+    "description": "Jodie Hann's portfolio — Graduate Game Designer passionate about game design, narrative design and level design."
+  },
+  "nav": {
+    "projects": "Projects",
+    "about": "About"
+  },
+  "hero": {
+    "subtitle": "Game Designer",
+    "title": "Jodie Hann",
+    "description": "A Game Design graduate, I am open to opportunities in the video game industry. I am passionate about games, especially interested in Game Design, Narrative Design and Level Design, as well as project management.",
+    "cta": "View my projects",
+    "ctaAbout": "About me",
+    "scroll": "Scroll"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of my work in game design, narrative design and level design",
+    "upcoming": "Coming soon",
+    "viewProject": "View project",
+    "status": {
+      "released": "Released",
+      "in-development": "In development",
+      "hiatus": "On hiatus",
+      "upcoming": "Coming soon"
+    }
+  },
+  "projectPage": {
+    "description": "Description",
+    "role": "My role",
+    "story": "Story",
+    "goal": "Game objective",
+    "gameplay": "Gameplay",
+    "team": "The team",
+    "gallery": "Gallery",
+    "links": "Project links",
+    "download": "Download",
+    "prev": "Previous project",
+    "next": "Next project",
+    "backToProjects": "Back to projects"
+  },
+  "about": {
+    "label": "About",
+    "title": "Learn more about me !",
+    "bio1": "I particularly enjoy working on projects that offer great narrative and emotional experiences. Exploring how to convey them through gameplay, story, environments, visuals and music, as well as everything that makes up a game.",
+    "bio2": "My past and current projects have taught me to adapt and bounce back from the ups and downs of game design and production. This is now one of my greatest strengths.",
+    "bio3": "I enjoy teamwork thanks to my communication skills, but I'm also used to working independently. I like learning new skills so I'm never stuck by a situation outside my area of expertise.",
+    "contact": "Contact me",
+    "cv": "Resume",
+    "downloadCV": "Download my resume",
+    "interests": "Interests",
+    "favoriteGames": "Favorite games",
+    "hobbies": "Hobbies",
+    "moreWork": "More work",
+    "moreWorkDesc": "Find more projects on my itch.io profile",
+    "visitItchio": "Visit my itch.io"
+  },
+  "footer": {
+    "thanks": "Thanks for your attention.",
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,128 @@
+// ============================================
+// Hero Section Styles
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  @include flex-center;
+  @include flex-column;
+  overflow: hidden;
+  padding: $space-5xl 0;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__blob {
+    position: absolute;
+    width: clamp(300px, 50vw, 600px);
+    height: clamp(300px, 50vw, 600px);
+    opacity: 0.15;
+    filter: blur(80px);
+    animation: blob-morph 12s ease-in-out infinite;
+
+    &--1 {
+      top: -10%;
+      right: -10%;
+      background: $color-violet;
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      bottom: -10%;
+      left: -10%;
+      background: $color-pink;
+      animation-delay: -4s;
+    }
+
+    &--3 {
+      top: 40%;
+      left: 30%;
+      background: $color-cyan;
+      width: clamp(200px, 30vw, 400px);
+      height: clamp(200px, 30vw, 400px);
+      animation-delay: -8s;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: $z-base;
+    @include container;
+    @include flex-column;
+    align-items: center;
+    text-align: center;
+    gap: $space-xl;
+  }
+
+  &__subtitle {
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: $color-text-muted;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-base;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 800;
+    font-size: $font-size-hero;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    @include gradient-text;
+  }
+
+  &__description {
+    max-width: 600px;
+    font-size: $font-size-lg;
+    color: $color-text-muted;
+    line-height: 1.75;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    gap: $space-md;
+    margin-top: $space-lg;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $space-2xl;
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex-column;
+    align-items: center;
+    gap: $space-sm;
+    color: $color-text-light;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    animation: float 2s ease-in-out infinite;
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, $color-text-light, transparent);
+    }
+  }
+}

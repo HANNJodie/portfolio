@@ -1,0 +1,70 @@
+// ============================================
+// Button Styles
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.btn {
+  @include button-base;
+
+  &--primary {
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    color: #fff;
+    animation: gradient-shift 4s ease infinite;
+    box-shadow: 0 4px 20px rgba($color-violet, 0.25);
+
+    &:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 30px rgba($color-violet, 0.35);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &--secondary {
+    background: $color-surface;
+    color: $color-text-heading;
+    border: 1px solid $color-border;
+
+    &:hover {
+      border-color: $color-violet;
+      color: $color-violet;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-text-muted;
+    padding: $space-sm $space-md;
+
+    &:hover {
+      color: $color-violet;
+      background: $color-surface-hover;
+    }
+  }
+
+  &--large {
+    padding: $space-lg $space-2xl;
+    font-size: $font-size-base;
+  }
+
+  &--icon {
+    gap: $space-sm;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      transition: transform $transition-fast;
+    }
+
+    &:hover svg {
+      transform: translateX(4px);
+    }
+  }
+}

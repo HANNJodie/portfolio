@@ -1,0 +1,37 @@
+// ============================================
+// Page Transition Styles
+// ============================================
+
+@use "../variables" as *;
+
+.page-transition {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: $z-loader;
+    pointer-events: none;
+  }
+}
+
+// Loader
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: $z-loader;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg;
+
+  &__text {
+    font-family: $font-display;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 800;
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 2s ease infinite;
+  }
+}

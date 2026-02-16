@@ -1,0 +1,18 @@
+// ============================================
+// Global Styles — Jodie Hann Portfolio
+// ============================================
+
+// Foundation
+@use "../styles/reset";
+@use "../styles/animations";
+@use "../styles/typography";
+
+// Components
+@use "../styles/components/header";
+@use "../styles/components/footer";
+@use "../styles/components/hero";
+@use "../styles/components/project-card";
+@use "../styles/components/project-page";
+@use "../styles/components/about";
+@use "../styles/components/buttons";
+@use "../styles/components/transitions";

@@ -1,0 +1,146 @@
+// ============================================
+// Mixins — Responsive, Effects, Utilities
+// ============================================
+
+@use "variables" as *;
+
+// --- Responsive Breakpoints ---
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (min-width: $mobile) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: $tablet) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: $desktop) { @content; }
+  } @else if $breakpoint == wide {
+    @media (min-width: $wide) { @content; }
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$tablet - 1px}) { @content; }
+}
+
+// --- Flexbox ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Container ---
+@mixin container {
+  width: 100%;
+  max-width: $wide;
+  margin: 0 auto;
+  padding-left: $space-lg;
+  padding-right: $space-lg;
+
+  @include respond-to(tablet) {
+    padding-left: $space-2xl;
+    padding-right: $space-2xl;
+  }
+
+  @include respond-to(desktop) {
+    padding-left: $space-4xl;
+    padding-right: $space-4xl;
+  }
+}
+
+// --- Gradient Text ---
+@mixin gradient-text($gradient: $gradient-aurora) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+// --- Glass Effect ---
+@mixin glass($bg: rgba(255, 255, 255, 0.8), $blur: 20px) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+// --- Hover Card Effect ---
+@mixin hover-lift {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// --- Smooth appearance ---
+@mixin appear {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Section Padding ---
+@mixin section-padding {
+  padding-top: $space-4xl;
+  padding-bottom: $space-4xl;
+
+  @include respond-to(tablet) {
+    padding-top: $space-5xl;
+    padding-bottom: $space-5xl;
+  }
+}
+
+// --- Truncate ---
+@mixin truncate($lines: 2) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}
+
+// --- Focus Ring ---
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-violet;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// --- Button Base ---
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: $space-md $space-xl;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $font-size-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: $radius-full;
+  cursor: pointer;
+  transition: all $transition-base;
+  @include focus-ring;
+}

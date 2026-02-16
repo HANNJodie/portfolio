@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "title": "Jodie Hann — Game Designer",
+    "description": "Portfolio de Jodie Hann, Game Designer diplômée passionnée par le game design, le narrative design et le level design."
+  },
+  "nav": {
+    "projects": "Mes projets",
+    "about": "À propos"
+  },
+  "hero": {
+    "subtitle": "Game Designer",
+    "title": "Jodie Hann",
+    "description": "Diplômée en Game Design, je suis ouverte aux opportunités dans le domaine du jeu vidéo. Je suis passionnée par le milieu du jeu, et surtout intéressée par le Game Design, Narrative Design et Level Design, ainsi que la gestion de projet.",
+    "cta": "Voir mes projets",
+    "ctaAbout": "À propos de moi",
+    "scroll": "Défiler"
+  },
+  "projects": {
+    "title": "Projets réalisés",
+    "subtitle": "Une sélection de mes travaux en game design, narrative design et level design",
+    "upcoming": "À venir",
+    "viewProject": "Voir le projet",
+    "status": {
+      "released": "Terminé",
+      "in-development": "En développement",
+      "hiatus": "En pause",
+      "upcoming": "À venir"
+    }
+  },
+  "projectPage": {
+    "description": "Description",
+    "role": "Mon rôle",
+    "story": "Histoire",
+    "goal": "But du jeu",
+    "gameplay": "Gameplay",
+    "team": "L'équipe",
+    "gallery": "Galerie",
+    "links": "Liens du projet",
+    "download": "Télécharger",
+    "prev": "Projet précédent",
+    "next": "Projet suivant",
+    "backToProjects": "Retour aux projets"
+  },
+  "about": {
+    "label": "À propos",
+    "title": "Apprenez-en plus sur moi !",
+    "bio1": "J'aime particulièrement travailler sur les projets qui offrent de grandes expériences narratives et émotionnelles. Chercher comment les transmettre à travers le gameplay, l'histoire, les décors, les visuels et les musiques, ainsi que tout ce qui compose le jeu.",
+    "bio2": "Mes projets passés et actuels m'ont permis d'apprendre à m'adapter et à rebondir face aux aléas de la conception et production d'un jeu. Cela constitue aujourd'hui l'une de mes plus grandes forces.",
+    "bio3": "J'aime travailler en groupe, de par ma facilité à communiquer, mais j'ai également l'habitude de réaliser des travaux en autonomie. J'aime apprendre de nouvelles compétences pour ne pas rester bloquée par une situation qui sort de mon domaine d'expertise.",
+    "contact": "Contactez-moi",
+    "cv": "Curriculum Vitae",
+    "downloadCV": "Télécharger mon CV",
+    "interests": "Centres d'intérêts",
+    "favoriteGames": "Jeux favoris",
+    "hobbies": "Hobbies",
+    "moreWork": "Plus de travaux",
+    "moreWorkDesc": "Retrouvez d'autres projets sur mon profil itch.io",
+    "visitItchio": "Visiter mon itch.io"
+  },
+  "footer": {
+    "thanks": "Merci pour votre attention.",
+    "rights": "Tous droits réservés."
+  }
+}

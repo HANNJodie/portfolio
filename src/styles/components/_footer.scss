@@ -1,0 +1,91 @@
+// ============================================
+// Footer Styles
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.footer {
+  padding: $space-4xl 0 $space-2xl;
+  border-top: 1px solid $color-border;
+  background: $color-bg-white;
+
+  &__inner {
+    @include container;
+    @include flex-column;
+    align-items: center;
+    gap: $space-2xl;
+    text-align: center;
+  }
+
+  &__thanks {
+    font-family: $font-display;
+    font-size: $font-size-2xl;
+    font-weight: 700;
+    color: $color-text-heading;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: $space-lg;
+    align-items: center;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    color: $color-text-muted;
+    transition: all $transition-base;
+
+    &:hover {
+      border-color: $color-violet;
+      color: $color-violet;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__contact-info {
+    @include flex-column;
+    align-items: center;
+    gap: $space-sm;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+
+    a {
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-violet;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: $space-xl;
+    padding-top: $space-xl;
+    border-top: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    width: 100%;
+  }
+
+  &__credit {
+    font-size: $font-size-xs;
+    color: $color-text-light;
+  }
+}

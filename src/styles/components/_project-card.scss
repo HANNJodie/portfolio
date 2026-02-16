@@ -1,0 +1,203 @@
+// ============================================
+// Project Card Styles
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.project-grid {
+  @include container;
+  @include section-padding;
+
+  &__title {
+    text-align: center;
+    margin-bottom: $space-lg;
+  }
+
+  &__subtitle {
+    text-align: center;
+    color: $color-text-muted;
+    margin-bottom: $space-4xl;
+    font-size: $font-size-lg;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-2xl;
+    }
+  }
+
+  &__upcoming {
+    margin-bottom: $space-3xl;
+    @include flex-column;
+    align-items: center;
+    gap: $space-md;
+  }
+}
+
+.project-card {
+  position: relative;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $color-border-hover;
+    box-shadow: $shadow-lg;
+    transform: translateY(-6px);
+
+    .project-card__image img {
+      transform: scale(1.05);
+    }
+
+    .project-card__overlay {
+      opacity: 1;
+    }
+  }
+
+  // First card in grid is larger
+  &--featured {
+    @include respond-to(tablet) {
+      grid-column: 1 / -1;
+    }
+
+    .project-card__image {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: $color-bg-alt;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0) 60%
+    );
+    opacity: 0;
+    transition: opacity $transition-base;
+    @include flex-column;
+    justify-content: flex-end;
+    padding: $space-xl;
+  }
+
+  &__overlay-tag {
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__body {
+    padding: $space-lg $space-xl $space-xl;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-xs;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    margin-bottom: $space-sm;
+
+    &--released {
+      background: rgba($color-cyan, 0.1);
+      color: $color-cyan;
+    }
+
+    &--in-development {
+      background: rgba($color-violet, 0.1);
+      color: $color-violet;
+    }
+
+    &--hiatus {
+      background: rgba($color-amber, 0.1);
+      color: $color-amber;
+    }
+
+    &--upcoming {
+      background: rgba($color-pink, 0.1);
+      color: $color-pink;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $color-text-heading;
+    margin-bottom: $space-xs;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__date {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    margin-bottom: $space-sm;
+  }
+
+  &__excerpt {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    line-height: 1.6;
+    @include truncate(3);
+  }
+}
+
+.upcoming-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-sm $space-lg;
+  background: $color-surface;
+  border: 1px dashed $color-border;
+  border-radius: $radius-full;
+  font-family: $font-display;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-muted;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-full;
+    background: $color-pink;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
