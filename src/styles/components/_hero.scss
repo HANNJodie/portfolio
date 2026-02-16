@@ -125,4 +125,105 @@
       background: linear-gradient(to bottom, $color-text-light, transparent);
     }
   }
+
+  // ----------------------------------
+  // Floating project image bubbles
+  // ----------------------------------
+  &__bubbles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__bubble {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
+    animation: bubble-float 8s ease-in-out infinite, bubble-morph 12s ease-in-out infinite;
+    box-shadow: $shadow-lg;
+    opacity: 0;
+
+    // Slight border glow
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 2px solid rgba($color-violet, 0.15);
+      pointer-events: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.7) brightness(0.85);
+      transition: filter $transition-slow;
+    }
+
+    // Stagger morph start for each bubble so they don't sync
+    @for $i from 1 through 8 {
+      &--#{$i} {
+        animation-delay: #{($i - 1) * -1.5}s, #{($i - 1) * -2}s;
+      }
+    }
+  }
+
+  // ----------------------------------
+  // Static portrait bubble
+  // ----------------------------------
+  &__portrait {
+    position: absolute;
+    top: 15%;
+    right: 16%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%;
+    box-shadow: 0 8px 32px rgba($color-violet, 0.2), $shadow-lg;
+    border: 3px solid rgba($color-violet, 0.25);
+    z-index: $z-base;
+    animation: bubble-morph 14s ease-in-out infinite;
+    opacity: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include respond-to(tablet) {
+      width: 180px;
+      height: 180px;
+    }
+
+    @include respond-to(desktop) {
+      width: 250px;
+      height: 350px;
+    }
+  }
+
+  // ----------------------------------
+  // Responsive: hide some bubbles on mobile
+  // ----------------------------------
+  @include mobile-only {
+    &__bubble {
+      // Smaller on mobile
+      transform: scale(0.6);
+
+      &--7,
+      &--8 {
+        display: none;
+      }
+    }
+
+    &__portrait {
+      width: 110px;
+      height: 110px;
+      bottom: 12%;
+      right: 4%;
+    }
+  }
 }

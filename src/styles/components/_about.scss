@@ -25,17 +25,17 @@
     position: relative;
     width: 220px;
     height: 220px;
-    border-radius: 50%;
+    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
     overflow: hidden;
-    box-shadow: $shadow-lg;
+    box-shadow: 0 8px 32px rgba($color-violet, 0.2), $shadow-lg;
     padding: 4px;
     background: $gradient-aurora;
     background-size: 300% 300%;
-    animation: gradient-shift 6s ease infinite;
+    animation: gradient-shift 6s ease infinite, bubble-morph 14s ease-in-out infinite;
 
     @include respond-to(tablet) {
       width: 280px;
-      height: 280px;
+      height: 380px;
     }
   }
 
@@ -43,7 +43,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
+    animation: bubble-morph 14s ease-in-out infinite;
   }
 
   &__label {

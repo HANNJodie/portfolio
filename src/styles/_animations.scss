@@ -75,3 +75,38 @@
     border-radius: 60% 30% 60% 50% / 60% 40% 30% 70%;
   }
 }
+
+// Floating bubble animation (gentle drift)
+@keyframes bubble-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-12px) translateX(6px);
+  }
+  50% {
+    transform: translateY(-6px) translateX(-8px);
+  }
+  75% {
+    transform: translateY(-16px) translateX(4px);
+  }
+}
+
+// Organic morph for bubble shapes
+@keyframes bubble-morph {
+  0%, 100% {
+    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
+  }
+  20% {
+    border-radius: 50% 55% 45% 60% / 55% 45% 55% 50%;
+  }
+  40% {
+    border-radius: 45% 60% 55% 50% / 60% 50% 45% 55%;
+  }
+  60% {
+    border-radius: 55% 45% 60% 45% / 45% 55% 60% 50%;
+  }
+  80% {
+    border-radius: 50% 50% 45% 55% / 55% 50% 50% 45%;
+  }
+}
