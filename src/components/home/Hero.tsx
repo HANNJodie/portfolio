@@ -44,6 +44,8 @@ export default function Hero() {
     }));
   }, []);
 
+  const subtitleText = t("subtitle");
+
   useGSAP(() => {
     if (!containerRef.current) return;
 
@@ -69,9 +71,21 @@ export default function Hero() {
       )
       .fromTo(
         ".hero__subtitle",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6 },
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3 },
         "-=0.3"
+      )
+      .fromTo(
+        ".hero__subtitle-letter",
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          stagger: 0.04,
+          ease: "back.out(1.7)",
+        },
+        "-=0.2"
       )
       .fromTo(
         ".hero__title",
@@ -158,7 +172,15 @@ export default function Hero() {
 
       <div className="hero__content">
         <p className="hero__subtitle" style={{ opacity: 0 }}>
-          {t("subtitle")}
+          {subtitleText.split("").map((char, i) => (
+            <span
+              key={i}
+              className="hero__subtitle-letter"
+              style={{ opacity: 0 }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
         </p>
         <h1 className="hero__title" style={{ opacity: 0 }}>
           {t("title")}
