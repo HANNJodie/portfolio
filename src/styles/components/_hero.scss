@@ -107,8 +107,10 @@
   &__scroll-indicator {
     position: absolute;
     bottom: $space-2xl;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin: 0 auto;
     @include flex-column;
     align-items: center;
     gap: $space-sm;
