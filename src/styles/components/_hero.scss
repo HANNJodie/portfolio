@@ -70,9 +70,23 @@
     text-transform: uppercase;
     letter-spacing: 0.3em;
     color: $color-text-muted;
+    display: flex;
+    justify-content: center;
 
     @include respond-to(tablet) {
-      font-size: $font-size-base;
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__subtitle-letter {
+    display: inline-block;
+    animation: wave 3s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.1s);
+
+    @for $i from 1 through 15 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * 0.12}s;
+      }
     }
   }
 
