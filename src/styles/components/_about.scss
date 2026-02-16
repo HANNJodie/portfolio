@@ -10,7 +10,8 @@
 
   &__hero {
     @include container;
-    @include section-padding;
+    padding-top: $space-3xl;
+    padding-bottom: $space-2xl;
     max-width: 900px;
     text-align: center;
   }
@@ -80,12 +81,13 @@
   // Contact Section
   &__contact {
     @include container;
-    @include section-padding;
+    padding-top: $space-2xl;
+    padding-bottom: $space-2xl;
     max-width: 900px;
     background: $color-bg-alt;
     border-radius: $radius-2xl;
     text-align: center;
-    margin: 0 auto $space-4xl;
+    margin: 0 auto $space-2xl;
     padding-left: $space-2xl;
     padding-right: $space-2xl;
   }
@@ -127,7 +129,8 @@
   // CV Section
   &__cv {
     @include container;
-    @include section-padding;
+    padding-top: $space-sm;
+    padding-bottom: $space-3xl;
     max-width: 900px;
     text-align: center;
   }
@@ -156,12 +159,13 @@
   // Interests Section
   &__interests {
     @include container;
-    @include section-padding;
+    padding-top: $space-2xl;
+    padding-bottom: $space-2xl;
     max-width: 900px;
   }
 
   &__interests-category {
-    margin-bottom: $space-3xl;
+    margin-bottom: $space-xl;
 
     &:last-child {
       margin-bottom: 0;
@@ -181,7 +185,7 @@
   &__interests-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: $space-sm;
+    gap: $space-md $space-sm;
   }
 
   &__interest-tag {
@@ -204,7 +208,8 @@
   // Extra links
   &__extra {
     @include container;
-    @include section-padding;
+    padding-top: $space-2xl;
+    padding-bottom: $space-2xl;
     text-align: center;
     max-width: 900px;
   }
