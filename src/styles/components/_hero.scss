@@ -215,13 +215,8 @@
       height: 100%;
       object-fit: cover;
     }
-
+    
     @include respond-to(tablet) {
-      width: 180px;
-      height: 180px;
-    }
-
-    @include respond-to(desktop) {
       width: 250px;
       height: 350px;
     }
