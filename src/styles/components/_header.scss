@@ -151,8 +151,16 @@
         transition: all $transition-base;
       }
 
-      &::before { top: -6px; }
-      &::after { bottom: -6px; }
+      &::before {
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &::after {
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
 
     &--open span {
@@ -160,11 +168,13 @@
 
       &::before {
         top: 0;
-        transform: rotate(45deg);
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
       }
       &::after {
         bottom: 0;
-        transform: rotate(-45deg);
+        left: 50%;
+        transform: translateX(-50%) rotate(-45deg);
       }
     }
   }
