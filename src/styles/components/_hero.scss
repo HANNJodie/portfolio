@@ -68,14 +68,15 @@
     font-size: $font-size-2xl;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
     color: $color-text-muted;
     display: flex;
     justify-content: center;
-    margin-bottom: -$space-2xl;
+    margin-bottom: -$space-xl;
+    gap: 0.2em;
 
     @include respond-to(tablet) {
       font-size: $font-size-4xl;
+          margin-bottom: -$space-2xl;
     }
   }
 
