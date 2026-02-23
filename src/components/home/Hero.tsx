@@ -98,7 +98,7 @@ export default function Hero() {
           stagger: 0.1,
           ease: "back.out(1.4)",
         },
-        "+=1"
+        "+=0.5"
       )
       .fromTo(
         ".hero__portrait",
