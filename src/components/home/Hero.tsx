@@ -51,18 +51,55 @@ export default function Hero() {
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // Animate bubbles in first (scale from 0)
+    // Animate text first (faster)
     tl.fromTo(
-      ".hero__bubble",
-      { opacity: 0, scale: 0 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "back.out(1.4)",
-      }
+      ".hero__subtitle",
+      { opacity: 0 },
+      { opacity: 1, duration: 0.2 }
     )
+      .fromTo(
+        ".hero__subtitle-letter",
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.25,
+          stagger: 0.02,
+          ease: "back.out(1.7)",
+        },
+        "-=0.1"
+      )
+      .fromTo(
+        ".hero__title",
+        { opacity: 0, y: 40, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.5 },
+        "-=0.15"
+      )
+      .fromTo(
+        ".hero__description",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.35 },
+        "-=0.2"
+      )
+      .fromTo(
+        ".hero__cta",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.3 },
+        "-=0.15"
+      )
+      // Then animate bubbles and portrait
+      .fromTo(
+        ".hero__bubble",
+        { opacity: 0, scale: 0 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "back.out(1.4)",
+        },
+        "+=1"
+      )
       .fromTo(
         ".hero__portrait",
         { opacity: 0, scale: 0 },
@@ -70,46 +107,10 @@ export default function Hero() {
         "-=0.4"
       )
       .fromTo(
-        ".hero__subtitle",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3 },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero__subtitle-letter",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.4,
-          stagger: 0.04,
-          ease: "back.out(1.7)",
-        },
-        "-=0.2"
-      )
-      .fromTo(
-        ".hero__title",
-        { opacity: 0, y: 40, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8 },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero__description",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6 },
-        "-=0.4"
-      )
-      .fromTo(
-        ".hero__cta",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5 },
-        "-=0.3"
-      )
-      .fromTo(
         ".hero__scroll-indicator",
         { opacity: 0 },
         { opacity: 1, duration: 0.5 },
-        "-=0.1"
+        "-=0.3"
       );
   }, { scope: containerRef });
 
