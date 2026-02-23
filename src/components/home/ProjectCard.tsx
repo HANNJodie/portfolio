@@ -22,7 +22,6 @@ export default function ProjectCard({ project, index, featured = false }: Projec
       <Link href={`/projets/${project.slug}` as `/projets/${string}`}>
         <motion.article
           className={`project-card ${featured ? "project-card--featured" : ""}`}
-          whileHover={{ y: -6 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <div className="project-card__image">

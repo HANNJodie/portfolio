@@ -65,16 +65,17 @@
 
   &__subtitle {
     font-family: $font-display;
-    font-size: $font-size-sm;
-    font-weight: 600;
+    font-size: $font-size-2xl;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     color: $color-text-muted;
     display: flex;
     justify-content: center;
-    
+    margin-bottom: -$space-2xl;
+
     @include respond-to(tablet) {
-      font-size: $font-size-xl;
+      font-size: $font-size-4xl;
     }
   }
 
