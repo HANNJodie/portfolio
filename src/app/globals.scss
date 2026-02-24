@@ -17,3 +17,9 @@
 @use "../styles/components/about";
 @use "../styles/components/buttons";
 @use "../styles/components/transitions";
+
+// Project-specific layouts
+@use "../styles/components/sephira";
+@use "../styles/components/luciole";
+@use "../styles/components/ascend";
+@use "../styles/components/cycles";

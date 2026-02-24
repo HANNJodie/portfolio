@@ -1,0 +1,119 @@
+// ============================================
+// Sephira-03 — Project-specific image layouts
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.sephira {
+  // ---- Description : 2 images côte à côte (16:9) ----
+  &-desc {
+    display: grid;
+    gap: $space-md;
+    margin-bottom: $space-4xl;
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-lg;
+    }
+
+    &__item {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: $radius-lg;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // ---- Story row 1 : 2 images côte à côte (16:9) ----
+  &-story-1 {
+    display: grid;
+    gap: $space-md;
+    margin-bottom: $space-md;
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-lg;
+    }
+
+    &__item {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: $radius-lg;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // ---- Story row 2 : 3 images (1fr 1fr 1.33fr — carrés + 4:3) ----
+  &-story-2 {
+    display: grid;
+    gap: $space-md;
+    margin-bottom: $space-4xl;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: $space-lg;
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: 1fr 1fr 1.33fr;
+    }
+
+    &__item {
+      position: relative;
+      border-radius: $radius-lg;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &--square {
+        aspect-ratio: 1 / 1;
+      }
+
+      &--landscape {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+
+  // ---- Gameplay : 2 images côte à côte (16:9) ----
+  &-gameplay {
+    display: grid;
+    gap: $space-md;
+    margin-bottom: $space-4xl;
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-lg;
+    }
+
+    &__item {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: $radius-lg;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

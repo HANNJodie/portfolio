@@ -38,7 +38,7 @@ export const projects: Project[] = [
     },
     images: [],
     heroImage: "/images/ASCEND/cover.png",
-    ctaLabel: { fr: "DEVBLOG", en: "DEVBLOG" },
+    ctaLabel: { fr: "LIRE LE DEVBLOG", en: "READ THE DEVBLOG" },
     ctaUrl: "https://ascend-devblog.carrd.co/",
     status: "in-development",
     featured: true,
@@ -79,12 +79,15 @@ export const projects: Project[] = [
       en: "SEPHIRA-03 was developed as a final-year project by a team of 4 Game Designers: Jodie HANN, Enzo POLI, Alexis LION, and Loïck MAHEO. Along with 3 3D artists: Mattis AUDEBOURG, Léa COQUARD, and Christelle CUTAYAR. Original soundtracks composed by Ilona HANN and Sophie LAPORTE.",
     },
     images: [
-      "/images/SEPHIRA/unity_s18xeotcbz-1.png",
-      "/images/SEPHIRA/unity_vvuada5akm.png",
-      "/images/SEPHIRA/unity_s18xeotcbz.png",
+      "/images/SEPHIRA/Image Sequence_003_0410.jpg",
+      "/images/SEPHIRA/Unity_FF3jOO3fhj.png",
+      "/images/SEPHIRA/Image Sequence_002_0003.jpg",
+      "/images/SEPHIRA/Unity_fP3kE1nAS5.jpg",
+      "/images/SEPHIRA/lvl1_27.PNG",
+      "/images/SEPHIRA/Unity_S18xEotcbz.png",
     ],
     heroImage: "/images/SEPHIRA/city_baniere_3.png",
-    ctaLabel: { fr: "JOUER", en: "PLAY" },
+    ctaLabel: { fr: "JOUER AU JEU", en: "PLAY THE GAME" },
     ctaUrl: "https://myusernameisskave.itch.io/sephira-03",
     socialLinks: [
       { platform: "Twitter", url: "https://twitter.com/Sephira003" },
@@ -108,6 +111,10 @@ export const projects: Project[] = [
       fr: "LUCIOLE est un jeu de plateforme en 2D, développé sur Unity. Entre narration, ambiance et puzzle, ce petit jeu est une métaphore du temps qui passe et du passage à l'âge adulte. Un projet personnel sur lequel je travaille actuellement.",
       en: "LUCIOLE is a 2D platformer developed in Unity. Blending narrative, atmosphere and puzzles, this small game is a metaphor for the passing of time and the transition to adulthood. A personal project I'm currently working on.",
     },
+    role: {
+      fr: "En développement...",
+      en: "In development...",
+    },
     story: {
       fr: "Luciole est notre petite lumière intérieure. Les cris, les pleurs, la douleur, la haine, la peur… toutes les émotions négatives et les épreuves difficiles de la vie l'ont affaiblie, jusqu'à ce qu'on se sente un peu perdu, voire complètement perdu. Mais cette petite lumière n'est pas totalement éteinte, et elle se bat en nous, quelque part, en même temps que nous, pour retrouver sa lumière.",
       en: "Luciole is our inner light. Screams, tears, pain, hatred, fear... all the negative emotions and hardships of life have weakened it, until we feel a bit lost, or completely lost. But this little light isn't entirely extinguished—it fights within us, somewhere, alongside us, to find its light again.",
@@ -125,6 +132,54 @@ export const projects: Project[] = [
     ctaLabel: { fr: "TESTEZ LE PROTOTYPE", en: "TEST THE PROTOTYPE" },
     ctaUrl: "https://jodie-hann.itch.io/luciole",
     status: "hiatus",
+  },
+  {
+    slug: "cycles",
+    title: "CYCLES",
+    date: {
+      fr: "Janvier – Août 2023",
+      en: "January – August 2023",
+    },
+    tagline: {
+      fr: "Sauver l'humanité",
+      en: "Save humanity",
+    },
+    description: {
+      fr: "CYCLES est un Visual Novel stratégique de science-fiction dure, se déroulant dans un hyperfutur où le soleil doit être maintenu en vie par les mains de l'homme. Faites les bons choix pour que l'humanité puisse survivre.",
+      en: "CYCLES is a strategic Visual Novel of hard science fiction, set in a hyperfuture where the sun must be kept alive by human hands. Make the right choices for humanity to survive.",
+    },
+    role: {
+      fr: "En tant que chef de projet, j'ai été en charge de toute son organisation. Gestion du temps, attribution des tâches, gestion d'équipe, rédaction des documents (GDD). J'ai surtout travaillé la narration du projet, création de personnages et écriture de dialogues, mais également son équilibrage. J'ai été en charge de la direction artistique et ai réalisé tous les visuels du jeu.",
+      en: "As project lead, I handled all organization: time management, task assignment, team management, and GDD documentation. I primarily worked on the narrative—character creation and dialogue writing—as well as balance. I was in charge of art direction and created all the game's visuals.",
+    },
+    story: {
+      fr: "Le soleil menace de s'éteindre, comme à chaque cycle, et l'humanité lance pour la énième fois une mission d'envergure visant à le faire repartir. Vous incarnez une intelligence artificielle, créée pour parcourir tous les scénarios possibles, et trouver le bon pour empêcher la fin du monde.",
+      en: "The sun threatens to die out, as it does each cycle, and humanity launches yet another major mission to restart it. You play as an artificial intelligence, created to explore every possible scenario and find the right one to prevent the end of the world.",
+    },
+    goal: {
+      fr: "Arriver à la fin du cycle sans que l'humanité ne soit détruite. Pour cela, maintenez un équilibre entre toutes les jauges qui représentent les pôles de la société.",
+      en: "Reach the end of the cycle without humanity being destroyed. To do so, maintain balance between all gauges representing society's pillars.",
+    },
+    gameplay: {
+      fr: "Rencontrez des personnages importants, analysez bien ce qu'ils ont à vous dire, faites des choix en prenant en compte l'état actuel de votre société. Gardez un équilibre entre les jauges et menez à bien votre mission.",
+      en: "Meet important characters, analyze what they tell you, and make choices considering your society's current state. Keep the gauges balanced and complete your mission.",
+    },
+    team: {
+      fr: "CYCLES est un jeu vidéo réalisé dans le cadre d'un projet d'étude par une équipe de 4 Game Designer : Jodie HANN, Camille CHERCHOUR, Yvan MOALIC et Alexandre BIANCHINI.",
+      en: "CYCLES was developed as a school project by a team of 4 Game Designers: Jodie HANN, Camille CHERCHOUR, Yvan MOALIC, and Alexandre BIANCHINI.",
+    },
+    images: [],
+    heroImage: "/images/CYCLES/cover.png",
+    ctaLabel: { fr: "JOUER AU JEU", en: "PLAY THE GAME" },
+    ctaUrl: "https://jodie-hann.itch.io/cycles",
+    downloadables: [
+      {
+        label: "Game Design Document",
+        url: "https://jodiehann.wordpress.com/wp-content/uploads/2024/03/gdd_cycles-2.docx",
+        type: "DOCX",
+      },
+    ],
+    status: "released",
   },
   {
     slug: "rejoins-moi",
@@ -165,54 +220,6 @@ export const projects: Project[] = [
     heroImage: "https://jodiehann.wordpress.com/wp-content/uploads/2024/01/image-rogne11.png",
     ctaLabel: { fr: "JOUER", en: "PLAY" },
     ctaUrl: "https://jodie-hann.itch.io/rejoins-moi-avant-la-fin-du-monde",
-    status: "released",
-  },
-  {
-    slug: "cycles",
-    title: "CYCLES",
-    date: {
-      fr: "Janvier – Août 2023",
-      en: "January – August 2023",
-    },
-    tagline: {
-      fr: "Sauver l'humanité",
-      en: "Save humanity",
-    },
-    description: {
-      fr: "CYCLES est un Visual Novel stratégique de science-fiction dure, se déroulant dans un hyperfutur où le soleil doit être maintenu en vie par les mains de l'homme. Faites les bons choix pour que l'humanité puisse survivre.",
-      en: "CYCLES is a strategic Visual Novel of hard science fiction, set in a hyperfuture where the sun must be kept alive by human hands. Make the right choices for humanity to survive.",
-    },
-    role: {
-      fr: "En tant que chef de projet, j'ai été en charge de toute son organisation. Gestion du temps, attribution des tâches, gestion d'équipe, rédaction des documents (GDD). J'ai surtout travaillé la narration du projet, création de personnages et écriture de dialogues, mais également son équilibrage. J'ai été en charge de la direction artistique et ai réalisé tous les visuels du jeu.",
-      en: "As project lead, I handled all organization: time management, task assignment, team management, and GDD documentation. I primarily worked on the narrative—character creation and dialogue writing—as well as balance. I was in charge of art direction and created all the game's visuals.",
-    },
-    story: {
-      fr: "Le soleil menace de s'éteindre, comme à chaque cycle, et l'humanité lance pour la énième fois une mission d'envergure visant à le faire repartir. Vous incarnez une intelligence artificielle, créée pour parcourir tous les scénarios possibles, et trouver le bon pour empêcher la fin du monde.",
-      en: "The sun threatens to die out, as it does each cycle, and humanity launches yet another major mission to restart it. You play as an artificial intelligence, created to explore every possible scenario and find the right one to prevent the end of the world.",
-    },
-    goal: {
-      fr: "Arriver à la fin du cycle sans que l'humanité ne soit détruite. Pour cela, maintenez un équilibre entre toutes les jauges qui représentent les pôles de la société.",
-      en: "Reach the end of the cycle without humanity being destroyed. To do so, maintain balance between all gauges representing society's pillars.",
-    },
-    gameplay: {
-      fr: "Rencontrez des personnages importants, analysez bien ce qu'ils ont à vous dire, faites des choix en prenant en compte l'état actuel de votre société. Gardez un équilibre entre les jauges et menez à bien votre mission.",
-      en: "Meet important characters, analyze what they tell you, and make choices considering your society's current state. Keep the gauges balanced and complete your mission.",
-    },
-    team: {
-      fr: "CYCLES est un jeu vidéo réalisé dans le cadre d'un projet d'étude par une équipe de 4 Game Designer : Jodie HANN, Camille CHERCHOUR, Yvan MOALIC et Alexandre BIANCHINI.",
-      en: "CYCLES was developed as a school project by a team of 4 Game Designers: Jodie HANN, Camille CHERCHOUR, Yvan MOALIC, and Alexandre BIANCHINI.",
-    },
-    images: [],
-    heroImage: "/images/CYCLES/cover.png",
-    ctaLabel: { fr: "JOUER", en: "PLAY" },
-    ctaUrl: "https://jodie-hann.itch.io/cycles",
-    downloadables: [
-      {
-        label: "Game Design Document",
-        url: "https://jodiehann.wordpress.com/wp-content/uploads/2024/03/gdd_cycles-2.docx",
-        type: "DOCX",
-      },
-    ],
     status: "released",
   },
   {
