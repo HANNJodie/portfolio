@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,6 +18,7 @@ interface ProjectHeroProps {
 
 export default function ProjectHero({ title, tagline, date, heroImage }: ProjectHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("hero");
 
   useGSAP(() => {
     if (!heroRef.current) return;
@@ -51,6 +53,12 @@ export default function ProjectHero({ title, tagline, date, heroImage }: Project
         { opacity: 0, y: 15 },
         { opacity: 1, y: 0, duration: 0.5 },
         "-=0.3"
+      )
+      .fromTo(
+        ".project-page__hero-scroll",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 },
+        "-=0.2"
       );
   }, { scope: heroRef });
 
@@ -74,6 +82,9 @@ export default function ProjectHero({ title, tagline, date, heroImage }: Project
         <p className="project-page__hero-date" style={{ opacity: 0 }}>
           {date}
         </p>
+      </div>
+      <div className="project-page__hero-scroll" style={{ opacity: 0 }}>
+        {t("scroll")}
       </div>
     </div>
   );
