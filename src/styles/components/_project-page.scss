@@ -136,7 +136,6 @@
     font-size: $font-size-base;
     color: $color-text;
     line-height: 1.85;
-    max-width: 70ch;
 
     @include respond-to(tablet) {
       font-size: $font-size-lg;
