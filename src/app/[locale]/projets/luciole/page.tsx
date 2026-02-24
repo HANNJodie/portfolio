@@ -69,29 +69,27 @@ export default async function LuciolePage() {
               <div className="project-page__section-text">{project.story?.[locale]}</div>
             </ScrollReveal>
 
-            {/* Images histoire — rangée 1 (2 côte à côte) */}
+            {/* Images histoire — rangée 1 (portrait + paysage) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--2" style={{ gridTemplateColumns: "0.666fr 2.1fr" }}>
-                <div className="project-page__image-row-item" style={{ aspectRatio: "9/16" }}>
+              <div className="luciole-story-1">
+                <div className="luciole-story-1__item luciole-story-1__item--portrait">
                   <Image src={IMAGES.story1} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                
-                <div className="project-page__image-row-item" style={{ aspectRatio: "16/9" }}>
+                <div className="luciole-story-1__item luciole-story-1__item--landscape">
                   <Image src={IMAGES.story2} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                
               </div>
             </ScrollReveal>
             
-            {/* Images histoire — rangée 2 (2 côte à côte) */}
+            {/* Images histoire — rangée 2 (large + carré) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--3" style={{ gridTemplateColumns: "2fr 1.12fr" }}>
-                <div className="project-page__image-row-item">
+              <div className="luciole-story-2">
+                <div className="luciole-story-2__item luciole-story-2__item--wide">
                   <Image src={IMAGES.story3} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item" style={{ aspectRatio: "1/1" }}>
-                  <Image src={IMAGES.story4} alt="LUCIOLE" fill style={{ objectFit: "cover"}} unoptimized />
-                </div> 
+                <div className="luciole-story-2__item luciole-story-2__item--square">
+                  <Image src={IMAGES.story4} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
+                </div>
               </div>
             </ScrollReveal>
 
@@ -109,11 +107,11 @@ export default async function LuciolePage() {
 
             {/* Images gameplay (2 côte à côte) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--2">
-                <div className="project-page__image-row-item">
+              <div className="luciole-gameplay">
+                <div className="luciole-gameplay__item">
                   <Image src={IMAGES.gameplay1} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
+                <div className="luciole-gameplay__item">
                   <Image src={IMAGES.gameplay2} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
               </div>
@@ -121,11 +119,11 @@ export default async function LuciolePage() {
 
             {/* Images gameplay 2 (2 côte à côte) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--2">
-                <div className="project-page__image-row-item">
+              <div className="luciole-gameplay">
+                <div className="luciole-gameplay__item">
                   <Image src={IMAGES.gameplay3} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
+                <div className="luciole-gameplay__item">
                   <Image src={IMAGES.gameplay4} alt="LUCIOLE" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
               </div>
@@ -136,13 +134,6 @@ export default async function LuciolePage() {
           <ProjectGallery images={project.images} title={project.title} />
 
           {project.team && <ProjectTeam team={project.team[locale]} />}
-
-          <ProjectCTA
-            ctaLabel={project.ctaLabel?.[locale]}
-            ctaUrl={project.ctaUrl}
-            socialLinks={project.socialLinks}
-            downloadables={project.downloadables}
-          />
         </>
       )}
     </ProjectLayout>
