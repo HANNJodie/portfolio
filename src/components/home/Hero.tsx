@@ -162,11 +162,12 @@ export default function Hero() {
         {/* Static portrait bubble */}
         <div className="hero__portrait" style={{ opacity: 0 }}>
           <Image
-            src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
+            src="/images/ME/plan_serré.jpg"
             alt="Jodie Hann"
             fill
             sizes="160px"
             style={{ objectFit: "cover" }}
+            unoptimized
           />
         </div>
       </div>
