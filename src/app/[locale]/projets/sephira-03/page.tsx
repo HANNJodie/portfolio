@@ -20,7 +20,7 @@ const IMAGES = {
   story5:    "/images/SEPHIRA/Unity_VVUAdA5AKm.png",
   story6:    "/images/SEPHIRA/Render2 (2).png",
   // Gameplay
-  gameplay1: "/images/SEPHIRA/Unity_S18xEotcbz.png",
+  gameplay1: "/images/SEPHIRA/Final_concept_drone.png",
   gameplay2: "/images/SEPHIRA/Nouvelle_recrue.png",
 } as const;
 
