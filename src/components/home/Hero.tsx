@@ -167,7 +167,6 @@ export default function Hero() {
             fill
             sizes="160px"
             style={{ objectFit: "cover" }}
-            unoptimized
           />
         </div>
       </div>
