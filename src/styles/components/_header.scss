@@ -67,6 +67,10 @@
     color: $color-text-muted;
     transition: color $transition-fast;
     position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 
     &::after {
       content: "";
@@ -202,6 +206,10 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: color $transition-fast;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 
     &:hover {
       @include gradient-text;

@@ -4,6 +4,7 @@
     "description": "Portfolio de Jodie Hann, Game Designer diplômée passionnée par le game design, le narrative design et le level design."
   },
   "nav": {
+    "home": "Accueil",
     "projects": "Mes projets",
     "about": "À propos"
   },

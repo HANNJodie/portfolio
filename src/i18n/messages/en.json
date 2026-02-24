@@ -4,6 +4,7 @@
     "description": "Jodie Hann's portfolio — Graduate Game Designer passionate about game design, narrative design and level design."
   },
   "nav": {
+    "home": "Home",
     "projects": "Projects",
     "about": "About"
   },
