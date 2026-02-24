@@ -36,7 +36,7 @@ export default async function AscendPage() {
             heroImage={project.heroImage}
           />
 
-          <div className="project-page__content">
+          <div className="project-page__content" style={{ paddingBottom: 0 }}>
 
             {/* Description */}
             <ScrollReveal className="project-page__section">
@@ -72,7 +72,7 @@ export default async function AscendPage() {
 
             {/* Image histoire (seule, pleine largeur du contenu) */}
             <ScrollReveal>
-              <div className="project-page__image-single">
+              <div className="ascend-story-single">
                 <Image
                   src={IMAGES.story1}
                   alt="ASCEND"
@@ -85,11 +85,11 @@ export default async function AscendPage() {
 
             {/* Images histoire (2 côte à côte) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--2">
-                <div className="project-page__image-row-item">
+              <div className="ascend-story-row">
+                <div className="ascend-story-row__item">
                   <Image src={IMAGES.story2} alt="ASCEND" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
+                <div className="ascend-story-row__item">
                   <Image src={IMAGES.story3} alt="ASCEND" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
               </div>
@@ -121,14 +121,14 @@ export default async function AscendPage() {
 
             {/* Images gameplay (3 côte à côte) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--3">
-                <div className="project-page__image-row-item">
+              <div className="ascend-gameplay">
+                <div className="ascend-gameplay__item">
                   <Image src={IMAGES.gameplay1} alt="ASCEND" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
+                <div className="ascend-gameplay__item">
                   <Image src={IMAGES.gameplay2} alt="ASCEND" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
+                <div className="ascend-gameplay__item">
                   <Image src={IMAGES.gameplay3} alt="ASCEND" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
               </div>
@@ -140,15 +140,19 @@ export default async function AscendPage() {
           {project.team && <ProjectTeam team={project.team[locale]} />}
 
           {/* Image finale pleine largeur */}
-          <ProjectImage src={IMAGES.final} alt="ASCEND"/>
-
-          {/* CTA devblog (bas de page) */}
-          <ProjectCTA
-            ctaLabel={project.ctaLabel?.[locale]}
-            ctaUrl={project.ctaUrl}
-            socialLinks={project.socialLinks}
-            downloadables={project.downloadables}
-          />
+          <div className="ascend-final__container" style={{ paddingTop: 0}}>
+            <ScrollReveal>
+              <div className="ascend-final" style={{ paddingTop: 0}}>
+                <Image
+                  src={IMAGES.final}
+                  alt="ASCEND"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  unoptimized
+                />
+              </div>
+            </ScrollReveal>
+          </div>
         </>
       )}
     </ProjectLayout>
