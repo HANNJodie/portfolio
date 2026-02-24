@@ -162,7 +162,7 @@ export default function Hero() {
         {/* Static portrait bubble */}
         <div className="hero__portrait" style={{ opacity: 0 }}>
           <Image
-            src="/images/ME/plan_serré.jpg"
+            src="/images/ME/plan_serre.JPG"
             alt="Jodie Hann"
             fill
             sizes="160px"
