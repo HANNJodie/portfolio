@@ -134,47 +134,6 @@ export const projects: Project[] = [
     status: "hiatus",
   },
   {
-    slug: "rejoins-moi",
-    title: "REJOINS-MOI AVANT LA FIN DU MONDE",
-    date: {
-      fr: "23 – 26 Janvier 2024",
-      en: "January 23 – 26, 2024",
-    },
-    tagline: {
-      fr: "Amour & Apocalypse",
-      en: "Love & Apocalypse",
-    },
-    description: {
-      fr: "Ce petit jeu développé sur UNREAL ENGINE 5 à l'occasion de la GAME JAM BRASSART 2024 propose un gameplay qui joue sur l'ambiance et le stress. Développé autour du thème « Connexion Lost ».",
-      en: "This small game developed in UNREAL ENGINE 5 for the BRASSART 2024 GAME JAM features gameplay that plays on atmosphere and stress. Built around the theme 'Connection Lost'.",
-    },
-    role: {
-      fr: "Scénariste, Narrative Designer, Level designer, et System Designer.",
-      en: "Screenwriter, Narrative Designer, Level Designer, and System Designer.",
-    },
-    story: {
-      fr: "Vous êtes réveillés avant l'aube par des tremblements et de l'agitation. Vous décidez d'allumer votre télévision, et découvrez que votre ville est en alerte suite à un problème dans sa centrale nucléaire. Est-ce la fin du monde ? C'est alors que votre téléphone reçoit quelques derniers messages avant que la connexion ne soit coupée. C'est votre bien aimé qui est paniqué. Vous voulez le revoir une dernière fois.",
-      en: "You're woken before dawn by tremors and commotion. You turn on the TV and discover your city is on alert due to a nuclear plant malfunction. Is this the end? Your phone receives a few last messages before the connection drops. It's your panicked loved one. You want to see them one last time.",
-    },
-    goal: {
-      fr: "Trouver des bornes électriques pour rallumer les lumières et retrouver temporairement du réseau. Suivez les indications de votre partenaire à travers ses messages, pour trouver un chemin jusqu'à lui avant la fin.",
-      en: "Find electrical terminals to restore lights and temporarily regain signal. Follow your partner's directions through their messages, to find a path to them before the end.",
-    },
-    gameplay: {
-      fr: "Exploration, horreur. Avancez à travers la ville alors que les phases d'apocalypse la rendent de plus en plus dangereuse.",
-      en: "Exploration, horror. Navigate through the city as apocalyptic phases make it increasingly dangerous.",
-    },
-    team: {
-      fr: "Réalisé dans le cadre de la Game Jam Brassart 2024 par une équipe de 7 étudiants, en seulement 3 jours.",
-      en: "Created during the Brassart 2024 Game Jam by a team of 7 students in just 3 days.",
-    },
-    images: [],
-    heroImage: "https://jodiehann.wordpress.com/wp-content/uploads/2024/01/image-rogne11.png",
-    ctaLabel: { fr: "JOUER", en: "PLAY" },
-    ctaUrl: "https://jodie-hann.itch.io/rejoins-moi-avant-la-fin-du-monde",
-    status: "released",
-  },
-  {
     slug: "cycles",
     title: "CYCLES",
     date: {
@@ -220,6 +179,47 @@ export const projects: Project[] = [
         type: "DOCX",
       },
     ],
+    status: "released",
+  },
+  {
+    slug: "rejoins-moi",
+    title: "REJOINS-MOI AVANT LA FIN DU MONDE",
+    date: {
+      fr: "23 – 26 Janvier 2024",
+      en: "January 23 – 26, 2024",
+    },
+    tagline: {
+      fr: "Amour & Apocalypse",
+      en: "Love & Apocalypse",
+    },
+    description: {
+      fr: "Ce petit jeu développé sur UNREAL ENGINE 5 à l'occasion de la GAME JAM BRASSART 2024 propose un gameplay qui joue sur l'ambiance et le stress. Développé autour du thème « Connexion Lost ».",
+      en: "This small game developed in UNREAL ENGINE 5 for the BRASSART 2024 GAME JAM features gameplay that plays on atmosphere and stress. Built around the theme 'Connection Lost'.",
+    },
+    role: {
+      fr: "Scénariste, Narrative Designer, Level designer, et System Designer.",
+      en: "Screenwriter, Narrative Designer, Level Designer, and System Designer.",
+    },
+    story: {
+      fr: "Vous êtes réveillés avant l'aube par des tremblements et de l'agitation. Vous décidez d'allumer votre télévision, et découvrez que votre ville est en alerte suite à un problème dans sa centrale nucléaire. Est-ce la fin du monde ? C'est alors que votre téléphone reçoit quelques derniers messages avant que la connexion ne soit coupée. C'est votre bien aimé qui est paniqué. Vous voulez le revoir une dernière fois.",
+      en: "You're woken before dawn by tremors and commotion. You turn on the TV and discover your city is on alert due to a nuclear plant malfunction. Is this the end? Your phone receives a few last messages before the connection drops. It's your panicked loved one. You want to see them one last time.",
+    },
+    goal: {
+      fr: "Trouver des bornes électriques pour rallumer les lumières et retrouver temporairement du réseau. Suivez les indications de votre partenaire à travers ses messages, pour trouver un chemin jusqu'à lui avant la fin.",
+      en: "Find electrical terminals to restore lights and temporarily regain signal. Follow your partner's directions through their messages, to find a path to them before the end.",
+    },
+    gameplay: {
+      fr: "Exploration, horreur. Avancez à travers la ville alors que les phases d'apocalypse la rendent de plus en plus dangereuse.",
+      en: "Exploration, horror. Navigate through the city as apocalyptic phases make it increasingly dangerous.",
+    },
+    team: {
+      fr: "Réalisé dans le cadre de la Game Jam Brassart 2024 par une équipe de 7 étudiants, en seulement 3 jours.",
+      en: "Created during the Brassart 2024 Game Jam by a team of 7 students in just 3 days.",
+    },
+    images: [],
+    heroImage: "https://jodiehann.wordpress.com/wp-content/uploads/2024/01/image-rogne11.png",
+    ctaLabel: { fr: "JOUER", en: "PLAY" },
+    ctaUrl: "https://jodie-hann.itch.io/rejoins-moi-avant-la-fin-du-monde",
     status: "released",
   },
   {
