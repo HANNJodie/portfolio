@@ -35,7 +35,7 @@
   &-story-1 {
     display: grid;
     gap: $space-md;
-    margin-bottom: $space-4xl;
+    margin-bottom: $space-md;
 
     @include respond-to(tablet) {
       grid-template-columns: repeat(2, 1fr);
