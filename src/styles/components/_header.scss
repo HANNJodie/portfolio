@@ -94,6 +94,60 @@
     }
   }
 
+  &__dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &-arrow {
+      display: inline-block;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    &-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      min-width: 240px;
+      background: $color-surface;
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      box-shadow: $shadow-lg;
+      padding: $space-sm 0;
+      z-index: 10;
+
+      // Invisible bridge so hover doesn't break between button and menu
+      &::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        height: 12px;
+      }
+    }
+
+    &-item {
+      display: block;
+      padding: $space-sm $space-lg;
+      font-family: $font-display;
+      font-size: $font-size-xs;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $color-text-muted;
+      text-decoration: none;
+      transition: all $transition-fast;
+      white-space: nowrap;
+
+      &:hover {
+        color: $color-text-heading;
+        background: $color-surface-hover;
+      }
+    }
+  }
+
   &__actions {
     display: flex;
     align-items: center;
@@ -213,6 +267,67 @@
 
     &:hover {
       @include gradient-text;
+    }
+  }
+
+  &__projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+    }
+
+    &-toggle {
+      @include flex-center;
+      width: 36px;
+      height: 36px;
+      border-radius: $radius-full;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $color-text-muted;
+      transition: all $transition-fast;
+
+      svg {
+        transition: transform $transition-fast;
+      }
+
+      &--open svg {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        background: $color-surface-hover;
+        color: $color-text-heading;
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-sm;
+      overflow: hidden;
+      margin-top: $space-md;
+    }
+
+    &-item {
+      font-family: $font-display;
+      font-size: $font-size-base;
+      font-weight: 500;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: color $transition-fast;
+
+      &:hover {
+        @include gradient-text;
+      }
     }
   }
 }
