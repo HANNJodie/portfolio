@@ -12,7 +12,7 @@ const IMAGES = {
   desc1:     "/images/SEPHIRA/Image_Sequence_004_0216.jpg",
   desc2:     "/images/SEPHIRA/Image_Sequence_004_0795.jpg",
   // Histoire — rangée 1
-  story1:    "/images/SEPHIRA/lvl0.png",
+  story1:    "/images/SEPHIRA/computer.png",
   story2:    "/images/SEPHIRA/Keter__Miniature 0.png",
   story3:    "/images/SEPHIRA/Binah01_UnityRender_002_0000.png",
   // Histoire — rangée 2
