@@ -277,6 +277,106 @@
       font-size: $font-size-xl;
     }
   }
+
+  &__image--full {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__image--contained {
+    @include container;
+    position: relative;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: $radius-lg;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Image seule dans le bloc contenu (sans container mixin, déjà dans __content)
+  &__image-single {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    margin-bottom: $space-4xl;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Grille d'images côte à côte (dans __content)
+  &__image-row {
+    display: grid;
+    gap: $space-md;
+    margin-bottom: $space-4xl;
+
+    @include respond-to(tablet) {
+      gap: $space-lg;
+    }
+
+    &--2 {
+      @include respond-to(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &--3 {
+      @include respond-to(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include respond-to(desktop) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &-item {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: $radius-lg;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // Bloc vidéo YouTube (dans __content)
+  &__video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    margin-bottom: $space-4xl;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
 }
 
 // Downloadable section
