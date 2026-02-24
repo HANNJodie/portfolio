@@ -211,7 +211,7 @@ export const projects: Project[] = [
     },
     images: [],
     heroImage: "/images/CYCLES/cover.png",
-    ctaLabel: { fr: "JOUER", en: "PLAY" },
+    ctaLabel: { fr: "JOUER AU JEU", en: "PLAY THE GAME" },
     ctaUrl: "https://jodie-hann.itch.io/cycles",
     downloadables: [
       {

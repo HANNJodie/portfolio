@@ -2,13 +2,10 @@ import { getTranslations } from "next-intl/server";
 import ProjectLayout from "@/components/project/ProjectLayout";
 import ProjectHero from "@/components/project/ProjectHero";
 import ProjectTeam from "@/components/project/ProjectTeam";
-import ProjectCTA from "@/components/project/ProjectCTA";
-import ProjectImage from "@/components/project/ProjectImage";
 import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
 
-// Remplacer ces chemins avec les vraies images
 const IMAGES = {
   story1:    "/images/ASCEND/cover.png",
   story2:    "/images/ASCEND/cave.png",
@@ -19,7 +16,6 @@ const IMAGES = {
   final:     "/images/ASCEND/crashed.jpg",
 } as const;
 
-// Remplacer VIDEO_ID par l'ID YouTube réel
 const YOUTUBE_EMBED = "https://www.youtube.com/embed/I08kpA1PAkU?si=ZVTp6J93FMD6G8_Y";
 
 export default async function AscendPage() {
