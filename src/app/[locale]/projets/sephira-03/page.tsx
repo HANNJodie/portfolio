@@ -35,7 +35,7 @@ export default async function SephiraPage() {
             title={project.title}
             tagline={project.tagline[locale]}
             date={project.date[locale]}
-            heroImage={project.heroImage}
+            heroImage={"/images/SEPHIRA/city_baniere_1.png"}
           />
 
           <div className="project-page__content" style={{ paddingBottom: 0 }}>
