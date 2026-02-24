@@ -111,6 +111,10 @@ export const projects: Project[] = [
       fr: "LUCIOLE est un jeu de plateforme en 2D, développé sur Unity. Entre narration, ambiance et puzzle, ce petit jeu est une métaphore du temps qui passe et du passage à l'âge adulte. Un projet personnel sur lequel je travaille actuellement.",
       en: "LUCIOLE is a 2D platformer developed in Unity. Blending narrative, atmosphere and puzzles, this small game is a metaphor for the passing of time and the transition to adulthood. A personal project I'm currently working on.",
     },
+    role: {
+      fr: "En développement...",
+      en: "In development...",
+    },
     story: {
       fr: "Luciole est notre petite lumière intérieure. Les cris, les pleurs, la douleur, la haine, la peur… toutes les émotions négatives et les épreuves difficiles de la vie l'ont affaiblie, jusqu'à ce qu'on se sente un peu perdu, voire complètement perdu. Mais cette petite lumière n'est pas totalement éteinte, et elle se bat en nous, quelque part, en même temps que nous, pour retrouver sa lumière.",
       en: "Luciole is our inner light. Screams, tears, pain, hatred, fear... all the negative emotions and hardships of life have weakened it, until we feel a bit lost, or completely lost. But this little light isn't entirely extinguished—it fights within us, somewhere, alongside us, to find its light again.",
