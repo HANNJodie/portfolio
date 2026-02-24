@@ -343,7 +343,7 @@
       }
 
       @include respond-to(desktop) {
-        grid-template-columns: 1fr 1fr 1.33fr;
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 

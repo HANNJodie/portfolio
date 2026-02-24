@@ -100,7 +100,7 @@ export default async function SephiraPage() {
             
             {/* Images histoire — rangée 2 (3 côte à côte) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--3">
+              <div className="project-page__image-row project-page__image-row--3" style={{ gridTemplateColumns: "1fr 1fr 1.33fr" }}>
                 <div className="project-page__image-row-item" style={{ aspectRatio: "1/1" }}>
                   <Image src={IMAGES.story4} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
