@@ -17,7 +17,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
 
   return (
     <ScrollReveal>
-      <div className="project-page__content">
+      <div className="project-page__content" style={{ paddingBottom: 0, paddingTop: 0 }}>
         <p className="project-page__section-label">{t("gallery")}</p>
         <div className="project-page__gallery">
           {images.map((img, i) => (

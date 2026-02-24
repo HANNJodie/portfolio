@@ -38,7 +38,7 @@ export default async function SephiraPage() {
             heroImage={project.heroImage}
           />
 
-          <div className="project-page__content">
+          <div className="project-page__content" style={{ paddingBottom: 0 }}>
 
             {/* Description */}
             <ScrollReveal className="project-page__section">
@@ -84,32 +84,31 @@ export default async function SephiraPage() {
               <div className="project-page__section-text">{project.story?.[locale]}</div>
             </ScrollReveal>
 
-            {/* Images histoire — rangée 1 (3 côte à côte) */}
+            {/* Images histoire — rangée 1 (2 côte à côte) */}
             <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--3">
+              <div className="project-page__image-row project-page__image-row--2">
                 <div className="project-page__image-row-item">
                   <Image src={IMAGES.story1} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
-                  <Image src={IMAGES.story2} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
-                </div>
-                <div className="project-page__image-row-item">
-                  <Image src={IMAGES.story3} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Images histoire — rangée 2 (3 côte à côte) */}
-            <ScrollReveal>
-              <div className="project-page__image-row project-page__image-row--3">
-                <div className="project-page__image-row-item">
-                  <Image src={IMAGES.story4} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
-                </div>
+                
                 <div className="project-page__image-row-item">
                   <Image src={IMAGES.story5} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
-                <div className="project-page__image-row-item">
-                  <Image src={IMAGES.story6} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
+                
+              </div>
+            </ScrollReveal>
+            
+            {/* Images histoire — rangée 2 (3 côte à côte) */}
+            <ScrollReveal>
+              <div className="project-page__image-row project-page__image-row--3">
+                <div className="project-page__image-row-item" style={{ aspectRatio: "1/1" }}>
+                  <Image src={IMAGES.story4} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
+                </div>
+                <div className="project-page__image-row-item" style={{ aspectRatio: "1/1" }}>
+                  <Image src={IMAGES.story2} alt="SEPHIRA-03" fill style={{ objectFit: "cover"}} unoptimized />
+                </div>
+                <div className="project-page__image-row-item" style={{ aspectRatio: "4/3" }}>
+                  <Image src={IMAGES.story3} alt="SEPHIRA-03" fill style={{ objectFit: "cover" }} unoptimized />
                 </div>
               </div>
             </ScrollReveal>
