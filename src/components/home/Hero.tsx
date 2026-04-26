@@ -53,7 +53,7 @@ export default function Hero() {
           animate="visible"
         >
           <div>
-            <p className="hero__available">● Disponible</p>
+            <p className="hero__available">● {t("available")}</p>
             <h1 className="hero__name">{t("title")}.</h1>
             <p className="hero__tagline">{t("tagline")}</p>
           </div>
@@ -80,7 +80,7 @@ export default function Hero() {
             />
             <div className="hero__photo-overlay" />
           </div>
-          <span className="hero__photo-badge">● À propos de moi</span>
+          <span className="hero__photo-badge">● {t("ctaAbout")}</span>
           <span className="hero__photo-location">Lyon, FR</span>
           <div className="hero__photo-cta">↗</div>
         </MotionLink>
@@ -144,7 +144,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <p className="hero__cta-text">Voir tous mes projets</p>
+          <p className="hero__cta-text">{t("ctaAll")}</p>
           <span className="hero__cta-count">{projects.length}&thinsp;&thinsp;→</span>
           <div className="hero__cta-arrow">↗</div>
         </motion.button>
