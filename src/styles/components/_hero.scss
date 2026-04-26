@@ -1,5 +1,7 @@
 // ============================================
-// Hero Section Styles
+// Hero Section — Bento Layout
+// Desktop: Design B (12×12 grid)
+// Mobile:  Design A (2-col bento)
 // ============================================
 
 @use "../variables" as *;
@@ -7,12 +9,18 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  @include flex-center;
-  @include flex-column;
+  height: 100vh;
+  min-height: 680px;
   overflow: hidden;
-  padding: $space-5xl 0;
+  display: flex;
+  flex-direction: column;
+  padding: 112px 16px 20px;
 
+  @include respond-to(desktop) {
+    padding: 112px 40px 32px;
+  }
+
+  // ─── Aurora blobs (background ambiance) ─────────────────────────────────
   &__bg {
     position: absolute;
     inset: 0;
@@ -23,13 +31,13 @@
 
   &__blob {
     position: absolute;
-    width: clamp(300px, 50vw, 600px);
-    height: clamp(300px, 50vw, 600px);
     opacity: 0.15;
     filter: blur(80px);
     animation: blob-morph 12s ease-in-out infinite;
 
     &--1 {
+      width: clamp(300px, 50vw, 600px);
+      height: clamp(300px, 50vw, 600px);
       top: -10%;
       right: -10%;
       background: $color-violet;
@@ -37,6 +45,8 @@
     }
 
     &--2 {
+      width: clamp(300px, 50vw, 600px);
+      height: clamp(300px, 50vw, 600px);
       bottom: -10%;
       left: -10%;
       background: $color-pink;
@@ -44,198 +54,414 @@
     }
 
     &--3 {
+      width: clamp(200px, 30vw, 400px);
+      height: clamp(200px, 30vw, 400px);
       top: 40%;
       left: 30%;
       background: $color-cyan;
-      width: clamp(200px, 30vw, 400px);
-      height: clamp(200px, 30vw, 400px);
       animation-delay: -8s;
     }
   }
 
-  &__content {
+  // ─── Bento grid container ────────────────────────────────────────────────
+  &__bento {
     position: relative;
-    z-index: $z-base;
-    @include container;
-    @include flex-column;
-    align-items: center;
-    text-align: center;
-    gap: $space-xl;
+    z-index: 1;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+
+    // Mobile A: 2 cols, rows [identity | photo+proj | photo+proj | proj+proj | cta]
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr 1fr auto;
+    gap: 10px;
+
+    @include respond-to(desktop) {
+      // Desktop B: 12×12 bento
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+      gap: 14px;
+    }
   }
 
-  &__subtitle {
-    font-family: $font-display;
-    font-size: $font-size-2xl;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: $color-text-muted;
+  // ─── Base card ───────────────────────────────────────────────────────────
+  &__card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+
+    @include respond-to(desktop) {
+      border-radius: 24px;
+    }
+  }
+
+  // ─── Identity card ───────────────────────────────────────────────────────
+  &__card--identity {
+    grid-column: 1 / -1; // full width on mobile
+    background: $color-surface;
+    box-shadow: $shadow-md;
+    padding: 20px 18px 16px;
     display: flex;
-    justify-content: center;
-    margin-bottom: -$space-xl;
-    gap: 0.2em;
+    flex-direction: column;
+    justify-content: space-between;
 
-    @include respond-to(tablet) {
-      font-size: $font-size-4xl;
-          margin-bottom: -$space-2xl;
+    @include respond-to(desktop) {
+      grid-column: 1 / 10;
+      grid-row: 1 / 8;
+      padding: 44px 48px;
     }
   }
 
-  &__subtitle-letter {
-    display: inline-block;
-    animation: wave 10s ease-in-out infinite;
-    animation-delay: calc(2s + var(--i, 0) * 0.1s);
+  &__available {
+    font-size: 10px;
+    color: $color-green;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
 
-    @for $i from 1 through 15 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{2 + ($i - 1) * 0.12}s;
-      }
+    @include respond-to(desktop) {
+      font-size: 11px;
+      margin-bottom: 18px;
     }
   }
 
-  &__title {
+  &__name {
     font-family: $font-display;
-    font-weight: 800;
-    font-size: $font-size-hero;
+    font-size: 38px;
     line-height: 0.95;
     letter-spacing: -0.03em;
     @include gradient-text;
+    margin: 0;
+
+    @include respond-to(desktop) {
+      font-size: clamp(5rem, 10.5vw, 9.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+    }
   }
 
-  &__description {
-    max-width: 600px;
+  &__tagline {
+    display: none;
+
+    @include respond-to(desktop) {
+      display: block;
+      font-size: $font-size-lg;
+      color: $color-text-muted;
+      line-height: 1.5;
+      margin: 12px 0 0;
+      max-width: 520px;
+    }
+  }
+
+  &__identity-footer {
+    margin-top: 10px;
+
+    @include respond-to(desktop) {
+      margin-top: 0;
+    }
+  }
+
+  &__role {
+    font-family: $font-display;
     font-size: $font-size-lg;
-    color: $color-text-muted;
-    line-height: 1.75;
-    z-index: 10;
-    border-radius: $radius-2xl;
+    font-weight: 700;
+    color: $color-text-heading;
+    letter-spacing: -0.01em;
+    margin: 0;
 
-    @include respond-to(tablet) {
-      font-size: $font-size-xl;
-      padding: $space-md;
-      background: rgba($color-bg, 0.75);
-      backdrop-filter: blur(3px);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+    @include respond-to(desktop) {
+      font-family: $font-display;
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 600;
+      color: $color-text-heading;
+      letter-spacing: -0.025em;
+      line-height: 1;
     }
   }
 
-  &__cta {
+  // ─── Photo card ──────────────────────────────────────────────────────────
+  &__card--photo {
+    grid-row: 2 / 4; // spans rows 2–3 on mobile (auto col → col 1)
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
     display: flex;
-    gap: $space-md;
-    margin-top: $space-lg;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
 
-  &__scroll-indicator {
-    position: absolute;
-    bottom: $space-md;
-    left: 0;
-    right: 0;
-    width: fit-content;
-    margin: 0 auto;
-    @include flex-column;
-    align-items: center;
-    gap: $space-sm;
-    color: $color-text-light;
-    font-size: $font-size-xs;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    animation: float 2s ease-in-out infinite;
-
-    &::after {
-      content: "";
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, $color-text-light, transparent);
+    @include respond-to(desktop) {
+      grid-column: 10 / 13;
+      grid-row: 1 / 8;
+      padding: 16px;
     }
   }
 
-  // ----------------------------------
-  // Floating project image bubbles
-  // ----------------------------------
-  &__bubbles {
+  // Image framed inside the gradient border
+  &__photo-frame {
     position: absolute;
-    inset: 0;
-    z-index: 0;
+    inset: 5px;
+    border-radius: 16px;
     overflow: hidden;
-    pointer-events: none;
-  }
+    transition: inset $transition-base, border-radius $transition-base;
 
-  &__bubble {
-    position: absolute;
-    overflow: hidden;
-    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
-    animation: bubble-float 8s ease-in-out infinite, bubble-morph 12s ease-in-out infinite;
-    box-shadow: $shadow-lg;
-    opacity: 0;
+    @include respond-to(desktop) {
+      border-radius: 20px;
+    }
 
-    // Slight border glow
-    &::after {
-      content: "";
-      position: absolute;
+    .hero__card--photo:hover & {
       inset: 0;
-      border-radius: inherit;
-      border: 2px solid rgba($color-violet, 0.15);
-      pointer-events: none;
-    }
+      border-radius: 20px;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(0.7) brightness(0.85);
-      transition: filter $transition-slow;
-    }
-
-    // Stagger morph start for each bubble so they don't sync
-    @for $i from 1 through 8 {
-      &--#{$i} {
-        animation-delay: #{($i - 1) * -1.5}s, #{($i - 1) * -2}s;
+      @include respond-to(desktop) {
+        border-radius: 24px;
       }
     }
   }
 
-  // ----------------------------------
-  // Static portrait bubble
-  // ----------------------------------
-  &__portrait {
+  &__photo-cta {
     position: absolute;
-    top: 15%;
-    right: 16%;
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%;
-    box-shadow: 0 8px 32px rgba($color-violet, 0.2), $shadow-lg;
-    z-index: $z-base;
-    opacity: 0;
-    animation: bubble-morph 14s ease-in-out infinite;
-    background: $gradient-aurora;
+    bottom: 14px;
+    right: 14px;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: white;
+    color: $color-text-heading;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: opacity $transition-base, transform $transition-base;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      animation: bubble-morph 14s ease-in-out infinite;
-      padding: 5px;
-    }
-    
-    @include respond-to(tablet) {
-      width: 250px;
-      height: 350px;
+    @include respond-to(desktop) {
+      opacity: 0;
+      transform: translate(6px, 6px);
+
+      .hero__card--photo:hover & {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
     }
   }
 
-  // ----------------------------------
-  // Responsive: hide bubbles on mobile
-  // ----------------------------------
-  @include mobile-only {
-    &__bubbles {
-      display: none;
+  &__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  &__photo-badge {
+    align-self: flex-start;
+    position: relative;
+    z-index: 2;
+    font-size: 9px;
+    padding: 4px 10px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.9);
+    color: $color-text-heading;
+    letter-spacing: 0.08em;
+  }
+
+  &__photo-location {
+    position: relative;
+    z-index: 2;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  // ─── Project cards (shared base) ─────────────────────────────────────────
+  &__card--project {
+    background: #111;
+    text-decoration: none;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.88;
     }
 
-    &__portrait {
-      display: none;
+    // Desktop: tous les projets sur la même ligne (rows 8–11)
+    @include respond-to(desktop) {
+      grid-row: 8 / 11;
+    }
+  }
+
+  // Desktop: 4 projets égaux sur 3 colonnes chacun
+  &__card--project-1 {
+    @include respond-to(desktop) { grid-column: 1 / 4; }
+  }
+
+  &__card--project-2 {
+    @include respond-to(desktop) { grid-column: 4 / 7; }
+  }
+
+  &__card--project-3 {
+    @include respond-to(desktop) { grid-column: 7 / 10; }
+  }
+
+  // Project 4: même taille que les autres sur desktop
+  &__card--compact {
+    @include respond-to(desktop) {
+      grid-column: 10 / 13;
+      grid-row: 8 / 11;
+    }
+  }
+
+  &__project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent 55%);
+    z-index: 1;
+  }
+
+  &__project-num {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.08em;
+    z-index: 2;
+
+    // Featured: pill badge
+    .hero__card--featured & {
+      padding: 3px 8px;
+      border-radius: $radius-full;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+    }
+  }
+
+  &__project-info {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    color: white;
+    z-index: 2;
+
+    @include respond-to(desktop) {
+      left: 14px;
+      right: 14px;
+      bottom: 0px;
+      transition: transform $transition-base;
+
+      .hero__card--project:hover & {
+        transform: translateY(-22px);
+      }
+    }
+  }
+
+  &__project-title {
+    color: white;
+    font-family: $font-display;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 2px;
+
+    @include respond-to(desktop) {
+      font-size: 20px;
+      margin: 0 0 4px;
+    }
+
+    .hero__card--featured & {
+      @include respond-to(desktop) { font-size: 22px; }
+    }
+
+  }
+
+  &__project-tagline {
+    font-size: 11px;
+    color: white;
+    font-style: italic;
+    margin: 0;
+    display: none;
+
+    @include respond-to(desktop) {
+      display: block;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity $transition-base, transform $transition-base;
+
+      .hero__card--project:hover & {
+        opacity: 0.8;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // ─── CTA card ────────────────────────────────────────────────────────────
+  &__card--cta {
+    grid-column: 1 / -1; // full-width strip on mobile
+    background: $color-text-heading;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    text-align: left;
+    transition: opacity $transition-fast;
+
+    &:hover { opacity: 0.85; }
+
+    // Desktop: strip plein width sous les projets
+    @include respond-to(desktop) {
+      grid-column: 1 / 13;
+      grid-row: 11 / 13;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+  }
+
+  &__cta-text {
+    font-family: $font-display;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.02em;
+    margin: 0;
+
+    @include respond-to(desktop) {
+      font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  // Shown on mobile only (count + arrow)
+  &__cta-count {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+
+    @include respond-to(desktop) { display: none; }
+  }
+
+  // Shown on desktop only (↗ circle)
+  &__cta-arrow {
+    display: none;
+
+    @include respond-to(desktop) {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 20px;
+      color: white;
+      flex-shrink: 0;
     }
   }
 }
