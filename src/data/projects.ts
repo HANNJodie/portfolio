@@ -37,7 +37,7 @@ export const projects: Project[] = [
       en: "Jodie HANN & Enzo POLI",
     },
     images: [],
-    heroImage: "/images/ASCEND/cover.png",
+    heroImage: "/images/ASCEND/cover.webp",
     ctaLabel: { fr: "DEVBLOG", en: "DEVBLOG" },
     ctaUrl: "https://ascend-devblog.carrd.co/",
     status: "in-development",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
       "/images/SEPHIRA/unity_vvuada5akm.png",
       "/images/SEPHIRA/unity_s18xeotcbz.png",
     ],
-    heroImage: "/images/SEPHIRA/city_baniere_3.png",
+    heroImage: "/images/SEPHIRA/city_baniere_3.webp",
     ctaLabel: { fr: "JOUER", en: "PLAY" },
     ctaUrl: "https://myusernameisskave.itch.io/sephira-03",
     socialLinks: [
@@ -121,7 +121,7 @@ export const projects: Project[] = [
       en: "Inspired by 'magic lamp' books, LUCIOLE features simple platforming mechanics based on shadow and light. Focused on atmosphere and emotions, the game oscillates between childlike cuteness and horror.",
     },
     images: [],
-    heroImage: "/images/LUCIOLE/cover.png",
+    heroImage: "/images/LUCIOLE/cover.webp",
     ctaLabel: { fr: "TESTEZ LE PROTOTYPE", en: "TEST THE PROTOTYPE" },
     ctaUrl: "https://jodie-hann.itch.io/luciole",
     status: "hiatus",
@@ -193,7 +193,7 @@ export const projects: Project[] = [
     goal: {
       fr: "Arriver à la fin du cycle sans que l'humanité ne soit détruite. Pour cela, maintenez un équilibre entre toutes les jauges qui représentent les pôles de la société.",
       en: "Reach the end of the cycle without humanity being destroyed. To do so, maintain balance between all gauges representing society's pillars.",
-    },
+    }, 
     gameplay: {
       fr: "Rencontrez des personnages importants, analysez bien ce qu'ils ont à vous dire, faites des choix en prenant en compte l'état actuel de votre société. Gardez un équilibre entre les jauges et menez à bien votre mission.",
       en: "Meet important characters, analyze what they tell you, and make choices considering your society's current state. Keep the gauges balanced and complete your mission.",

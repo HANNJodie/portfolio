@@ -72,12 +72,11 @@ export default function Hero() {
         >
           <div className="hero__photo-frame">
             <Image
-              src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
+              src="/images/ME/plan_taille.webp"
               alt="Jodie Hann"
               fill
-              sizes="(max-width: 1024px) 50vw, 20vw"
+              sizes="(max-width: 1024px) 50vw, 25vw"
               style={{ objectFit: "cover", objectPosition: "center top" }}
-              unoptimized
             />
             <div className="hero__photo-overlay" />
           </div>
@@ -102,7 +101,6 @@ export default function Hero() {
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
               style={{ objectFit: "cover" }}
-              unoptimized
             />
             <div className="hero__project-overlay" />
             <span className="hero__project-num">
@@ -129,7 +127,6 @@ export default function Hero() {
             fill
             sizes="(max-width: 1024px) 50vw, 20vw"
             style={{ objectFit: "cover" }}
-            unoptimized
           />
           <div className="hero__project-overlay" />
           <span className="hero__project-num">04</span>
