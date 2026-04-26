@@ -50,7 +50,7 @@ export default function Hero() {
           </div>
           <span className="hero__photo-badge">● À propos de moi</span>
           <span className="hero__photo-location">Lyon, FR</span>
-          <div className="hero__photo-cta">↗</div>
+            <div className="hero__photo-cta">↗</div>
         </Link>
 
         {/* Projects 1–3 */}
@@ -70,7 +70,7 @@ export default function Hero() {
             />
             <div className="hero__project-overlay" />
             <span className="hero__project-num">
-              {`0${i + 1}`}{i === 0 ? " · FEATURED" : ""}
+              {`0${i + 1}`}{i === 0 ? ` · ${t("featured")}` : ""}
             </span>
             <div className="hero__project-info">
               <h3 className="hero__project-title">{project.title}</h3>
@@ -103,7 +103,7 @@ export default function Hero() {
         {/* CTA */}
         <button className="hero__card hero__card--cta" onClick={scrollToProjects}>
           <p className="hero__cta-text">Voir tous mes projets</p>
-          <span className="hero__cta-count">{projects.length}&thinsp;→</span>
+          <span className="hero__cta-count">{projects.length}&thinsp;&thinsp;→</span>
           <div className="hero__cta-arrow">↗</div>
         </button>
       </div>
