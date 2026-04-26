@@ -14,10 +14,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 80px 16px 20px;
+  padding: 112px 16px 20px;
 
   @include respond-to(desktop) {
-    padding: 96px 40px 32px;
+    padding: 112px 40px 32px;
   }
 
   // ─── Aurora blobs (background ambiance) ─────────────────────────────────
@@ -114,7 +114,7 @@
 
   &__available {
     font-size: 10px;
-    color: $color-text-muted;
+    color: $color-green;
     letter-spacing: 0.06em;
     margin-bottom: 8px;
 
@@ -139,6 +139,19 @@
     }
   }
 
+  &__tagline {
+    display: none;
+
+    @include respond-to(desktop) {
+      display: block;
+      font-size: $font-size-lg;
+      color: $color-text-muted;
+      line-height: 1.5;
+      margin: 12px 0 0;
+      max-width: 520px;
+    }
+  }
+
   &__identity-footer {
     margin-top: 10px;
 
@@ -148,14 +161,16 @@
   }
 
   &__role {
-    font-size: 11px;
-    color: $color-text-muted;
-    letter-spacing: 0.06em;
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $color-text-heading;
+    letter-spacing: -0.01em;
     margin: 0;
 
     @include respond-to(desktop) {
       font-family: $font-display;
-      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
       font-weight: 600;
       color: $color-text-heading;
       letter-spacing: -0.025em;
@@ -166,12 +181,9 @@
   // ─── Photo card ──────────────────────────────────────────────────────────
   &__card--photo {
     grid-row: 2 / 4; // spans rows 2–3 on mobile (auto col → col 1)
-    background: linear-gradient(
-      135deg,
-      rgba($color-violet, 0.8) 0%,
-      rgba($color-pink, 0.6) 50%,
-      rgba($color-cyan, 0.5) 100%
-    );
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -187,13 +199,45 @@
   // Image framed inside the gradient border
   &__photo-frame {
     position: absolute;
-    inset: 8px;
-    border-radius: 12px;
+    inset: 5px;
+    border-radius: 16px;
     overflow: hidden;
+    transition: inset $transition-base, border-radius $transition-base;
 
     @include respond-to(desktop) {
-      inset: 8px;
-      border-radius: 14px;
+      border-radius: 20px;
+    }
+
+    .hero__card--photo:hover & {
+      inset: 0;
+      border-radius: 20px;
+
+      @include respond-to(desktop) {
+        border-radius: 24px;
+      }
+    }
+  }
+
+  &__photo-cta {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: white;
+    color: $color-text-heading;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    opacity: 0;
+    transform: translate(6px, 6px);
+    transition: opacity $transition-base, transform $transition-base;
+
+    .hero__card--photo:hover & {
+      opacity: 1;
+      transform: translate(0, 0);
     }
   }
 
@@ -235,12 +279,13 @@
       opacity: 0.88;
     }
 
+    // Desktop: tous les projets sur la même ligne (rows 8–11)
     @include respond-to(desktop) {
-      grid-row: 8 / 13;
+      grid-row: 8 / 11;
     }
   }
 
-  // Desktop column placement for projects 1–3
+  // Desktop: 4 projets égaux sur 3 colonnes chacun
   &__card--project-1 {
     @include respond-to(desktop) { grid-column: 1 / 4; }
   }
@@ -253,11 +298,11 @@
     @include respond-to(desktop) { grid-column: 7 / 10; }
   }
 
-  // Compact card (project 4)
+  // Project 4: même taille que les autres sur desktop
   &__card--compact {
     @include respond-to(desktop) {
       grid-column: 10 / 13;
-      grid-row: 8 / 10;
+      grid-row: 8 / 11;
     }
   }
 
@@ -298,7 +343,12 @@
     @include respond-to(desktop) {
       left: 14px;
       right: 14px;
-      bottom: 14px;
+      bottom: 0px;
+      transition: transform $transition-base;
+
+      .hero__card--project:hover & {
+        transform: translateY(-22px);
+      }
     }
   }
 
@@ -319,21 +369,27 @@
       @include respond-to(desktop) { font-size: 22px; }
     }
 
-    .hero__card--compact & {
-      @include respond-to(desktop) { font-size: 18px; }
-    }
   }
 
   &__project-tagline {
     font-size: 11px;
-    opacity: 0.8;
+    color: white;
     font-style: italic;
     margin: 0;
-    display: none; // too small on mobile
+    display: none;
 
-    @include respond-to(desktop) { display: block; font-size: 12px; }
+    @include respond-to(desktop) {
+      display: block;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity $transition-base, transform $transition-base;
 
-    .hero__card--compact & { display: none; }
+      .hero__card--project:hover & {
+        opacity: 0.8;
+        transform: translateY(0);
+      }
+    }
   }
 
   // ─── CTA card ────────────────────────────────────────────────────────────
@@ -351,13 +407,14 @@
 
     &:hover { opacity: 0.85; }
 
+    // Desktop: strip plein width sous les projets
     @include respond-to(desktop) {
-      grid-column: 10 / 13;
-      grid-row: 10 / 13;
-      flex-direction: column;
-      align-items: flex-start;
+      grid-column: 1 / 13;
+      grid-row: 11 / 13;
+      flex-direction: row;
+      align-items: center;
       justify-content: space-between;
-      padding: 22px 20px;
+      padding: 0 32px;
     }
   }
 
@@ -370,10 +427,9 @@
     margin: 0;
 
     @include respond-to(desktop) {
-      font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+      font-size: clamp(1.2rem, 1.8vw, 1.6rem);
       font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
   }
 

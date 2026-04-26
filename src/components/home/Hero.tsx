@@ -28,6 +28,7 @@ export default function Hero() {
           <div>
             <p className="hero__available">● Disponible</p>
             <h1 className="hero__name">{t("title")}.</h1>
+            <p className="hero__tagline">{t("tagline")}</p>
           </div>
           <div className="hero__identity-footer">
             <p className="hero__role">{t("subtitle")}</p>
@@ -35,7 +36,7 @@ export default function Hero() {
         </div>
 
         {/* Photo card */}
-        <div className="hero__card hero__card--photo">
+        <Link href="/a-propos" className="hero__card hero__card--photo">
           <div className="hero__photo-frame">
             <Image
               src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
@@ -47,9 +48,10 @@ export default function Hero() {
             />
             <div className="hero__photo-overlay" />
           </div>
-          <span className="hero__photo-badge">● Jodie Hann</span>
+          <span className="hero__photo-badge">● À propos de moi</span>
           <span className="hero__photo-location">Lyon, FR</span>
-        </div>
+          <div className="hero__photo-cta">↗</div>
+        </Link>
 
         {/* Projects 1–3 */}
         {featured.slice(0, 3).map((project, i) => (
@@ -94,6 +96,7 @@ export default function Hero() {
           <span className="hero__project-num">04</span>
           <div className="hero__project-info">
             <h3 className="hero__project-title">{featured[3].title}</h3>
+            <p className="hero__project-tagline">{featured[3].tagline[locale]}</p>
           </div>
         </Link>
 
