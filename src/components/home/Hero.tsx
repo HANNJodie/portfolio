@@ -1,207 +1,108 @@
 "use client";
 
-import { useRef, useMemo } from "react";
-import { useTranslations } from "next-intl";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import Image from "next/image";
-import Button from "@/components/ui/Button";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import { projects } from "@/data/projects";
-
-// Pre-defined bubble positions spread across the hero
-const BUBBLE_SLOTS = [
-  { top: "13%", left: "10%", size: 190 },
-  { top: "10%", right: "6%", size: 110 },
-  { bottom: "30%", left: "25%", size: 200 },
-  { top: "55%", right: "3%", size: 120 },
-  { bottom: "18%", left: "8%", size: 115 },
-  { bottom: "12%", right: "12%", size: 105 },
-  { top: "12%", left: "35%", size: 100 },
-  { bottom: "28%", right: "22%", size: 85 },
-];
-
-function shuffleArray<T>(arr: T[]): T[] {
-  const shuffled = [...arr];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
 
 export default function Hero() {
   const t = useTranslations("hero");
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Randomize project images once on mount
-  const bubbleImages = useMemo(() => {
-    const images = shuffleArray(projects.map((p) => p.heroImage));
-    return BUBBLE_SLOTS.map((slot, i) => ({
-      ...slot,
-      src: images[i % images.length],
-      delay: i === 0 ? 0.5 : i * 0.8,
-    }));
-  }, []);
-
-  const subtitleText = t("subtitle");
-
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    // Animate text first (faster)
-    tl.fromTo(
-      ".hero__subtitle",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.2 }
-    )
-      .fromTo(
-        ".hero__subtitle-letter",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.25,
-          stagger: 0.02,
-          ease: "back.out(1.7)",
-        },
-        "-=0.1"
-      )
-      .fromTo(
-        ".hero__title",
-        { opacity: 0, y: 40, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5 },
-        "-=0.15"
-      )
-      .fromTo(
-        ".hero__description",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.35 },
-        "-=0.2"
-      )
-      .fromTo(
-        ".hero__cta",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.3 },
-        "-=0.15"
-      )
-      // Then animate bubbles and portrait
-      .fromTo(
-        ".hero__bubble",
-        { opacity: 0, scale: 0 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "back.out(1.4)",
-        },
-        "+=0.5"
-      )
-      .fromTo(
-        ".hero__portrait",
-        { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.2)" },
-        "-=0.4"
-      )
-      .fromTo(
-        ".hero__scroll-indicator",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5 },
-        "-=0.3"
-      );
-  }, { scope: containerRef });
+  const locale = useLocale() as "fr" | "en";
+  const featured = projects.slice(0, 4);
 
   const scrollToProjects = () => {
-    const el = document.getElementById("projects");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="hero" ref={containerRef}>
+    <section className="hero">
       <div className="hero__bg">
         <div className="hero__blob hero__blob--1" />
         <div className="hero__blob hero__blob--2" />
         <div className="hero__blob hero__blob--3" />
       </div>
 
-      {/* Floating project image bubbles */}
-      <div className="hero__bubbles" aria-hidden="true">
-        {bubbleImages.map((bubble, i) => {
-          const posStyle: React.CSSProperties = {
-            top: bubble.top,
-            left: bubble.left,
-            right: bubble.right,
-            bottom: bubble.bottom,
-            width: bubble.size,
-            height: bubble.size,
-            animationDelay: `${bubble.delay}s`,
-          };
-          return (
-            <div
-              key={i}
-              className={`hero__bubble hero__bubble--${i + 1}`}
-              style={{ ...posStyle, opacity: 0 }}
-            >
-              <Image
-                src={bubble.src}
-                alt=""
-                fill
-                sizes={`${bubble.size}px`}
-                style={{ objectFit: "cover" }}
-                unoptimized
-              />
-            </div>
-          );
-        })}
+      <div className="hero__bento">
+        {/* Identity */}
+        <div className="hero__card hero__card--identity">
+          <div>
+            <p className="hero__available">● Disponible</p>
+            <h1 className="hero__name">{t("title")}.</h1>
+          </div>
+          <div className="hero__identity-footer">
+            <p className="hero__role">{t("subtitle")}</p>
+          </div>
+        </div>
 
-        {/* Static portrait bubble */}
-        <div className="hero__portrait" style={{ opacity: 0 }}>
+        {/* Photo card */}
+        <div className="hero__card hero__card--photo">
+          <div className="hero__photo-frame">
+            <Image
+              src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
+              alt="Jodie Hann"
+              fill
+              sizes="(max-width: 1024px) 50vw, 20vw"
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              unoptimized
+            />
+            <div className="hero__photo-overlay" />
+          </div>
+          <span className="hero__photo-badge">● Jodie Hann</span>
+          <span className="hero__photo-location">Lyon, FR</span>
+        </div>
+
+        {/* Projects 1–3 */}
+        {featured.slice(0, 3).map((project, i) => (
+          <Link
+            key={project.slug}
+            href={`/projets/${project.slug}` as `/projets/${string}`}
+            className={`hero__card hero__card--project hero__card--project-${i + 1}${i === 0 ? " hero__card--featured" : ""}`}
+          >
+            <Image
+              src={project.heroImage}
+              alt={project.title}
+              fill
+              sizes="(max-width: 1024px) 50vw, 25vw"
+              style={{ objectFit: "cover" }}
+              unoptimized
+            />
+            <div className="hero__project-overlay" />
+            <span className="hero__project-num">
+              {`0${i + 1}`}{i === 0 ? " · FEATURED" : ""}
+            </span>
+            <div className="hero__project-info">
+              <h3 className="hero__project-title">{project.title}</h3>
+              <p className="hero__project-tagline">{project.tagline[locale]}</p>
+            </div>
+          </Link>
+        ))}
+
+        {/* Project 4 compact */}
+        <Link
+          href={`/projets/${featured[3].slug}` as `/projets/${string}`}
+          className="hero__card hero__card--project hero__card--compact"
+        >
           <Image
-            src="/images/ME/plan_serre.JPG"
-            alt="Jodie Hann"
+            src={featured[3].heroImage}
+            alt={featured[3].title}
             fill
-            sizes="160px"
+            sizes="(max-width: 1024px) 50vw, 20vw"
             style={{ objectFit: "cover" }}
             unoptimized
           />
-        </div>
-      </div>
+          <div className="hero__project-overlay" />
+          <span className="hero__project-num">04</span>
+          <div className="hero__project-info">
+            <h3 className="hero__project-title">{featured[3].title}</h3>
+          </div>
+        </Link>
 
-      <div className="hero__content">
-        <p className="hero__subtitle" style={{ opacity: 0 }}>
-          {subtitleText.split("").map((char, i) => (
-            <span
-              key={i}
-              className="hero__subtitle-letter"
-              style={{ opacity: 0 }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
-        </p>
-        <h1 className="hero__title" style={{ opacity: 0 }}>
-          {t("title")}
-        </h1>
-        <p className="hero__description" style={{ opacity: 0 }}>
-          {t("description")}
-        </p>
-        <div className="hero__cta" style={{ opacity: 0 }}>
-          <Button variant="primary" size="large" icon onClick={scrollToProjects}>
-            {t("cta")}
-          </Button>
-          <Link href="/a-propos" className="btn btn--secondary btn--large">
-            {t("ctaAbout")}
-          </Link>
-        </div>
-      </div>
-
-      <div className="hero__scroll-indicator" style={{ opacity: 0 }}>
-        {t("scroll")}
+        {/* CTA */}
+        <button className="hero__card hero__card--cta" onClick={scrollToProjects}>
+          <p className="hero__cta-text">Voir tous mes projets</p>
+          <span className="hero__cta-count">{projects.length}&thinsp;→</span>
+          <div className="hero__cta-arrow">↗</div>
+        </button>
       </div>
     </section>
   );
