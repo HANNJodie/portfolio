@@ -24,14 +24,37 @@ const clashDisplay = localFont({
   display: "swap",
 });
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jodiehann.com";
+
 export const metadata: Metadata = {
-  title: "Jodie Hann — Game Designer",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Jodie Hann — Game Designer",
+    template: "%s | Jodie Hann",
+  },
   description:
     "Portfolio de Jodie Hann, Game Designer passionnée par le game design, le narrative design et le level design.",
+  authors: [{ name: "Jodie Hann" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
     title: "Jodie Hann — Game Designer",
-    description: "Portfolio de Jodie Hann, Game Designer",
+    description:
+      "Portfolio de Jodie Hann, Game Designer passionnée par le game design, le narrative design et le level design.",
+    url: BASE_URL,
+    siteName: "Jodie Hann",
     type: "website",
+    locale: "fr_FR",
+    alternateLocale: ["en_GB"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jodie Hann — Game Designer",
+    description:
+      "Portfolio de Jodie Hann, Game Designer passionnée par le game design, le narrative design et le level design.",
   },
 };
 
