@@ -4,6 +4,28 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { projects } from "@/data/projects";
+import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const BASE_DELAY = 0.35;
+
+const fromLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
+};
+
+const fromRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
+};
+
+const fromBottom = (delay: number) => ({
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: BASE_DELAY + delay } },
+});
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -23,8 +45,13 @@ export default function Hero() {
       </div>
 
       <div className="hero__bento">
-        {/* Identity */}
-        <div className="hero__card hero__card--identity">
+        {/* Identity — slide from left */}
+        <motion.div
+          className="hero__card hero__card--identity"
+          variants={fromLeft}
+          initial="hidden"
+          animate="visible"
+        >
           <div>
             <p className="hero__available">● Disponible</p>
             <h1 className="hero__name">{t("title")}.</h1>
@@ -33,10 +60,16 @@ export default function Hero() {
           <div className="hero__identity-footer">
             <p className="hero__role">{t("subtitle")}</p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Photo card */}
-        <Link href="/a-propos" className="hero__card hero__card--photo">
+        {/* Photo — slide from right, same delay as identity */}
+        <MotionLink
+          href="/a-propos"
+          className="hero__card hero__card--photo"
+          variants={fromRight}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="hero__photo-frame">
             <Image
               src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
@@ -50,15 +83,18 @@ export default function Hero() {
           </div>
           <span className="hero__photo-badge">● À propos de moi</span>
           <span className="hero__photo-location">Lyon, FR</span>
-            <div className="hero__photo-cta">↗</div>
-        </Link>
+          <div className="hero__photo-cta">↗</div>
+        </MotionLink>
 
-        {/* Projects 1–3 */}
+        {/* Projects 1–3 — slide from bottom, staggered */}
         {featured.slice(0, 3).map((project, i) => (
-          <Link
+          <MotionLink
             key={project.slug}
             href={`/projets/${project.slug}` as `/projets/${string}`}
             className={`hero__card hero__card--project hero__card--project-${i + 1}${i === 0 ? " hero__card--featured" : ""}`}
+            variants={fromBottom(0.3 + i * 0.12)}
+            initial="hidden"
+            animate="visible"
           >
             <Image
               src={project.heroImage}
@@ -76,13 +112,16 @@ export default function Hero() {
               <h3 className="hero__project-title">{project.title}</h3>
               <p className="hero__project-tagline">{project.tagline[locale]}</p>
             </div>
-          </Link>
+          </MotionLink>
         ))}
 
         {/* Project 4 compact */}
-        <Link
+        <MotionLink
           href={`/projets/${featured[3].slug}` as `/projets/${string}`}
           className="hero__card hero__card--project hero__card--compact"
+          variants={fromBottom(0.3 + 3 * 0.12)}
+          initial="hidden"
+          animate="visible"
         >
           <Image
             src={featured[3].heroImage}
@@ -98,14 +137,20 @@ export default function Hero() {
             <h3 className="hero__project-title">{featured[3].title}</h3>
             <p className="hero__project-tagline">{featured[3].tagline[locale]}</p>
           </div>
-        </Link>
+        </MotionLink>
 
         {/* CTA */}
-        <button className="hero__card hero__card--cta" onClick={scrollToProjects}>
+        <motion.button
+          className="hero__card hero__card--cta"
+          onClick={scrollToProjects}
+          variants={fromBottom(0.3 + 4 * 0.12)}
+          initial="hidden"
+          animate="visible"
+        >
           <p className="hero__cta-text">Voir tous mes projets</p>
           <span className="hero__cta-count">{projects.length}&thinsp;&thinsp;→</span>
           <div className="hero__cta-arrow">↗</div>
-        </button>
+        </motion.button>
       </div>
     </section>
   );
