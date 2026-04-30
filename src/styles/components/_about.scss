@@ -1,216 +1,635 @@
 // ============================================
-// About Page Styles
+// About Page — Bento Layout
+// Mirrors the Hero bento DNA: aurora blobs, rounded
+// cards, gradient photo frame, dark CTA card, tag chips.
 // ============================================
 
 @use "../variables" as *;
 @use "../mixins" as *;
 
 .about {
-  padding-top: 100px;
+  position: relative;
+  padding: 128px 16px 20px;
+  overflow: hidden;
 
-  &__hero {
-    @include container;
-    padding-top: $space-3xl;
-    padding-bottom: $space-2xl;
-    max-width: 900px;
-    text-align: center;
+  @include respond-to(desktop) {
+    padding: 128px 40px 32px;
   }
 
-  &__photo-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: $space-2xl;
-  }
-
-  &__photo {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
+  // ─── Aurora blobs (background ambiance) ───────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba($color-violet, 0.2), $shadow-lg;
-    padding: 4px;
-    background: $gradient-aurora;
-    background-size: 300% 300%;
-    animation: gradient-shift 6s ease infinite, bubble-morph 14s ease-in-out infinite;
+    pointer-events: none;
+  }
 
-    @include respond-to(tablet) {
-      width: 280px;
-      height: 380px;
+  &__blob {
+    position: absolute;
+    opacity: 0.13;
+    filter: blur(90px);
+    animation: blob-morph 14s ease-in-out infinite;
+
+    &--1 {
+      width: clamp(300px, 50vw, 620px);
+      height: clamp(300px, 50vw, 620px);
+      top: 5%;
+      right: -12%;
+      background: $color-violet;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: clamp(280px, 45vw, 560px);
+      height: clamp(280px, 45vw, 560px);
+      top: 45%;
+      left: -10%;
+      background: $color-pink;
+      animation-delay: -5s;
+    }
+    &--3 {
+      width: clamp(260px, 40vw, 480px);
+      height: clamp(260px, 40vw, 480px);
+      bottom: -10%;
+      right: 20%;
+      background: $color-cyan;
+      animation-delay: -9s;
     }
   }
 
-  &__photo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
-    animation: bubble-morph 14s ease-in-out infinite;
+  // ─── Section wrapper ──────────────────────────────────────────────────
+  &__section {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    & + & {
+      margin-top: 14px;
+
+      @include respond-to(desktop) {
+        margin-top: 18px;
+      }
+    }
+  }
+
+  // ─── Bento grids ──────────────────────────────────────────────────────
+  &__bento {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    // Intro: photo + identity + 2 bios
+    &--intro {
+      grid-template-rows: auto auto auto auto;
+
+      @include respond-to(desktop) {
+        grid-template-rows: repeat(8, minmax(56px, auto));
+      }
+    }
+
+    &--skills {
+      grid-template-rows: auto auto auto auto;
+
+      @include respond-to(desktop) {
+        grid-template-rows: minmax(180px, auto) minmax(220px, auto);
+      }
+    }
+
+    &--contact {
+      grid-template-rows: auto auto auto auto;
+
+      @include respond-to(desktop) {
+        grid-template-rows: minmax(160px, auto) minmax(160px, auto);
+      }
+    }
+  }
+
+  // ─── Base card ────────────────────────────────────────────────────────
+  &__card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: $color-surface;
+    box-shadow: $shadow-md;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow $transition-base, opacity $transition-fast;
+
+    @include respond-to(desktop) {
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    @include focus-ring;
+  }
+
+  // Generic typographic helpers reused across cards
+  &__card-eyebrow {
+    display: block;
+    font-family: $font-display;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    margin-bottom: 14px;
+
+    @include respond-to(desktop) {
+      font-size: 11px;
+    }
+  }
+
+  &__card-num {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-family: $font-display;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: $color-text-light;
+  }
+
+  &__card-title {
+    font-family: $font-display;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: $color-text-heading;
+    margin: 0 0 10px;
+
+    &--md {
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+    }
+  }
+
+  &__card-desc {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  // ─── Photo card (gradient frame, like hero) ──────────────────────────
+  &__card--photo {
+    grid-column: 1 / -1;
+    aspect-ratio: 4 / 3;
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+    padding: 12px;
+    box-shadow: $shadow-lg;
+
+    @include respond-to(desktop) {
+      grid-column: 1 / 6;
+      grid-row: 1 / 9;
+      aspect-ratio: auto;
+      padding: 16px;
+    }
+  }
+
+  &__photo-frame {
+    position: absolute;
+    inset: 5px;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: inset $transition-base, border-radius $transition-base;
+
+    @include respond-to(desktop) {
+      inset: 5px;
+      border-radius: 20px;
+    }
+
+    .about__card--photo:hover & {
+      inset: 0;
+      border-radius: 20px;
+
+      @include respond-to(desktop) { border-radius: 24px; }
+    }
+  }
+
+  &__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  &__photo-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 2;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.92);
+    color: $color-text-heading;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  &__photo-location {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    z-index: 2;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  // ─── Identity card ───────────────────────────────────────────────────
+  &__card--identity {
+    grid-column: 1 / -1;
+    background: $color-surface;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include respond-to(desktop) {
+      grid-column: 6 / 13;
+      grid-row: 1 / 5;
+      padding: 40px;
+    }
   }
 
   &__label {
     font-family: $font-display;
-    font-size: $font-size-xs;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     color: $color-violet;
-    margin-bottom: $space-lg;
+    margin: 0 0 14px;
   }
 
   &__title {
     font-family: $font-display;
-    font-size: clamp(2rem, 5vw, $font-size-5xl);
-    font-weight: 800;
+    font-size: clamp(2rem, 4.6vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
     @include gradient-text;
-    margin-bottom: $space-2xl;
+    margin: 0 0 18px;
   }
 
   &__bio {
-    font-size: $font-size-lg;
+    font-size: $font-size-base;
     color: $color-text;
-    line-height: 1.85;
-    max-width: 70ch;
-    margin: 0 auto $space-xl;
+    line-height: 1.7;
+    margin: 0;
 
-    @include respond-to(tablet) {
-      font-size: $font-size-xl;
+    @include respond-to(desktop) {
+      font-size: $font-size-lg;
+    }
+
+    &--lead {
+      color: $color-text;
+      font-size: $font-size-base;
+
+      @include respond-to(desktop) {
+        font-size: $font-size-lg;
+      }
     }
   }
 
-  // Contact Section
-  &__contact {
-    @include container;
-    padding-top: $space-2xl;
-    padding-bottom: $space-2xl;
-    max-width: 900px;
-    background: $color-bg-alt;
-    border-radius: $radius-2xl;
-    text-align: center;
-    margin: 0 auto $space-2xl;
-    padding-left: $space-2xl;
-    padding-right: $space-2xl;
-  }
-
-  &__contact-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: $space-lg;
-    margin-top: $space-2xl;
-  }
-
-  &__contact-item {
-    @include flex-center;
-    gap: $space-sm;
-    padding: $space-md $space-xl;
+  // ─── Bio cards (numbered, surface) ───────────────────────────────────
+  &__card--bio {
     background: $color-surface;
-    border-radius: $radius-full;
-    border: 1px solid $color-border;
-    font-size: $font-size-sm;
-    font-weight: 500;
-    color: $color-text;
-    transition: all $transition-fast;
+    padding-top: 28px;
 
-    &:hover {
-      border-color: $color-violet;
-      color: $color-violet;
-      transform: translateY(-2px);
-      box-shadow: $shadow-md;
-    }
-
-    svg {
-      width: 18px;
-      height: 18px;
-      color: $color-violet;
+    @include respond-to(desktop) {
+      padding: 32px;
     }
   }
 
-  // CV Section
-  &__cv {
-    @include container;
-    padding-top: $space-sm;
-    padding-bottom: $space-3xl;
-    max-width: 900px;
-    text-align: center;
+  &__card--bio-2 {
+    grid-column: 1 / -1;
+
+    @include respond-to(desktop) {
+      grid-column: 6 / 10;
+      grid-row: 5 / 9;
+    }
   }
 
-  &__cv-image {
-    border-radius: $radius-xl;
-    overflow: hidden;
-    border: 1px solid $color-border;
+  &__card--bio-3 {
+    grid-column: 1 / -1;
+    background: $color-bg-alt;
+
+    @include respond-to(desktop) {
+      grid-column: 10 / 13;
+      grid-row: 5 / 9;
+    }
+  }
+
+  // ─── CV (dark hero card) ─────────────────────────────────────────────
+  &__card--cv {
+    grid-column: 1 / -1;
+    background: $color-text-heading;
+    color: white;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-shadow: $shadow-lg;
-    margin: $space-2xl auto;
-    max-width: 600px;
-    cursor: pointer;
-    transition: all $transition-base;
+
+    @include respond-to(desktop) {
+      grid-column: 1 / 8;
+      grid-row: 1 / 2;
+      padding: 36px;
+    }
+
+    .about__card-eyebrow {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .about__card-title {
+      color: white;
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    }
 
     &:hover {
-      transform: scale(1.01);
+      transform: translateY(-2px);
       box-shadow: $shadow-xl;
     }
+  }
 
-    img {
-      width: 100%;
-      height: auto;
+  &__cv-glow {
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.45), transparent 55%),
+                radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.35), transparent 55%);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity $transition-base;
+
+    .about__card--cv:hover & {
+      opacity: 1;
     }
   }
 
-  // Interests Section
-  &__interests {
-    @include container;
-    padding-top: $space-2xl;
-    padding-bottom: $space-2xl;
-    max-width: 900px;
-  }
-
-  &__interests-category {
-    margin-bottom: $space-xl;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__interests-label {
+  &__cv-action {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    margin-top: 18px;
+    padding: 10px 14px 10px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: $radius-full;
     font-family: $font-display;
-    font-size: $font-size-sm;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: $color-text-muted;
-    margin-bottom: $space-lg;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: white;
+    transition: background $transition-base, border-color $transition-base;
+
+    svg { width: 16px; height: 16px; }
+
+    .about__card--cv:hover & {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
   }
 
-  &__interests-tags {
+  &__cv-arrow {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: white;
+    color: $color-text-heading;
+    margin-left: 4px;
+
+    svg { width: 15px; height: 15px; }
+  }
+
+  // ─── itch.io card (gradient warm) ───────────────────────────────────
+  &__card--itch {
+    grid-column: 1 / -1;
+    background: $gradient-warm;
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+    color: white;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 76px;
+
+    @include respond-to(desktop) {
+      grid-column: 8 / 13;
+      grid-row: 1 / 2;
+    }
+
+    .about__card-eyebrow { color: rgba(255, 255, 255, 0.85); }
+    .about__card-title { color: white; font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
+    .about__card-desc { color: rgba(255, 255, 255, 0.92); }
+
+    &:hover { transform: translateY(-2px); }
+  }
+
+  &__itch-arrow {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+
+    @include respond-to(desktop) {
+      left: auto;
+      right: 22px;
+    }
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: white;
+    color: $color-text-heading;
+    display: grid;
+    place-items: center;
+    transition: transform $transition-base;
+
+    svg { width: 20px; height: 20px; }
+
+    .about__card--itch:hover & {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  // ─── Games & Hobbies cards ──────────────────────────────────────────
+  &__card--games,
+  &__card--hobbies {
+    grid-column: 1 / -1;
+    min-height: 200px;
+  }
+
+  &__card--games {
+    @include respond-to(desktop) {
+      grid-column: 1 / 8;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__card--hobbies {
+    background: $color-bg-alt;
+
+    @include respond-to(desktop) {
+      grid-column: 8 / 13;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: $space-md $space-sm;
+    gap: 8px;
   }
 
-  &__interest-tag {
-    padding: $space-sm $space-md;
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
     background: $color-surface;
     border: 1px solid $color-border;
     border-radius: $radius-full;
     font-size: $font-size-sm;
     font-weight: 500;
     color: $color-text;
-    transition: all $transition-fast;
+    cursor: default;
+    transition: border-color $transition-fast, background $transition-fast;
 
     &:hover {
-      background: $color-bg-alt;
       border-color: $color-border-hover;
-      transform: translateY(-2px);
+      background: $color-surface-hover;
+    }
+
+    &--game {
+      border-color: rgba(124, 58, 237, 0.18);
     }
   }
 
-  // Extra links
-  &__extra {
-    @include container;
-    padding-top: $space-2xl;
-    padding-bottom: $space-2xl;
-    text-align: center;
-    max-width: 900px;
+  &__tag-icon {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  // ─── Contact bento ──────────────────────────────────────────────────
+  &__card--contact-title {
+    grid-column: 1 / -1;
+    background: $gradient-cool;
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 160px;
+
+    @include respond-to(desktop) {
+      grid-column: 1 / 6;
+      grid-row: 1 / 3;
+    }
+
+    .about__card-eyebrow { color: rgba(255, 255, 255, 0.7); }
+    .about__card-title {
+      color: white;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    }
+  }
+
+  &__contact-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    svg {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: $color-violet;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+  }
+
+  &__card--contact {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 84px;
+    padding: 18px 22px;
+
+    @include respond-to(desktop) { padding: 22px 26px; }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+
+      .about__contact-arrow {
+        background: $color-text-heading;
+        color: white;
+        transform: translate(2px, -2px);
+      }
+    }
+  }
+
+  &__card--contact-linkedin {
+    @include respond-to(desktop) { grid-column: 6 / 13; grid-row: 1 / 2; }
+  }
+  &__card--contact-mail {
+    @include respond-to(desktop) { grid-column: 6 / 10; grid-row: 2 / 3; }
+  }
+  &__card--contact-phone {
+    @include respond-to(desktop) { grid-column: 10 / 13; grid-row: 2 / 3; }
+  }
+
+  &__contact-label {
+    font-family: $font-display;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+  }
+
+  &__contact-value {
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $color-text-heading;
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__contact-arrow {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $color-bg-alt;
+    color: $color-text-heading;
+    display: grid;
+    place-items: center;
+    transition: background $transition-base, color $transition-base, transform $transition-base;
+
+    svg { width: 17px; height: 17px; }
   }
 }

@@ -3,6 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { OpenInNewIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/ui/Icons";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 
@@ -59,6 +60,34 @@ export default function Hero() {
           </div>
           <div className="hero__identity-footer">
             <p className="hero__role">{t("subtitle")}</p>
+            <div className="hero__contact-links">
+              <a
+                href="https://www.linkedin.com/in/jodie-hann/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero__contact-link"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+                <span className="hero__contact-label">in/jodie-hann</span>
+              </a>
+              <a
+                href="mailto:jodieml.hann@gmail.com"
+                className="hero__contact-link"
+                aria-label="Email"
+              >
+                <MailIcon />
+                <span className="hero__contact-label">jodieml.hann@gmail.com</span>
+              </a>
+              <a
+                href="tel:+33659823037"
+                className="hero__contact-link"
+                aria-label="Téléphone"
+              >
+                <PhoneIcon />
+                <span className="hero__contact-label">+33 6 59 82 30 37</span>
+              </a>
+            </div>
           </div>
         </motion.div>
 
@@ -72,17 +101,17 @@ export default function Hero() {
         >
           <div className="hero__photo-frame">
             <Image
-              src="/images/ME/plan_taille.webp"
+              src="/images/ME/plan_serre.webp"
               alt="Jodie Hann"
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
-              style={{ objectFit: "cover", objectPosition: "center top" }}
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
             <div className="hero__photo-overlay" />
           </div>
           <span className="hero__photo-badge">● {t("ctaAbout")}</span>
           <span className="hero__photo-location">Lyon, FR</span>
-          <div className="hero__photo-cta">↗</div>
+          <div className="hero__photo-cta"><OpenInNewIcon /></div>
         </MotionLink>
 
         {/* Projects 1–3 — slide from bottom, staggered */}
@@ -146,7 +175,7 @@ export default function Hero() {
         >
           <p className="hero__cta-text">{t("ctaAll")}</p>
           <span className="hero__cta-count">{projects.length}&thinsp;&thinsp;→</span>
-          <div className="hero__cta-arrow">↗</div>
+          <div className="hero__cta-arrow"><OpenInNewIcon /></div>
         </motion.button>
       </div>
     </section>
