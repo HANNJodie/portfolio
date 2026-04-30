@@ -69,6 +69,7 @@ export default function Hero() {
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
+                <span className="hero__contact-label">in/jodie-hann</span>
               </a>
               <a
                 href="mailto:jodieml.hann@gmail.com"
@@ -76,6 +77,7 @@ export default function Hero() {
                 aria-label="Email"
               >
                 <MailIcon />
+                <span className="hero__contact-label">jodieml.hann@gmail.com</span>
               </a>
               <a
                 href="tel:+33659823037"
@@ -83,6 +85,7 @@ export default function Hero() {
                 aria-label="Téléphone"
               >
                 <PhoneIcon />
+                <span className="hero__contact-label">+33 6 59 82 30 37</span>
               </a>
             </div>
           </div>
