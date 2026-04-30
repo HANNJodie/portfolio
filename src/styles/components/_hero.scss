@@ -411,7 +411,21 @@
     text-align: left;
     transition: opacity $transition-fast;
 
-    &:hover { opacity: 0.85; }
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.45), transparent 55%),
+                  radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.35), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+      transition: opacity $transition-base;
+    }
+
+    &:hover {
+      opacity: 0.85;
+      &::before { opacity: 1; }
+    }
 
     // Desktop: strip plein width sous les projets
     @include respond-to(desktop) {

@@ -30,8 +30,8 @@ const favoriteGames = [
   "Rayman Origins",
   "Jusant",
   "Trine 2",
-  "Alice Madness Return",
-  "Tomb Raider (2016)",
+  "Alice Madness Returns",
+  "Tomb Raider (2013)",
   "Castle Crashers",
   "Honkai: Star Rail",
   "The Last of Us",
@@ -210,9 +210,9 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             initial="hidden"
             animate="visible"
           >
-            <span className="about__card-eyebrow">{t("contact")}</span>
+            <span className="about__card-eyebrow">{locale === "fr" ? "Travaillons ensemble." : "Let's work together."}</span>
             <h2 className="about__card-title">
-              {locale === "fr" ? "Travaillons ensemble." : "Let's work together."}
+              {t("contact")}
             </h2>
           </motion.div>
 
