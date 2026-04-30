@@ -30,7 +30,7 @@ export default function Footer() {
 
         <div className="footer__contact-info">
           <a href="mailto:jodieml.hann@gmail.com">jodieml.hann@gmail.com</a>
-          <span>06 59 83 30 37</span>
+          <a href="tel:+33659823037">06 59 82 30 37</a>
         </div>
 
         <div className="footer__bottom">

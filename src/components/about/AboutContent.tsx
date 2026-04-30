@@ -20,7 +20,7 @@ const hobbies = [
   { fr: "Écriture", en: "Writing", emoji: "📝" },
   { fr: "Craft", en: "Craft", emoji: "✂️" },
   { fr: "Musique", en: "Music", emoji: "🎵" },
-  { fr: "Animation", en: "Animation", emoji: "🎬" },
+  { fr: "Cinéma", en: "Cinema", emoji: "🎬" },
   { fr: "Sci-Fi", en: "Sci-Fi", emoji: "🚀" },
   { fr: "Fantastique", en: "Fantasy", emoji: "🧙" },
   { fr: "Horreur", en: "Horror", emoji: "👻" },
@@ -51,7 +51,6 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 style={{ objectFit: "cover", objectPosition: "center top" }}
-                unoptimized
               />
               <div className="about__photo-overlay" />
             </div>
@@ -151,7 +150,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           </div>
 
           <a
-            href="https://www.linkedin.com/in/jodie-hann-aba373220/"
+            href="https://www.linkedin.com/in/jodie-hanndan/"
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--contact about__card--contact-linkedin"
@@ -160,7 +159,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
               <LinkedInIcon />
               <div>
                 <span className="about__contact-label">LinkedIn</span>
-                <span className="about__contact-value">jodie-hann</span>
+                <span className="about__contact-value">in/jodie-hann</span>
               </div>
             </div>
             <div className="about__contact-arrow"><OpenInNewIcon /></div>
@@ -181,14 +180,14 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           </a>
 
           <a
-            href="tel:+33659833037"
+            href="tel:+33659823037"
             className="about__card about__card--contact about__card--contact-phone"
           >
             <div className="about__contact-info">
               <PhoneIcon />
               <div>
                 <span className="about__contact-label">{locale === "fr" ? "Téléphone" : "Phone"}</span>
-                <span className="about__contact-value">06 59 83 30 37</span>
+                <span className="about__contact-value">06 59 82 30 37</span>
               </div>
             </div>
             <div className="about__contact-arrow"><OpenInNewIcon /></div>

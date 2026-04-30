@@ -14,10 +14,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 112px 16px 20px;
+  padding: 128px 16px 20px;
 
   @include respond-to(desktop) {
-    padding: 112px 40px 32px;
+    padding: 128px 40px 32px;
   }
 
   // ─── Aurora blobs (background ambiance) ─────────────────────────────────

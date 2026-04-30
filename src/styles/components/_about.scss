@@ -9,11 +9,11 @@
 
 .about {
   position: relative;
-  padding: 112px 16px 48px;
+  padding: 128px 16px 20px;
   overflow: hidden;
 
   @include respond-to(desktop) {
-    padding: 128px 40px 80px;
+    padding: 128px 40px 32px;
   }
 
   // ─── Aurora blobs (background ambiance) ───────────────────────────────
@@ -197,13 +197,13 @@
 
   &__photo-frame {
     position: absolute;
-    inset: 8px;
+    inset: 5px;
     border-radius: 16px;
     overflow: hidden;
     transition: inset $transition-base, border-radius $transition-base;
 
     @include respond-to(desktop) {
-      inset: 10px;
+      inset: 5px;
       border-radius: 20px;
     }
 
