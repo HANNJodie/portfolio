@@ -52,14 +52,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        width: 2395,
+        height: 2395,
         alt: "Jodie Hann — Game Designer",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Jodie Hann — Game Designer",
     description:
       "Portfolio de Jodie Hann, Game Designer passionnée par le game design, le narrative design et le level design.",
