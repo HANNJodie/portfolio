@@ -35,7 +35,9 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__credit">
-            &copy; {new Date().getFullYear()} Jodie Hann. {t("rights")}
+            <a href="https://www.linkedin.com/in/raphael-grougnet/" target="_blank" rel="noopener noreferrer">
+              {t("made_by")}
+            </a> — &copy; {new Date().getFullYear()} Jodie Hann. {t("rights")}
           </p>
         </div>
       </div>

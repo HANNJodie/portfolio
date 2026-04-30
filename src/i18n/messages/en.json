@@ -65,6 +65,7 @@
   },
   "footer": {
     "thanks": "Thanks for your attention.",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "made_by": "Portfolio developed by Raphaël Grougnet"
   }
 }
