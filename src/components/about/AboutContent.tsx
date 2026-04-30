@@ -2,7 +2,26 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { LinkedInIcon, MailIcon, PhoneIcon, DownloadIcon, OpenInNewIcon } from "@/components/ui/Icons";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const BASE_DELAY = 0.35;
+
+const fromLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
+};
+
+const fromRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
+};
+
+const fromBottom = (delay: number) => ({
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: BASE_DELAY + delay } },
+});
 
 const favoriteGames = [
   "Zelda: BOTW",
@@ -12,6 +31,13 @@ const favoriteGames = [
   "Jusant",
   "Trine 2",
   "Alice Madness Return",
+  "Tomb Raider (2016)",
+  "Castle Crashers",
+  "Honkai: Star Rail",
+  "The Last of Us",
+  "Minecraft",
+  "Control",
+  "Little Nightmares"
 ];
 
 const hobbies = [
@@ -43,7 +69,12 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
       <section className="about__section">
         <div className="about__bento about__bento--intro">
           {/* Photo */}
-          <div className="about__card about__card--photo">
+          <motion.div
+            className="about__card about__card--photo"
+            variants={fromLeft}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="about__photo-frame">
               <Image
                 src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
@@ -56,26 +87,41 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             </div>
             <span className="about__photo-badge">● {t("label")}</span>
             <span className="about__photo-location">Lyon, FR</span>
-          </div>
+          </motion.div>
 
           {/* Identity */}
-          <div className="about__card about__card--identity">
+          <motion.div
+            className="about__card about__card--identity"
+            variants={fromRight}
+            initial="hidden"
+            animate="visible"
+          >
             <p className="about__label">{t("label")}</p>
             <h1 className="about__title">{t("title")}</h1>
             <p className="about__bio about__bio--lead">{t("bio1")}</p>
-          </div>
+          </motion.div>
 
           {/* Bio 2 */}
-          <div className="about__card about__card--bio about__card--bio-2">
+          <motion.div
+            className="about__card about__card--bio about__card--bio-2"
+            variants={fromBottom(0.3)}
+            initial="hidden"
+            animate="visible"
+          >
             <span className="about__card-num">02</span>
             <p className="about__bio">{t("bio2")}</p>
-          </div>
+          </motion.div>
 
           {/* Bio 3 */}
-          <div className="about__card about__card--bio about__card--bio-3">
+          <motion.div
+            className="about__card about__card--bio about__card--bio-3"
+            variants={fromBottom(0.42)}
+            initial="hidden"
+            animate="visible"
+          >
             <span className="about__card-num">03</span>
             <p className="about__bio">{t("bio3")}</p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -83,11 +129,14 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
       <section className="about__section">
         <div className="about__bento about__bento--skills">
           {/* CV — dark gradient hero card */}
-          <a
+          <motion.a
             href="https://jodiehann.wordpress.com/wp-content/uploads/2025/01/hann_jodie_cv-1.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--cv"
+            variants={fromBottom(0.54)}
+            initial="hidden"
+            animate="visible"
           >
             <div className="about__cv-glow" aria-hidden />
             <span className="about__card-eyebrow">{t("cv")}</span>
@@ -96,23 +145,31 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
               <DownloadIcon />
               <span>PDF</span>
             </div>
-          </a>
+          </motion.a>
 
           {/* Itch.io */}
-          <a
+          <motion.a
             href="https://jodie-hann.itch.io/"
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--itch"
+            variants={fromBottom(0.66)}
+            initial="hidden"
+            animate="visible"
           >
             <span className="about__card-eyebrow">{t("moreWork")}</span>
             <h3 className="about__card-title">{t("itchioPage")}</h3>
             <p className="about__card-desc">{t("moreWorkDesc")}</p>
             <div className="about__itch-arrow"><OpenInNewIcon /></div>
-          </a>
+          </motion.a>
 
           {/* Games */}
-          <div className="about__card about__card--games">
+          <motion.div
+            className="about__card about__card--games"
+            variants={fromBottom(0.78)}
+            initial="hidden"
+            animate="visible"
+          >
             <span className="about__card-eyebrow">{t("favoriteGames")}</span>
             <div className="about__tags">
               {favoriteGames.map((game) => (
@@ -122,10 +179,15 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Hobbies */}
-          <div className="about__card about__card--hobbies">
+          <motion.div
+            className="about__card about__card--hobbies"
+            variants={fromBottom(0.9)}
+            initial="hidden"
+            animate="visible"
+          >
             <span className="about__card-eyebrow">{t("hobbies")}</span>
             <div className="about__tags">
               {hobbies.map((hobby) => (
@@ -135,25 +197,33 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Bento 3 : Contact ──────────────────────────────────── */}
       <section className="about__section about__section--contact">
         <div className="about__bento about__bento--contact">
-          <div className="about__card about__card--contact-title">
+          <motion.div
+            className="about__card about__card--contact-title"
+            variants={fromLeft}
+            initial="hidden"
+            animate="visible"
+          >
             <span className="about__card-eyebrow">{t("contact")}</span>
             <h2 className="about__card-title">
               {locale === "fr" ? "Travaillons ensemble." : "Let's work together."}
             </h2>
-          </div>
+          </motion.div>
 
-          <a
+          <motion.a
             href="https://www.linkedin.com/in/jodie-hanndan/"
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--contact about__card--contact-linkedin"
+            variants={fromBottom(1.02)}
+            initial="hidden"
+            animate="visible"
           >
             <div className="about__contact-info">
               <LinkedInIcon />
@@ -163,11 +233,14 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
               </div>
             </div>
             <div className="about__contact-arrow"><OpenInNewIcon /></div>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="mailto:jodieml.hann@gmail.com"
             className="about__card about__card--contact about__card--contact-mail"
+            variants={fromBottom(1.14)}
+            initial="hidden"
+            animate="visible"
           >
             <div className="about__contact-info">
               <MailIcon />
@@ -177,11 +250,14 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
               </div>
             </div>
             <div className="about__contact-arrow"><OpenInNewIcon /></div>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="tel:+33659823037"
             className="about__card about__card--contact about__card--contact-phone"
+            variants={fromBottom(1.26)}
+            initial="hidden"
+            animate="visible"
           >
             <div className="about__contact-info">
               <PhoneIcon />
@@ -191,7 +267,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
               </div>
             </div>
             <div className="about__contact-arrow"><OpenInNewIcon /></div>
-          </a>
+          </motion.a>
         </div>
       </section>
     </div>
