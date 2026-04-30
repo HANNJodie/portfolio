@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { OpenInNewIcon } from "@/components/ui/Icons";
+import { OpenInNewIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/ui/Icons";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 
@@ -60,6 +60,31 @@ export default function Hero() {
           </div>
           <div className="hero__identity-footer">
             <p className="hero__role">{t("subtitle")}</p>
+            <div className="hero__contact-links">
+              <a
+                href="https://www.linkedin.com/in/jodie-hann/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero__contact-link"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+              </a>
+              <a
+                href="mailto:jodieml.hann@gmail.com"
+                className="hero__contact-link"
+                aria-label="Email"
+              >
+                <MailIcon />
+              </a>
+              <a
+                href="tel:+33659823037"
+                className="hero__contact-link"
+                aria-label="Téléphone"
+              >
+                <PhoneIcon />
+              </a>
+            </div>
           </div>
         </motion.div>
 
@@ -73,11 +98,11 @@ export default function Hero() {
         >
           <div className="hero__photo-frame">
             <Image
-              src="/images/ME/plan_taille.webp"
+              src="/images/ME/plan_serre.webp"
               alt="Jodie Hann"
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
-              style={{ objectFit: "cover", objectPosition: "center top" }}
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
             <div className="hero__photo-overlay" />
           </div>

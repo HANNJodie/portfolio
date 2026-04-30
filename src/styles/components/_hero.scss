@@ -154,9 +154,56 @@
 
   &__identity-footer {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 
     @include respond-to(desktop) {
       margin-top: 0;
+    }
+  }
+
+  &__contact-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+
+    @include respond-to(desktop) {
+      gap: 10px;
+    }
+  }
+
+  &__contact-link {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    color: $color-text-muted;
+    transition: border-color $transition-base, color $transition-base, transform $transition-base, box-shadow $transition-base;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border-color: $color-violet;
+      color: $color-violet;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+
+    @include respond-to(desktop) {
+      width: 44px;
+      height: 44px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 
