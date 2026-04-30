@@ -63,6 +63,8 @@ export function ExternalLinkIcon() {
   );
 }
 
+export { ExternalLinkIcon as OpenInNewIcon };
+
 export function GamepadIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

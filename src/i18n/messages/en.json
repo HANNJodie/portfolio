@@ -60,7 +60,8 @@
     "hobbies": "Hobbies",
     "moreWork": "More work",
     "moreWorkDesc": "Find more projects on my itch.io profile",
-    "visitItchio": "Visit my itch.io"
+    "visitItchio": "Visit my itch.io",
+    "itchioPage": "My itch.io page"
   },
   "footer": {
     "thanks": "Thanks for your attention.",

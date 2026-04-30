@@ -3,6 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { OpenInNewIcon } from "@/components/ui/Icons";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 
@@ -82,7 +83,7 @@ export default function Hero() {
           </div>
           <span className="hero__photo-badge">● {t("ctaAbout")}</span>
           <span className="hero__photo-location">Lyon, FR</span>
-          <div className="hero__photo-cta">↗</div>
+          <div className="hero__photo-cta"><OpenInNewIcon /></div>
         </MotionLink>
 
         {/* Projects 1–3 — slide from bottom, staggered */}
@@ -146,7 +147,7 @@ export default function Hero() {
         >
           <p className="hero__cta-text">{t("ctaAll")}</p>
           <span className="hero__cta-count">{projects.length}&thinsp;&thinsp;→</span>
-          <div className="hero__cta-arrow">↗</div>
+          <div className="hero__cta-arrow"><OpenInNewIcon /></div>
         </motion.button>
       </div>
     </section>
