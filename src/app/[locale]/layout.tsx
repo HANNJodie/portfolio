@@ -49,12 +49,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     alternateLocale: ["en_GB"],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jodie Hann — Game Designer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Jodie Hann — Game Designer",
     description:
       "Portfolio de Jodie Hann, Game Designer passionnée par le game design, le narrative design et le level design.",
+    images: ["/og-image.png"],
   },
 };
 
