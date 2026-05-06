@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     alternateLocale: ["en_GB"],
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 2395,
         height: 2395,
         alt: "Jodie Hann — Game Designer",
