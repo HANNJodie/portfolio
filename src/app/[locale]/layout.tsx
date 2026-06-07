@@ -29,16 +29,22 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jodiehann.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Jodie Hann — Game Designer",
+    default: "Jodie Hann - Game Designer",
     template: "%s | Jodie Hann",
   },
   description:
-    "Portfolio de Jodie Hann, Game Designer passionnée par le game design, le narrative design et le level design.",
+    "Portfolio de Jodie Hann, experte en Game, Level & Narrative Design.",
   authors: [{ name: "Jodie Hann" }],
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    noimageindex: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-image-preview": "none",
+    },
   },
   openGraph: {
     title: "Jodie Hann — Game Designer",
