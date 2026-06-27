@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -16,29 +15,21 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
   if (images.length === 0) return null;
 
   return (
-    <ScrollReveal>
-      <div className="project-page__content">
-        <p className="project-page__section-label">{t("gallery")}</p>
-        <div className="project-page__gallery">
-          {images.map((img, i) => (
-            <motion.div
-              key={i}
-              className="project-page__gallery-item"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ position: "relative" }}
-            >
-              <Image
-                src={img}
-                alt={`${title} screenshot ${i + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: "cover" }}
-                unoptimized
-              />
-            </motion.div>
-          ))}
-        </div>
+    <ScrollReveal className="project-section">
+      <p className="project-section__label">{t("gallery")}</p>
+      <div className="project-gallery">
+        {images.map((img, i) => (
+          <div key={i} className="project-gallery__item">
+            <Image
+              src={img}
+              alt={`${title} screenshot ${i + 1}`}
+              fill
+              sizes="(max-width: 768px) 100vw, 60vw"
+              style={{ objectFit: "cover" }}
+              unoptimized
+            />
+          </div>
+        ))}
       </div>
     </ScrollReveal>
   );
