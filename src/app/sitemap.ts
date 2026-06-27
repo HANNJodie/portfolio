@@ -16,18 +16,12 @@ function buildAlternates(path: string): Alternates {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = [
-    { path: "", priority: 1.0 },
-    { path: "/a-propos", priority: 0.8 },
-  ];
-
-  return staticRoutes.flatMap(({ path, priority }) =>
-    locales.map((locale) => ({
-      url: `${BASE_URL}/${locale}${path}`,
+  return [
+    {
+      url: `${BASE_URL}/fr`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority,
-      alternates: buildAlternates(path),
-    }))
-  );
+      priority: 1.0,
+    },
+  ];
 }
