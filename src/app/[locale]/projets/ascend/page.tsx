@@ -113,9 +113,9 @@ export default async function AscendPage() {
           ]}
         />
 
-        <ProjectImages
+        {/* <ProjectImages
           images={[{ src: "/images/ASCEND/ascend_banner3.webp", alt: "ASCEND" }]}
-        />
+        /> */}
       </div>
 
       <ProjectCTA ctaLabel={c.cta} ctaUrl={DEVBLOG} />
