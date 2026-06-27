@@ -20,17 +20,19 @@ export default function RichText({ text }: { text: string }) {
     }
   }
 
+  // Content is author-controlled (page constants), so inline HTML such as
+  // <b>, <i>, <a> is rendered as-is.
   return (
     <>
       {blocks.map((block, i) =>
         block.type === "ul" ? (
           <ul key={i} className="project-section__list">
             {block.items.map((item, j) => (
-              <li key={j}>{item}</li>
+              <li key={j} dangerouslySetInnerHTML={{ __html: item }} />
             ))}
           </ul>
         ) : (
-          <p key={i}>{block.items[0]}</p>
+          <p key={i} dangerouslySetInnerHTML={{ __html: block.items[0] }} />
         )
       )}
     </>

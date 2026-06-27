@@ -1,9 +1,9 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 import Image from "next/image";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
+import 'react-photo-view/dist/react-photo-view.css';
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 interface ProjectImage {
@@ -15,17 +15,18 @@ interface ProjectImagesProps {
   images: ProjectImage[];
   credit?: ReactNode;
   className?: string;
+  style?: CSSProperties;
 }
 
 // A flexible image block: a single image spans full width, two or more lay out
 // in a responsive grid. Images open in a fullscreen lightbox (react-photo-view),
 // with navigation between the images of the block. An optional credit caption
-// sits below.
-export default function ProjectImages({ images, credit, className = "" }: ProjectImagesProps) {
+// sits below. Pass `style` (e.g. { paddingTop }) to fine-tune spacing per block.
+export default function ProjectImages({ images, credit, className = "", style }: ProjectImagesProps) {
   if (images.length === 0) return null;
 
   return (
-    <ScrollReveal className={`project-images ${className}`.trim()}>
+    <ScrollReveal className={`project-images ${className}`.trim()} style={style}>
       <PhotoProvider>
         <div className="project-images__grid">
           {images.map((img, i) => (
