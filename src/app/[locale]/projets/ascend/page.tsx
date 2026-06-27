@@ -9,6 +9,7 @@ import ProjectVideo from "@/components/project/ProjectVideo";
 import ProjectImages from "@/components/project/ProjectImages";
 import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
+import { CodeIcon } from "@/components/ui/Icons";
 import { getAdjacentProjects } from "@/data/projects";
 
 const SLUG = "ascend";
@@ -27,6 +28,8 @@ const COPY = {
     roleLabel: "Game, Level, & Narrative Designer",
     genres: ["Parcours", "Première personne", '"Walking Simulator"', "Aventure", "Fantaisie céleste"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay" },
+    moreInfoSoon: "Plus d'infos à venir !",
+    followProgress: "Pour suivre l'avancement du projet :",
     concept:
       "ASCEND est un jeu de parcours à la première personne avec des aspirations narratives et contemplatives. Le joueur incarne un ange qui essaie de retourner au paradis après en avoir été déchu pour avoir détruit le monde des hommes. Sur son chemin il apprendra de ces erreurs et tentera d'en réparer leurs conséquences.",
     work:
@@ -42,6 +45,8 @@ const COPY = {
     roleLabel: "Game, Level, & Narrative Designer",
     genres: ["Parkour", "First-person", '"Walking Simulator"', "Adventure", "Celestial Fantasy"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay" },
+    moreInfoSoon: "More info coming soon!",
+    followProgress: "To follow the project's progress :",
     concept:
       "ASCEND is a first-person journey game with narrative and contemplative aspirations. The player embodies an angel trying to return to paradise after being cast out for destroying the world of men. Along the way, they will learn from their mistakes and attempt to repair the consequences.",
     work:
@@ -72,7 +77,12 @@ export default async function AscendPage() {
             <div className="project-section__lead">
               <RichText text={c.concept} />
             </div>
-            <ProjectLinkCard href={DEVBLOG} title={c.cta} subtitle={c.openLink} />
+            <ProjectLinkCard
+              href={DEVBLOG}
+              title={c.cta}
+              subtitle={c.openLink}
+              icon={<CodeIcon />}
+            />
           </div>
         </ProjectSection>
 
@@ -81,6 +91,10 @@ export default async function AscendPage() {
             <RichText text={c.work} />
           </div>
         </ProjectSection>
+
+        <ProjectImages
+          images={[{ src: "/images/ASCEND/cover.webp", alt: "ASCEND" }]}
+        />
 
         <ProjectImages
           images={[
@@ -113,12 +127,10 @@ export default async function AscendPage() {
           ]}
         />
 
-        {/* <ProjectImages
-          images={[{ src: "/images/ASCEND/ascend_banner3.webp", alt: "ASCEND" }]}
-        /> */}
+        <p className="project-note">{c.moreInfoSoon}</p>
       </div>
 
-      <ProjectCTA ctaLabel={c.cta} ctaUrl={DEVBLOG} />
+      <ProjectCTA ctaLabel={c.cta} ctaUrl={DEVBLOG} note={c.followProgress} />
 
       <ProjectNav prev={prev} next={next} />
     </ProjectShell>

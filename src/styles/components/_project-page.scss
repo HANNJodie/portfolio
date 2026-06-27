@@ -289,8 +289,9 @@
     font-size: $font-size-lg;
     color: $color-text;
     line-height: 1.7;
-    max-width: 62ch;
+    // max-width: 62ch;
     margin: 0;
+    text-align: justify;
 
     p {
       margin: 0 0 $space-md;
@@ -536,6 +537,17 @@
   }
 }
 
+// Teaser / note line inside the content column
+.project-note {
+  padding-top: $space-xl;
+  margin: 0;
+  text-align: center;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+}
+
 // ─── Final CTA + links ─────────────────────────────────────────────────────
 .project-final {
   @include project-col;
@@ -547,8 +559,17 @@
   }
 
   &__cta {
-    @include flex-center;
+    @include flex-column;
+    align-items: center;
+    gap: $space-md;
     padding-top: $space-3xl;
+  }
+
+  &__note {
+    margin: 0;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    text-align: center;
   }
 
   &__button {
@@ -557,7 +578,7 @@
     gap: $space-md;
     font-family: $font-display;
     font-weight: 600;
-    font-size: $font-size-base;
+    font-size: $font-size-xl;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
@@ -566,12 +587,12 @@
     background-size: 200% 200%;
     animation: gradient-shift 5s ease infinite;
     border-radius: $radius-full;
-    padding: $space-md $space-2xl;
-    box-shadow: 0 8px 30px rgba($color-violet, 0.3);
+    padding: $space-lg $space-3xl;
+    box-shadow: 0 10px 34px rgba($color-violet, 0.35);
 
     svg {
-      width: 17px;
-      height: 17px;
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -617,7 +638,7 @@
   @include project-col;
   @include flex-between;
   padding-top: $space-lg;
-  padding-bottom: $space-4xl;
+  padding-bottom: $space-xl;
   border-top: 1px solid $color-border;
 }
 

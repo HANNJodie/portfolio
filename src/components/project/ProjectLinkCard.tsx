@@ -1,19 +1,20 @@
+import { ReactNode } from "react";
 import { ExternalLinkIcon, ArrowRightIcon } from "@/components/ui/Icons";
 
 interface ProjectLinkCardProps {
   href: string;
   title: string;
   subtitle: string;
+  icon?: ReactNode;
 }
 
 // The small "Devblog" style link card (gradient icon + arrow) used beside text.
-export default function ProjectLinkCard({ href, title, subtitle }: ProjectLinkCardProps) {
+// The leading icon can be overridden (defaults to an external-link icon).
+export default function ProjectLinkCard({ href, title, subtitle, icon }: ProjectLinkCardProps) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="project-link-card">
       <div className="project-link-card__top">
-        <span className="project-link-card__icon">
-          <ExternalLinkIcon />
-        </span>
+        <span className="project-link-card__icon">{icon ?? <ExternalLinkIcon />}</span>
         <span className="project-link-card__arrow">
           <ArrowRightIcon />
         </span>

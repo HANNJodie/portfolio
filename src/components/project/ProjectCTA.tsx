@@ -9,6 +9,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 interface ProjectCTAProps {
   ctaLabel?: string;
   ctaUrl?: string;
+  note?: string;
   socialLinks?: ProjectSocialLink[];
   downloadables?: ProjectDownloadable[];
 }
@@ -16,6 +17,7 @@ interface ProjectCTAProps {
 export default function ProjectCTA({
   ctaLabel,
   ctaUrl,
+  note,
   socialLinks,
   downloadables,
 }: ProjectCTAProps) {
@@ -31,6 +33,7 @@ export default function ProjectCTA({
     <ScrollReveal className="project-final">
       {ctaUrl && ctaLabel && (
         <div className="project-final__cta">
+          {note && <p className="project-final__note">{note}</p>}
           <motion.a
             href={ctaUrl}
             target="_blank"
