@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, CSSProperties } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,7 @@ interface ScrollRevealProps {
   y?: number;
   duration?: number;
   stagger?: number;
+  style?: CSSProperties;
 }
 
 export default function ScrollReveal({
@@ -22,6 +23,7 @@ export default function ScrollReveal({
   delay = 0,
   y = 40,
   duration = 0.8,
+  style,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -50,7 +52,7 @@ export default function ScrollReveal({
   }, { scope: ref });
 
   return (
-    <div ref={ref} className={className} style={{ opacity: 0 }}>
+    <div ref={ref} className={className} style={{ opacity: 0, ...style }}>
       {children}
     </div>
   );

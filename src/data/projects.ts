@@ -17,8 +17,8 @@ export const projects: Project[] = [
       en: "ASCEND is a first-person journey game with narrative and contemplative aspirations. The player embodies an angel trying to return to paradise after being cast out for destroying the world of men. Along the way, they will learn from their mistakes and attempt to repair the consequences.",
     },
     role: {
-      fr: "Nous sommes deux à travailler sur ASCEND et collaborons sur toutes les parties. Mon collègue se concentre un peu plus sur le system design et le code ; Et moi sur la partie conceptuelle, avec un accent sur le narrative design, le level design, et l'aspect visuel. J'aide également le design des mécaniques et du gameplay. Nous partageons aussi la gestion du projet.",
-      en: "Two of us work on ASCEND, collaborating on all aspects. My colleague focuses more on system design and code, while I handle the conceptual side—narrative design, level design, and visual direction. I also contribute to mechanics and gameplay design. We share project management.",
+      fr: "Nous sommes deux à travailler sur ASCEND et collaborons donc sur toutes les parties. Mon collègue se concentre davantage sur le system design et le code ; Et moi sur la partie conceptuelle, avec un accent sur le Narrative Design, le Level Design, et l'aspect visuel. Je participe également au design des mécaniques et du gameplay. Nous partageons aussi la gestion du projet.\nPour le moment, cela inclue par exemple :\n- La création d'une structure générale pour le projet, liant les niveaux au gameplay et à la narration.\n- La rédaction de document précis sur le déroulement des niveaux, incluant notamment : les mécaniques introduites et utilisés ; le découpage de leur structure macro et micro, et le rythme attendu ; leur ambiance et les éléments clef visuels, sonores, etc. qui y contribuent ; ainsi que la narration associée, son évolution, et les éléments qui la transmettent.\n- L'écriture d'une bible d'univers pour développer un monde riche qui permettra une forte narration environnementale.\n- La recherche et documentation de nombreuses références pour enrichir le concept et son univers.\n- Des réunions et brainstormings sur les différentes mécaniques du jeu pour détailler leur fonctionnement.\n- De nombreux playtests sur les premiers prototypes pour vérifier l'intérêt du concept, approfondir et peaufiner le fonctionnement des contrôles de base, et mettre en place les systèmes de lumière et d'optimisation.\n- La planification globale du projet et sa documentation à l'aide de Notion, la mise en place de rétroplanning, de suivie de tâches.",
+      en: "Two of us work on ASCEND and therefore collaborate on every part. My colleague focuses more on system design and code; while I handle the conceptual side, with an emphasis on Narrative Design, Level Design, and the visual aspect. I also take part in designing the mechanics and gameplay. We also share project management.\nFor now, this includes for example:\n- Creating an overall structure for the project, linking the levels to the gameplay and the narrative.\n- Writing detailed documents on how the levels unfold, including: the mechanics introduced and used; the breakdown of their macro and micro structure, and the intended pacing; their atmosphere and the key visual, audio, etc. elements that contribute to it; as well as the associated narrative, its evolution, and the elements that convey it.\n- Writing a world bible to develop a rich world that will enable strong environmental storytelling.\n- Researching and documenting numerous references to enrich the concept and its universe.\n- Meetings and brainstorms on the various game mechanics to detail how they work.\n- Numerous playtests on the first prototypes to verify the concept's appeal, deepen and refine the basic controls, and set up the lighting and optimization systems.\n- Overall project planning and documentation using Notion, setting up a reverse schedule and task tracking.",
     },
     story: {
       fr: "En développement...",
@@ -29,12 +29,25 @@ export const projects: Project[] = [
       en: "In development...",
     },
     gameplay: {
-      fr: "En développement...",
-      en: "In development...",
+      fr: " ",
+      en: " ",
     },
     team: {
       fr: "Jodie HANN & Enzo POLI",
       en: "Jodie HANN & Enzo POLI",
+    },
+    roleSummary: {
+      fr: "Game, Level, & Narrative Designer",
+      en: "Game, Level, & Narrative Designer",
+    },
+    teamSummary: {
+      fr: "Jodie HANN & Enzo POLI",
+      en: "Jodie HANN & Enzo POLI",
+    },
+    engine: "Unity",
+    genres: {
+      fr: ["Parcours","Première personne", "\"Walking Simulator\"", "Aventure", "Fantaisie céleste"],
+      en: ["Parkour","First-person", "\"Walking Simulator\"", "Adventure", "Celestial Fantasy"],
     },
     images: [],
     heroImage: "/images/ASCEND/cover.webp",
@@ -42,6 +55,7 @@ export const projects: Project[] = [
     ctaUrl: "https://ascend-devblog.carrd.co/",
     status: "in-development",
     featured: true,
+    videoId: "I08kpA1PAkU",
   },
   {
     slug: "sephira-03",
@@ -77,6 +91,19 @@ export const projects: Project[] = [
     team: {
       fr: "SEPHIRA-03 est un jeu vidéo réalisé dans le cadre d'un projet de fin d'étude par une équipe de 4 Game Designer : Jodie HANN, Enzo POLI, Alexis LION et Loïck MAHEO. Ainsi que 3 artistes 3D : Mattis AUDEBOURG, Léa COQUARD et Christelle CUTAYAR. Les bandes-sons originales sont composées par Ilona HANN et Sophie LAPORTE.",
       en: "SEPHIRA-03 was developed as a final-year project by a team of 4 Game Designers: Jodie HANN, Enzo POLI, Alexis LION, and Loïck MAHEO. Along with 3 3D artists: Mattis AUDEBOURG, Léa COQUARD, and Christelle CUTAYAR. Original soundtracks composed by Ilona HANN and Sophie LAPORTE.",
+    },
+    roleSummary: {
+      fr: "Cheffe de projet",
+      en: "Project lead",
+    },
+    teamSummary: {
+      fr: "4 Game Designers · 3 Artistes 3D",
+      en: "4 Game Designers · 3 3D Artists",
+    },
+    engine: "Unity",
+    genres: {
+      fr: ["Aventure", "Infiltration", "Cyberpunk"],
+      en: ["Adventure", "Stealth", "Cyberpunk"],
     },
     images: [
       "/images/SEPHIRA/unity_s18xeotcbz-1.png",

@@ -1,9 +1,18 @@
 // ============================================
-// Project Detail Page Styles
+// Project Detail Page Styles — Bento layout
 // ============================================
 
 @use "../variables" as *;
 @use "../mixins" as *;
+
+// Shared content wrapper (matches the design's 920px column)
+@mixin project-col {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding-left: $space-xl;
+  padding-right: $space-xl;
+}
 
 .project-page {
   padding-top: 80px; // header height
@@ -14,9 +23,10 @@
     height: 60vh;
     min-height: 400px;
     overflow: hidden;
+    margin-top: 15px;
 
     @include respond-to(tablet) {
-      height: 70vh;
+      height: 90vh;
     }
 
     img {
@@ -28,18 +38,31 @@
     &-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.75) 0%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(0, 0, 0, 0) 100%
-      );
       @include flex-column;
-      justify-content: flex-end;
       padding: $space-3xl;
 
+      // Mobile: text top-left, darken the top, keep a light veil at the bottom for the cue.
+      justify-content: flex-start;
+      align-items: flex-start;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.15) 35%,
+        rgba(0, 0, 0, 0) 62%,
+        rgba(0, 0, 0, 0.35) 100%
+      );
+
+      // Tablet & desktop: original bottom-left placement.
       @include respond-to(tablet) {
         padding: $space-4xl;
+        justify-content: flex-end;
+        align-items: stretch;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.75) 0%,
+          rgba(0, 0, 0, 0.1) 50%,
+          rgba(0, 0, 0, 0) 100%
+        );
       }
     }
 
@@ -94,121 +117,495 @@
       }
     }
   }
+}
 
-  &__content {
-    @include container;
-    max-width: 900px;
-    padding-top: $space-4xl;
-    padding-bottom: $space-4xl;
-  }
+// ─── Bento overview ────────────────────────────────────────────────────────
+.project-bento {
+  @include project-col;
+  padding-top: $space-2xl;
 
-  &__section {
-    margin-bottom: $space-4xl;
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-sm;
+    align-items: stretch;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr 1fr;
+
+      &--single {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+      }
     }
   }
 
-  &__section-label {
+  &__card {
+    background: $color-bg-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    padding: $space-md $space-xl $space-md $space-lg;
+
+    &--tech {
+      background: $color-bg-alt;
+      border-color: rgba($color-violet, 0.1);
+      @include flex-column;
+      gap: $space-sm;
+    }
+  }
+
+  &__card-label {
+    font-family: $font-display;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: $color-violet;
+    margin-bottom: $space-sm;
+  }
+
+  &__rows {
+    @include flex-column;
+    gap: $space-sm;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    @include flex-center;
+
+    svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    &--violet {
+      background: rgba($color-violet, 0.09);
+      color: $color-violet;
+    }
+    &--pink {
+      background: rgba($color-pink, 0.09);
+      color: $color-pink;
+    }
+    &--cyan {
+      background: rgba($color-cyan, 0.1);
+      color: $color-cyan;
+    }
+    &--amber {
+      background: rgba($color-amber, 0.1);
+      color: $color-amber;
+    }
+  }
+
+  &__row-body {
+    min-width: 0;
+  }
+
+  &__row-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $color-text-light;
+    margin-bottom: 2px;
+  }
+
+  &__row-value {
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $color-text-heading;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba($color-amber, 0.18);
+  }
+
+  &__block-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $color-text-light;
+    margin-bottom: $space-sm;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  &__chip {
+    font-family: $font-display;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: $color-violet;
+    background: rgba($color-violet, 0.08);
+    border-radius: $radius-full;
+    padding: 5px 12px;
+  }
+}
+
+// ─── Text sections (Concept / Mon travail / Histoire / Gameplay…) ──────────
+.project-sections {
+  @include project-col;
+}
+
+.project-section {
+  @include project-col;
+  padding: $space-2xl 0 0;
+
+  &:first-child {
+    padding-top: $space-2xl;
+  }
+
+  &__label {
     font-family: $font-display;
     font-size: $font-size-xs;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: $color-violet;
-    margin-bottom: $space-md;
-  }
-
-  &__section-title {
-    font-family: $font-display;
-    font-size: $font-size-3xl;
-    font-weight: 700;
-    color: $color-text-heading;
     margin-bottom: $space-lg;
-
-    @include respond-to(tablet) {
-      font-size: $font-size-4xl;
-    }
   }
 
-  &__section-text {
-    font-size: $font-size-base;
+  &__lead {
+    font-size: $font-size-lg;
     color: $color-text;
-    line-height: 1.85;
-    max-width: 70ch;
+    line-height: 1.7;
+    // max-width: 62ch;
+    margin: 0;
+    text-align: justify;
 
-    @include respond-to(tablet) {
-      font-size: $font-size-lg;
+    p {
+      margin: 0 0 $space-md;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
     }
   }
 
-  &__gallery {
-    margin: $space-4xl 0;
+  &__list {
+    list-style: none;
+    margin: $space-md 0 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      padding-left: $space-lg;
+      margin-bottom: $space-sm;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 0.62em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $color-violet;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__concept {
     display: grid;
     grid-template-columns: 1fr;
-    gap: $space-lg;
+    gap: $space-xl;
+    align-items: start;
 
     @include respond-to(tablet) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr auto;
+      gap: $space-2xl;
     }
+  }
+}
 
-    &-item {
-      border-radius: $radius-lg;
-      overflow: hidden;
-      aspect-ratio: 16 / 10;
-      cursor: pointer;
-      transition: transform $transition-base, box-shadow $transition-base;
+// Make sections inside the shared wrapper not double-pad horizontally
+.project-sections .project-section {
+  padding-left: 0;
+  padding-right: 0;
+}
 
-      &:hover {
-        transform: scale(1.02);
-        box-shadow: $shadow-lg;
-      }
+// ─── Concept link card ─────────────────────────────────────────────────────
+.project-link-card {
+  flex-shrink: 0;
+  width: 100%;
+  text-decoration: none;
+  @include flex-column;
+  gap: $space-md;
+  background: $color-bg-white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: $radius-md;
+  padding: $space-md;
+  box-shadow: $shadow-md;
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+  @include respond-to(tablet) {
+    width: 180px;
+  }
+
+  &:hover {
+    border-color: rgba($color-violet, 0.3);
+    transform: translateY(-3px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: $radius-sm;
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+    color: #fff;
+    @include flex-center;
+
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 
-  &__team {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-md;
-    margin-top: $space-lg;
+  &__arrow {
+    color: $color-text-light;
 
-    &-member {
-      display: inline-flex;
-      align-items: center;
-      gap: $space-sm;
-      padding: $space-sm $space-lg;
-      background: $color-bg-alt;
-      border-radius: $radius-full;
-      font-size: $font-size-sm;
-      font-weight: 500;
-      color: $color-text;
-      transition: all $transition-fast;
+    svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
 
-      &:hover {
-        background: rgba($color-violet, 0.1);
-        color: $color-violet;
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $color-text-heading;
+    margin-bottom: 3px;
+  }
+
+  &__sub {
+    font-size: $font-size-xs;
+    color: $color-text-light;
+    margin: 0;
+  }
+}
+
+// ─── Gameplay video ────────────────────────────────────────────────────────
+.project-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: $space-xl;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-xl;
+  background: $color-text-heading;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// ─── Gallery (mosaic) ──────────────────────────────────────────────────────
+.project-gallery {
+  margin-top: $space-xl;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-md;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 170px;
+    grid-auto-flow: dense;
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    transition: transform $transition-base;
+
+    @include respond-to(tablet) {
+      aspect-ratio: auto;
+      grid-column: span 2;
+      grid-row: span 1;
+
+      &:first-child {
+        grid-column: span 4;
+        grid-row: span 2;
       }
     }
+
+    &:hover {
+      transform: scale(1.015);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// ─── Inline image blocks ───────────────────────────────────────────────────
+.project-images {
+  padding-top: $space-2xl;
+
+  &__grid {
+    display: grid;
+    gap: $space-md;
+    // Auto-fit: 1 image on phones, 2 / 3+ across as space allows.
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    cursor: pointer;
+    transition: transform $transition-base;
+
+    &:only-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 21 / 9;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__credit {
+    margin: $space-md 0 0;
+    font-size: $font-size-sm;
+    color: $color-text-light;
+
+    a {
+      color: $color-violet;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color $transition-fast;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Teaser / note line inside the content column
+.project-note {
+  padding-top: $space-xl;
+  margin: 0;
+  text-align: center;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+}
+
+// ─── Final CTA + links ─────────────────────────────────────────────────────
+.project-final {
+  @include project-col;
+  padding-top: 0;
+  padding-bottom: $space-2xl;
+
+  & > * + * {
+    margin-top: $space-2xl;
   }
 
   &__cta {
-    @include flex-center;
-    margin-top: $space-4xl;
+    @include flex-column;
+    align-items: center;
+    gap: $space-md;
     padding-top: $space-3xl;
-    border-top: 1px solid $color-border;
+  }
+
+  &__note {
+    margin: 0;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    text-align: center;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-md;
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: $font-size-xl;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+    border-radius: $radius-full;
+    padding: $space-lg $space-3xl;
+    box-shadow: 0 10px 34px rgba($color-violet, 0.35);
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__downloads {
+    @include flex-column;
+    align-items: flex-start;
+    gap: $space-md;
   }
 
   &__social-links {
     display: flex;
     gap: $space-md;
-    margin-top: $space-xl;
+    margin-top: $space-md;
     flex-wrap: wrap;
   }
 
@@ -224,62 +621,66 @@
     color: $color-text-muted;
     transition: all $transition-fast;
 
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
     &:hover {
       border-color: $color-violet;
       color: $color-violet;
     }
   }
+}
 
-  &__nav {
-    @include container;
-    @include flex-between;
-    padding-top: $space-3xl;
-    padding-bottom: $space-3xl;
-    border-top: 1px solid $color-border;
+// ─── Prev / Next nav ───────────────────────────────────────────────────────
+.project-page__nav {
+  @include project-col;
+  @include flex-between;
+  padding-top: $space-lg;
+  padding-bottom: $space-xl;
+  border-top: 1px solid $color-border;
+}
+
+.project-page__nav-link {
+  @include flex-column;
+  gap: $space-xs;
+  text-decoration: none;
+  max-width: 45%;
+  transition: color $transition-fast;
+
+  &:hover .project-page__nav-title {
+    color: $color-violet;
   }
 
-  &__nav-link {
-    @include flex-column;
-    gap: $space-xs;
-    text-decoration: none;
-    max-width: 45%;
-    transition: color $transition-fast;
-
-    &:hover {
-      .project-page__nav-title {
-        color: $color-violet;
-      }
-    }
-
-    &--next {
-      text-align: right;
-      align-items: flex-end;
-      margin-left: auto;
-    }
-  }
-
-  &__nav-label {
-    font-size: $font-size-xs;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: $color-text-light;
-    font-weight: 600;
-  }
-
-  &__nav-title {
-    font-family: $font-display;
-    font-size: $font-size-lg;
-    font-weight: 700;
-    color: $color-text-heading;
-    transition: color $transition-fast;
-
-    @include respond-to(tablet) {
-      font-size: $font-size-xl;
-    }
+  &--next {
+    text-align: right;
+    align-items: flex-end;
+    margin-left: auto;
   }
 }
 
-// Downloadable section
+.project-page__nav-label {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $color-text-light;
+  font-weight: 600;
+}
+
+.project-page__nav-title {
+  font-family: $font-display;
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $color-text-heading;
+  transition: color $transition-fast;
+
+  @include respond-to(tablet) {
+    font-size: $font-size-xl;
+  }
+}
+
+// ─── Downloadable block ────────────────────────────────────────────────────
 .download-block {
   display: inline-flex;
   align-items: center;
@@ -288,7 +689,6 @@
   background: $color-bg-alt;
   border-radius: $radius-lg;
   border: 1px solid $color-border;
-  margin-top: $space-lg;
   transition: all $transition-fast;
 
   &:hover {
@@ -303,6 +703,11 @@
     border-radius: $radius-md;
     background: rgba($color-violet, 0.1);
     color: $color-violet;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__info {

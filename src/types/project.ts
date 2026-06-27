@@ -27,6 +27,12 @@ export interface Project {
   goal?: LocalizedString;
   gameplay?: LocalizedString;
   team?: LocalizedString;
+  // Bento overview (optional — gracefully omitted when absent)
+  roleSummary?: LocalizedString;
+  teamSummary?: LocalizedString;
+  engine?: string;
+  genres?: { fr: string[]; en: string[] };
+  videoId?: string;
   images: string[];
   heroImage: string;
   ctaLabel?: LocalizedString;
