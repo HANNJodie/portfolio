@@ -560,3 +560,16 @@
     }
   }
 }
+
+// ─── Écrans larges mais courts (portables 14"/13") ───────────────────────────
+// Au-dessus de 850px de haut : tailles d'origine intactes (grand écran).
+// En dessous : on réduit le nom + le rôle pour qu'ils ne soient pas écrasés.
+@media (min-width: $desktop) and (max-height: 850px) {
+  .hero__name {
+    font-size: clamp(4rem, 13vh, 9.5rem);
+  }
+
+  .hero__role {
+    font-size: clamp(2rem, 5.5vh, 3.8rem);
+  }
+}
