@@ -1,0 +1,257 @@
+// ============================================
+// Recommendation — LinkedIn endorsement card
+// Featured social proof on the About page. Reuses the
+// site DNA: gradient-text headline, aurora avatar ring,
+// soft bento card. Signature = giant gradient quote mark.
+// ============================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.rec {
+  position: relative;
+  overflow: hidden;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: 20px;
+  box-shadow: $shadow-lg;
+  padding: 20px;
+
+  @include respond-to(desktop) {
+    border-radius: 24px;
+    padding: 28px;
+  }
+
+  // Soft violet wash anchored to the top-left corner.
+  // Square box + centered circle fading to transparent well before
+  // the edges, so it always reads as a soft blob — never a hard square.
+  &::before {
+    content: "";
+    position: absolute;
+    top: -22%;
+    left: -14%;
+    width: clamp(240px, 52%, 460px);
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.12), transparent 58%);
+    pointer-events: none;
+  }
+
+  // ─── Signature: oversized gradient quotation mark ──────────────
+  &__quote {
+    position: absolute;
+    top: 0;
+    right: 0.125em;
+    font-family: $font-display;
+    font-size: clamp(8rem, 22vw, 16rem);
+    line-height: 1;
+    font-weight: 700;
+    @include gradient-text;
+    opacity: 0.16;
+    pointer-events: none;
+    user-select: none;
+
+    @include respond-to(desktop) {
+      top: 0;
+      right: 0.125em;
+    }
+  }
+
+  // ─── Head: badge + eyebrow ─────────────────────────────────────
+  &__head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+
+    @include respond-to(desktop) {
+      margin-bottom: 28px;
+    }
+  }
+
+  &__badge {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: #0A66C2; // LinkedIn brand blue
+    color: #fff;
+    flex-shrink: 0;
+
+    svg { width: 19px; height: 19px; }
+  }
+
+  &__eyebrow {
+    font-family: $font-display;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+  }
+
+  // ─── Body ──────────────────────────────────────────────────────
+  &__body {
+    position: relative;
+    max-width: 68ch;
+  }
+
+  &__para {
+    color: $color-text;
+    line-height: 1.75;
+    font-size: $font-size-base;
+    margin: 0 0 16px;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+
+    @include respond-to(desktop) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  // The closing endorsement — the punchline, lifted in gradient
+  &__highlight {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+    line-height: 1.32;
+    letter-spacing: -0.015em;
+    @include gradient-text;
+    margin: 22px 0 0;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  // ─── Footer: author + link ─────────────────────────────────────
+  &__footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid $color-border;
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include respond-to(desktop) {
+      margin-top: 40px;
+      padding-top: 32px;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  // Aurora ring around avatar — echoes the photo frame elsewhere
+  &__avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding: 2px;
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  &__avatar-badge {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    background: #0A66C2;
+    color: #fff;
+    border: 2px solid $color-surface;
+
+    svg { width: 11px; height: 11px; }
+  }
+
+  &__author-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: $font-size-lg;
+    letter-spacing: -0.01em;
+    color: $color-text-heading;
+    line-height: 1.2;
+  }
+
+  &__role {
+    font-size: $font-size-sm;
+    color: $color-text;
+    margin-top: 3px;
+  }
+
+  &__relation {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    letter-spacing: 0.01em;
+    margin-top: 4px;
+  }
+
+  // Link to LinkedIn
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    padding: 11px 18px;
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    font-family: $font-display;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: $color-text-heading;
+    text-decoration: none;
+    transition: border-color $transition-base, background $transition-base, transform $transition-base;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      transition: transform $transition-base;
+    }
+
+    &:hover {
+      border-color: $color-border-hover;
+      background: $color-surface-hover;
+      transform: translateY(-2px);
+
+      svg { transform: translate(2px, -2px); }
+    }
+
+    @include focus-ring;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rec__avatar,
+  .rec__quote {
+    animation: none;
+  }
+}

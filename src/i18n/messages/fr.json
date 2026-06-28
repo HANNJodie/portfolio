@@ -71,7 +71,18 @@
     "moreWork": "Plus de travaux",
     "moreWorkDesc": "Retrouvez d'autres projets sur mon profil itch.io",
     "visitItchio": "Visiter mon itch.io",
-    "itchioPage": "Ma page itch.io"
+    "itchioPage": "Ma page itch.io",
+    "recommendation": {
+      "eyebrow": "Recommandation",
+      "body1": "J'ai eu l'occasion de travailler et d'échanger avec Jodie dans le cadre du programme DAU / Develop At Ubisoft, où j'ai eu l'honneur d'être son mentor dans la branche Game Design. Ce fut pour moi une expérience enrichissante et éclairante.",
+      "body2": "Jodie est vive d'esprit, appliquée, travailleuse, à l'écoute et pleine d'idées. Elle sait rebondir sur les propositions et les commentaires, itérer et produire des documentations claires et complètes.",
+      "highlight": "Si j'avais la possibilité d'engager ou de conseiller une game designer, je penserais immédiatement à Jodie : elle a toutes les qualités pour réussir et faire un excellent travail.",
+      "name": "Nicolaï Maldavsky",
+      "role": "Associate Lead 3C Game Designer · Ubisoft",
+      "relation": "Mentor de Jodie · Programme DAU",
+      "date": "Juin 2026",
+      "link": "Voir sur LinkedIn"
+    }
   },
   "footer": {
     "thanks": "Merci pour votre attention.",

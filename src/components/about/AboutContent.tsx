@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { LinkedInIcon, MailIcon, PhoneIcon, DownloadIcon, OpenInNewIcon } from "@/components/ui/Icons";
+import Recommendation from "@/components/about/Recommendation";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const BASE_DELAY = 0.35;
@@ -200,6 +201,9 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           </motion.div>
         </div>
       </section>
+
+      {/* ── Recommendation : LinkedIn endorsement from mentor ──── */}
+      <Recommendation />
 
       {/* ── Bento 3 : Contact ──────────────────────────────────── */}
       <section className="about__section about__section--contact">
