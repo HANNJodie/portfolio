@@ -7,7 +7,8 @@
 
 .project-grid {
   @include container;
-  @include section-padding;
+  padding-top: $space-2xl;
+  padding-bottom: $space-2xl;
 
   &__title {
     text-align: center;

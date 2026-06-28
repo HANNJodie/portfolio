@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
+import { useEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { OpenInNewIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/ui/Icons";
@@ -13,25 +14,47 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const BASE_DELAY = 0.35;
 
-const fromLeft = {
-  hidden: { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
-};
-
-const fromRight = {
-  hidden: { opacity: 0, x: 40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
-};
+// Slide-in helper: enters along `axis` from `distance`, settles at origin.
+const slideIn = (axis: "x" | "y", distance: number) => ({
+  hidden: { opacity: 0, [axis]: distance },
+  visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
+});
 
 const fromBottom = (delay: number) => ({
   hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: BASE_DELAY + delay } },
 });
 
+// True below the desktop breakpoint (1024px). Read synchronously on the first
+// client render so framer-motion captures the correct entrance direction
+// immediately; SSR falls back to desktop (false).
+function useBelowDesktop() {
+  const query = "(max-width: 1023.98px)";
+  const [below, setBelow] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const update = () => setBelow(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return below;
+}
+
 export default function Hero() {
   const t = useTranslations("hero");
   const locale = useLocale() as "fr" | "en";
   const featured = projects.slice(0, 4);
+  const belowDesktop = useBelowDesktop();
+
+  // Below desktop: name drops from the top, photo slides from the left.
+  // Desktop: name from the left, photo from the right.
+  const identityVariants = belowDesktop ? slideIn("y", -40) : slideIn("x", -40);
+  const photoVariants = belowDesktop ? slideIn("x", -40) : slideIn("x", 40);
 
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
@@ -49,7 +72,7 @@ export default function Hero() {
         {/* Identity — slide from left */}
         <motion.div
           className="hero__card hero__card--identity"
-          variants={fromLeft}
+          variants={identityVariants}
           initial="hidden"
           animate="visible"
         >
@@ -95,7 +118,7 @@ export default function Hero() {
         <MotionLink
           href="/a-propos"
           className="hero__card hero__card--photo"
-          variants={fromRight}
+          variants={photoVariants}
           initial="hidden"
           animate="visible"
         >
