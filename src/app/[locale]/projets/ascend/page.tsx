@@ -28,6 +28,7 @@ const COPY = {
     roleLabel: "Game, Level, & Narrative Designer",
     genres: ["Parcours", "Première personne", '"Walking Simulator"', "Aventure", "Fantaisie céleste"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay" },
+    videoCaption: "Ce premier prototype public visant à tester les contrôles basiques du jeu à été réalisé sur Godot. Le projet final est en développement sur Unity.",
     moreInfoSoon: "Plus d'infos à venir !",
     followProgress: "Pour suivre l'avancement du projet :",
     concept:
@@ -45,6 +46,7 @@ const COPY = {
     roleLabel: "Game, Level, & Narrative Designer",
     genres: ["Parkour", "First-person", '"Walking Simulator"', "Adventure", "Celestial Fantasy"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay" },
+    videoCaption: "This first public prototype, aimed at testing the game's basic controls, was built in Godot. The final project is in development on Unity.",
     moreInfoSoon: "More info coming soon!",
     followProgress: "To follow the project's progress :",
     concept:
@@ -67,7 +69,7 @@ export default async function AscendPage() {
         status="in-development"
         teamLabel={c.teamLabel}
         roleLabel={c.roleLabel}
-        engine="Unity"
+        engine="Unity & Godot"
         genres={c.genres}
       />
 
@@ -118,6 +120,7 @@ export default async function AscendPage() {
 
         <ProjectSection label={c.labels.gameplay}>
           <ProjectVideo videoId={VIDEO_ID} title={c.labels.gameplay} />
+          <p className="project-caption">{c.videoCaption}</p>
         </ProjectSection>
 
         <ProjectImages

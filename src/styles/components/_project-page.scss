@@ -537,6 +537,15 @@
   }
 }
 
+// Small caption under a video or image
+.project-caption {
+  margin: $space-sm 0 0;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  font-style: italic;
+  text-align: center;
+}
+
 // Teaser / note line inside the content column
 .project-note {
   padding-top: $space-xl;
