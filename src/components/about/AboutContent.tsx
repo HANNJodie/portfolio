@@ -78,11 +78,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           >
             <div className="about__photo-frame">
               <Image
-                src="https://jodiehann.wordpress.com/wp-content/uploads/2024/01/img_2896-1.jpg"
+                src="/images/ME/photo_cv_test_3.webp"
                 alt="Jodie Hann"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                style={{ objectFit: "cover", objectPosition: "center top" }}
+                style={{ objectFit: "cover", objectPosition: "center 15%" }}
               />
               <div className="about__photo-overlay" />
             </div>

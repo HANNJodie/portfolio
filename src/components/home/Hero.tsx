@@ -124,11 +124,11 @@ export default function Hero() {
         >
           <div className="hero__photo-frame">
             <Image
-              src="/images/ME/plan_serre.webp"
+              src="/images/ME/photo_cv_test.webp"
               alt="Jodie Hann"
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
-              style={{ objectFit: "cover", objectPosition: "center" }}
+              style={{ objectFit: "cover", objectPosition: "center 10%" }}
             />
             <div className="hero__photo-overlay" />
           </div>
