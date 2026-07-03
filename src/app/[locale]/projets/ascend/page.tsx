@@ -20,7 +20,7 @@ const VIDEO_ID = "I08kpA1PAkU";
 const COPY = {
   fr: {
     tagline: "Retourner au paradis",
-    date: "Février 2025 – ? 2028",
+    date: "Février 2025 – En développement",
     cta: "DEVBLOG",
     openLink: "Ouvrir le lien",
     conceptArtsBy: "Concept arts réalisé par",
@@ -38,7 +38,7 @@ const COPY = {
   },
   en: {
     tagline: "Return to paradise",
-    date: "February 2025 – ? 2028",
+    date: "February 2025 – En développement",
     cta: "DEVBLOG",
     openLink: "Open link",
     conceptArtsBy: "Concept art by",
