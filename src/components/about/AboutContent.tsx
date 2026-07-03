@@ -1,9 +1,10 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { LinkedInIcon, MailIcon, PhoneIcon, DownloadIcon, OpenInNewIcon } from "@/components/ui/Icons";
+import { LinkedInIcon, MailIcon, PhoneIcon, DownloadIcon, OpenInNewIcon, ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/Icons";
 import Recommendation from "@/components/about/Recommendation";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -54,8 +55,55 @@ const hobbies = [
   { fr: "Nature et Science", en: "Nature & Science", emoji: "🌿" },
 ];
 
+function getGamesMask(showLeft: boolean, showRight: boolean): string {
+  if (showLeft && showRight)
+    return "linear-gradient(to right, transparent 0%, black 15%, black 75%, transparent 100%)";
+  if (showLeft)
+    return "linear-gradient(to right, transparent 0%, black 15%)";
+  if (showRight)
+    return "linear-gradient(to right, black 75%, transparent 100%)";
+  return "none";
+}
+
 export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
   const t = useTranslations("about");
+
+  const gamesRow1Ref = useRef<HTMLDivElement>(null);
+  const gamesRow2Ref = useRef<HTMLDivElement>(null);
+  const [row1Scroll, setRow1Scroll] = useState({ left: false, right: true });
+  const [row2Scroll, setRow2Scroll] = useState({ left: false, right: true });
+
+  useEffect(() => {
+    const rows: [HTMLDivElement | null, (s: { left: boolean; right: boolean }) => void][] = [
+      [gamesRow1Ref.current, setRow1Scroll],
+      [gamesRow2Ref.current, setRow2Scroll],
+    ];
+
+    const cleanups = rows.map(([strip, set]) => {
+      if (!strip) return () => {};
+      const check = () => {
+        const { scrollLeft, clientWidth, scrollWidth } = strip;
+        set({ left: scrollLeft > 4, right: scrollLeft + clientWidth < scrollWidth - 4 });
+      };
+      check();
+      strip.addEventListener("scroll", check, { passive: true });
+      window.addEventListener("resize", check, { passive: true });
+      return () => {
+        strip.removeEventListener("scroll", check);
+        window.removeEventListener("resize", check);
+      };
+    });
+
+    return () => cleanups.forEach((c) => c());
+  }, []);
+
+  const gamesRow1Mask = getGamesMask(row1Scroll.left, row1Scroll.right);
+  const gamesRow2Mask = getGamesMask(row2Scroll.left, row2Scroll.right);
+  const showGamesLeft = row1Scroll.left || row2Scroll.left;
+  const showGamesRight = row1Scroll.right || row2Scroll.right;
+
+  const gamesRow1 = favoriteGames.filter((_, i) => i % 2 === 0);
+  const gamesRow2 = favoriteGames.filter((_, i) => i % 2 === 1);
 
   return (
     <div className="about">
@@ -184,13 +232,47 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             animate="visible"
           >
             <span className="about__card-eyebrow">{t("favoriteGames")}</span>
-            <div className="about__tags">
-              {favoriteGames.map((game) => (
-                <span key={game} className="about__tag about__tag--game">
-                  <span className="about__tag-icon">🎮</span>
-                  {game}
-                </span>
-              ))}
+            <div className="about__games-scroll">
+              <div className="about__games-rows">
+                <div
+                  className="about__games-row"
+                  ref={gamesRow1Ref}
+                  style={{ WebkitMaskImage: gamesRow1Mask, maskImage: gamesRow1Mask }}
+                >
+                  {gamesRow1.map((game) => (
+                    <span key={game} className="about__tag about__tag--game">
+                      <span className="about__tag-icon">🎮</span>
+                      {game}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  className="about__games-row"
+                  ref={gamesRow2Ref}
+                  style={{ WebkitMaskImage: gamesRow2Mask, maskImage: gamesRow2Mask }}
+                >
+                  {gamesRow2.map((game) => (
+                    <span key={game} className="about__tag about__tag--game">
+                      <span className="about__tag-icon">🎮</span>
+                      {game}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div
+                className="about__games-hint about__games-hint--left"
+                aria-hidden="true"
+                style={{ opacity: showGamesLeft ? 1 : 0, pointerEvents: "none" }}
+              >
+                <ArrowLeftIcon />
+              </div>
+              <div
+                className="about__games-hint about__games-hint--right"
+                aria-hidden="true"
+                style={{ opacity: showGamesRight ? 1 : 0, pointerEvents: "none" }}
+              >
+                <ArrowRightIcon />
+              </div>
             </div>
           </motion.div>
 
