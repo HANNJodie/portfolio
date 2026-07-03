@@ -207,11 +207,13 @@
       border-radius: 20px;
     }
 
-    .about__card--photo:hover & {
-      inset: 0;
-      border-radius: 20px;
+    @media (hover: hover) and (pointer: fine) {
+      .about__card--photo:hover & {
+        inset: 0;
+        border-radius: 20px;
 
-      @include respond-to(desktop) { border-radius: 24px; }
+        @include respond-to(desktop) { border-radius: 24px; }
+      }
     }
   }
 
