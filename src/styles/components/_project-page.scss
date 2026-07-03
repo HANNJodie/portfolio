@@ -122,15 +122,33 @@
 // ─── Metadata strip ────────────────────────────────────────────────────────
 .project-bento {
   @include project-col;
-  max-width: 100%;
+  max-width: 1140px;
+  position: relative;
+
+  @include mobile-only {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: clip;
+  }
 
   &__strip {
     display: flex;
     flex-wrap: wrap;
     row-gap: $space-lg;
-    // border-top: 1px solid $color-border;
-    // border-bottom: 1px solid $color-border;
     padding: $space-lg 0;
+
+    @include mobile-only {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-left: $space-xl;
+      padding-right: $space-2xl;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
   &__col {
@@ -152,6 +170,15 @@
 
     &--genres {
       flex: 1.6;
+    }
+
+    @include mobile-only {
+      flex: 0 0 auto;
+      min-width: 110px;
+
+      &--genres {
+        min-width: 160px;
+      }
     }
   }
 
@@ -203,6 +230,37 @@
     color: $color-text-light;
     font-weight: 400;
     font-family: $font-body;
+  }
+
+  &__scroll-hint {
+    display: none;
+
+    @include mobile-only {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 32px;
+      color: $color-text-muted;
+      transition: opacity 0.3s ease;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      &--right {
+        right: 0;
+        animation: hint-bounce 1.4s ease-in-out infinite;
+      }
+
+      &--left {
+        left: 0;
+        animation: hint-bounce-left 1.4s ease-in-out infinite;
+      }
+    }
   }
 }
 
