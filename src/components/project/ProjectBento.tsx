@@ -15,10 +15,10 @@ interface ProjectBentoProps {
 }
 
 const STATUS_DOT: Record<ProjectStatus, string> = {
-  released: "#22C55E",
-  "in-development": "#F59E0B",
-  hiatus: "#9CA3AF",
-  upcoming: "#06B6D4",
+  released: "#06B6D4",
+  "in-development": "#7C3AED",
+  hiatus: "#F59E0B",
+  upcoming: "#EC4899",
 };
 
 function getMask(showLeft: boolean, showRight: boolean): string {
