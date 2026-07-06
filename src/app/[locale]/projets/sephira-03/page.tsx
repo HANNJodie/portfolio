@@ -50,12 +50,12 @@ const MOSAIC_IMAGES = [
 ];
 
 const TEAM_IMAGES = [
-  { src: "/images/SEPHIRA/freedom.jpg", alt: "SEPHIRA-03 1" },
-  { src: "/images/SEPHIRA/hallway1.png", alt: "SEPHIRA-03 2" },
-  { src: "/images/SEPHIRA/buildings.png", alt: "SEPHIRA-03 3" },
-  { src: "/images/SEPHIRA/cameras.jpg", alt: "SEPHIRA-03 4" },
-  { src: "/images/SEPHIRA/city1.jpg", alt: "SEPHIRA-03 5" },
-  { src: "/images/SEPHIRA/city2.png", alt: "SEPHIRA-03 6" },
+  { src: "/images/SEPHIRA/freedom.jpg", alt: "Freedom conteneur" },
+  { src: "/images/SEPHIRA/hallway1.png", alt: "Couloir" },
+  { src: "/images/SEPHIRA/buildings.png", alt: "Batiments" },
+  { src: "/images/SEPHIRA/cameras.jpg", alt: "Caméras" },
+  { src: "/images/SEPHIRA/city1.jpg", alt: "Ville 1" },
+  { src: "/images/SEPHIRA/city2.png", alt: "Ville 2" },
 ];
 
 const COPY = {
