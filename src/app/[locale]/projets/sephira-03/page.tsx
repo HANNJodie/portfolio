@@ -45,8 +45,8 @@ const MOSAIC_IMAGES = [
   { src: "/images/SEPHIRA/keter-3d.png", alt: "Kether — rendu 3D", width: 964, height: 1080 },
   { src: "/images/SEPHIRA/spawnpoint.png", alt: "Point de départ", width: 1206, height: 897 },
   { src: "/images/SEPHIRA/binah-render.png", alt: "Binah — rendu", width: 1920, height: 1080 },
-  { src: "/images/SEPHIRA/keter-concept.png", alt: "Kether — concept art", width: 584, height: 817 },
   { src: "/images/SEPHIRA/binah-render-crop.png", alt: "Binah — gros plan", width: 409, height: 357 },
+  { src: "/images/SEPHIRA/keter-concept.png", alt: "Kether — concept art", width: 584, height: 817 },
 ];
 
 const TEAM_IMAGES = [
