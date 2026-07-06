@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         hostname: "jodiehann.wordpress.com",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
     ],
   },
 };
