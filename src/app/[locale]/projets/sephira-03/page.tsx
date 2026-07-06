@@ -22,15 +22,15 @@ const STORY_VIDEO_ID = "QKqOhYhjD9w";
 
 // Placeholder art blocks — swap the URLs for the real assets when they are ready.
 const GDD_IMAGES = [
-  { src: "https://placehold.co/600x800/1a1a2e/e0e0f0?text=GDD+1", alt: "Extrait du GDD 1" },
-  { src: "https://placehold.co/600x800/16213e/e0e0f0?text=GDD+2", alt: "Extrait du GDD 2" },
-  { src: "https://placehold.co/600x800/0f3460/e0e0f0?text=GDD+3", alt: "Extrait du GDD 3" },
-  { src: "https://placehold.co/600x800/533483/e0e0f0?text=GDD+4", alt: "Extrait du GDD 4" },
+  { src: "/images/SEPHIRA/extrait-gdd-1.png", alt: "Extrait du GDD 1" },
+  { src: "/images/SEPHIRA/extrait-gdd-2.png", alt: "Extrait du GDD 2" },
+  { src: "/images/SEPHIRA/extrait-gdd-3.png", alt: "Extrait du GDD 3" },
+  { src: "/images/SEPHIRA/extrait-gdd-4.png", alt: "Extrait du GDD 4" },
 ];
 
 const GAMEPLAY_ASIDE = {
-  src: "https://placehold.co/600x800/1a1a2e/e0e0f0?text=Infiltration",
-  alt: "Système d'infiltration",
+  src: "/images/SEPHIRA/extrait-gdd.png",
+  alt: "Extrait du GDD",
 };
 
 const GAMEPLAY_WIDE = [
