@@ -288,12 +288,18 @@
   }
 
   &__lead {
-    font-size: $font-size-lg;
+    // Match the responsive sizing of global <p> so paragraphs and the custom
+    // bullet lists (which inherit from this container) stay the same size.
+    font-size: $font-size-base;
     color: $color-text;
     line-height: 1.7;
     // max-width: 62ch;
     margin: 0;
     text-align: justify;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-lg;
+    }
 
     p {
       margin: 0 0 $space-md;
