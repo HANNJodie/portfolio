@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { OpenInNewIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/ui/Icons";
@@ -14,6 +14,10 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const BASE_DELAY = 0.35;
 
+// `useLayoutEffect` warns during SSR; fall back to `useEffect` on the server.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 // Slide-in helper: enters along `axis` from `distance`, settles at origin.
 const slideIn = (axis: "x" | "y", distance: number) => ({
   hidden: { opacity: 0, [axis]: distance },
@@ -25,16 +29,16 @@ const fromBottom = (delay: number) => ({
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: BASE_DELAY + delay } },
 });
 
-// True below the desktop breakpoint (1024px). Read synchronously on the first
-// client render so framer-motion captures the correct entrance direction
-// immediately; SSR falls back to desktop (false).
+// True below the desktop breakpoint (1024px). Starts at `false` so the first
+// client render matches the server (which always assumes desktop), then reads
+// the real viewport in a layout effect — before paint and before framer-motion
+// starts the entrance — so the correct direction is captured without a
+// hydration mismatch.
 function useBelowDesktop() {
   const query = "(max-width: 1023.98px)";
-  const [below, setBelow] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia(query).matches : false
-  );
+  const [below, setBelow] = useState(false);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const mq = window.matchMedia(query);
     const update = () => setBelow(mq.matches);
     update();
