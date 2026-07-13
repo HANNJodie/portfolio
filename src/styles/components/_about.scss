@@ -344,8 +344,8 @@
   // gradient quote mark.
   &__bio-icon {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 16px;
+    bottom: 16px;
     z-index: 0;
     width: clamp(6.5rem, 14vw, 10rem);
     aspect-ratio: 1 / 1;
