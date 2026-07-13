@@ -82,6 +82,15 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
                 alt="Jodie Hann"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
+                className="about__photo-img about__photo-img--mobile"
+                style={{ objectFit: "cover", objectPosition: "center 15%" }}
+              />
+              <Image
+                src="/images/ME/photo_cv_test.webp"
+                alt="Jodie Hann"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="about__photo-img about__photo-img--desktop"
                 style={{ objectFit: "cover", objectPosition: "center 15%" }}
               />
               <div className="about__photo-overlay" />

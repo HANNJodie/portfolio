@@ -132,6 +132,15 @@ export default function Hero() {
               alt="Jodie Hann"
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
+              className="hero__photo-img hero__photo-img--mobile"
+              style={{ objectFit: "cover", objectPosition: "center 10%" }}
+            />
+            <Image
+              src="/images/ME/photo_cv_test_3.webp"
+              alt="Jodie Hann"
+              fill
+              sizes="(max-width: 1024px) 50vw, 25vw"
+              className="hero__photo-img hero__photo-img--desktop"
               style={{ objectFit: "cover", objectPosition: "center 10%" }}
             />
             <div className="hero__photo-overlay" />

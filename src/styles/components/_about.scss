@@ -208,6 +208,20 @@
     }
   }
 
+  // Swap profile photos on desktop only; keep the same image on mobile.
+  &__photo-img--desktop {
+    display: none;
+  }
+
+  @include respond-to(desktop) {
+    &__photo-img--mobile {
+      display: none;
+    }
+    &__photo-img--desktop {
+      display: block;
+    }
+  }
+
   &__photo-overlay {
     position: absolute;
     inset: 0;
