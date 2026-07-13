@@ -14,9 +14,11 @@ interface ProjectHeroProps {
   tagline: string;
   date: string;
   heroImage: string;
+  // Frame the hero image horizontally/vertically (CSS object-position). Defaults to centre.
+  objectPosition?: string;
 }
 
-export default function ProjectHero({ title, tagline, date, heroImage }: ProjectHeroProps) {
+export default function ProjectHero({ title, tagline, date, heroImage, objectPosition }: ProjectHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("hero");
 
@@ -68,7 +70,7 @@ export default function ProjectHero({ title, tagline, date, heroImage }: Project
         src={heroImage}
         alt={title}
         fill
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", objectPosition }}
         priority
         unoptimized
       />

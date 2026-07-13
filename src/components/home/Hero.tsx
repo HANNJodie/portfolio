@@ -128,10 +128,21 @@ export default function Hero() {
         >
           <div className="hero__photo-frame">
             <Image
-              src="/images/ME/photo_cv_test.webp"
+              src="/images/ME/photo_cv_test_4k.webp"
               alt="Jodie Hann"
               fill
+              quality={100}
               sizes="(max-width: 1024px) 50vw, 25vw"
+              className="hero__photo-img hero__photo-img--mobile"
+              style={{ objectFit: "cover", objectPosition: "center 10%" }}
+            />
+            <Image
+              src="/images/ME/photo_cv_test_3_4k.webp"
+              alt="Jodie Hann"
+              fill
+              quality={100}
+              sizes="(max-width: 1024px) 50vw, 25vw"
+              className="hero__photo-img hero__photo-img--desktop"
               style={{ objectFit: "cover", objectPosition: "center 10%" }}
             />
             <div className="hero__photo-overlay" />

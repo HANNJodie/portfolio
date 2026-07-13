@@ -106,7 +106,7 @@
     justify-content: space-between;
 
     @include respond-to(desktop) {
-      grid-column: 1 / 10;
+      grid-column: 1 / 11;
       grid-row: 1 / 8;
       padding: 44px 48px;
     }
@@ -177,16 +177,16 @@
 
   &__contact-link {
     @include flex-center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: $radius-full;
     border: 1px solid $color-border;
     color: $color-text-muted;
     transition: border-color $transition-base, color $transition-base, transform $transition-base, box-shadow $transition-base;
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
     }
 
@@ -200,16 +200,16 @@
     @include respond-to(desktop) {
       justify-content: flex-start;
       width: max-content;
-      max-width: 44px;
-      height: 44px;
-      padding: 0 13px;
+      max-width: 52px;
+      height: 52px;
+      padding: 0 15px;
       gap: 8px;
       overflow: hidden;
       transition: max-width 0.4s ease-in-out, border-color $transition-base, color $transition-base, transform $transition-base, box-shadow $transition-base;
 
       svg {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
       }
 
       .hero__contact-label {
@@ -269,7 +269,7 @@
     padding: 12px;
 
     @include respond-to(desktop) {
-      grid-column: 10 / 13;
+      grid-column: 11 / 13;
       grid-row: 1 / 8;
       padding: 16px;
     }
@@ -278,7 +278,7 @@
   // Image framed inside the gradient border
   &__photo-frame {
     position: absolute;
-    inset: 5px;
+    inset: 4px;
     border-radius: 16px;
     overflow: hidden;
     transition: inset $transition-base, border-radius $transition-base;
@@ -294,6 +294,20 @@
       @include respond-to(desktop) {
         border-radius: 24px;
       }
+    }
+  }
+
+  // Swap profile photos on desktop only; keep the same image on mobile.
+  &__photo-img--desktop {
+    display: none;
+  }
+
+  @include respond-to(desktop) {
+    &__photo-img--mobile {
+      display: none;
+    }
+    &__photo-img--desktop {
+      display: block;
     }
   }
 
@@ -428,7 +442,7 @@
     @include respond-to(desktop) {
       left: 14px;
       right: 14px;
-      bottom: 0px;
+      bottom: 0;
       transition: transform $transition-base;
 
       .hero__card--project:hover & {

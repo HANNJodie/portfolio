@@ -78,10 +78,21 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           >
             <div className="about__photo-frame">
               <Image
-                src="/images/ME/photo_cv_test_3.webp"
+                src="/images/ME/photo_cv_test_3_4k.webp"
                 alt="Jodie Hann"
                 fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                quality={100}
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className="about__photo-img about__photo-img--mobile"
+                style={{ objectFit: "cover", objectPosition: "center 15%" }}
+              />
+              <Image
+                src="/images/ME/photo_cv_test_4k.webp"
+                alt="Jodie Hann"
+                fill
+                quality={100}
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className="about__photo-img about__photo-img--desktop"
                 style={{ objectFit: "cover", objectPosition: "center 15%" }}
               />
               <div className="about__photo-overlay" />
@@ -109,6 +120,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             initial="hidden"
             animate="visible"
           >
+            <span className="about__bio-icon" aria-hidden />
             <span className="about__card-num">02</span>
             <p className="about__bio">{t("bio2")}</p>
           </motion.div>
@@ -221,7 +233,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           </motion.div>
 
           <motion.a
-            href="https://www.linkedin.com/in/jodie-hanndan/"
+            href="https://www.linkedin.com/in/jodie-hann/"
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--contact about__card--contact-linkedin"

@@ -188,7 +188,7 @@
     box-shadow: $shadow-lg;
 
     @include respond-to(desktop) {
-      grid-column: 1 / 6;
+      grid-column: 1 / 5;
       grid-row: 1 / 9;
       aspect-ratio: auto;
       padding: 16px;
@@ -197,14 +197,28 @@
 
   &__photo-frame {
     position: absolute;
-    inset: 5px;
+    inset: 4px;
     border-radius: 16px;
     overflow: hidden;
     transition: inset $transition-base, border-radius $transition-base;
 
     @include respond-to(desktop) {
-      inset: 5px;
+      inset: 4px;
       border-radius: 20px;
+    }
+  }
+
+  // Swap profile photos on desktop only; keep the same image on mobile.
+  &__photo-img--desktop {
+    display: none;
+  }
+
+  @include respond-to(desktop) {
+    &__photo-img--mobile {
+      display: none;
+    }
+    &__photo-img--desktop {
+      display: block;
     }
   }
 
@@ -250,7 +264,7 @@
     justify-content: center;
 
     @include respond-to(desktop) {
-      grid-column: 6 / 13;
+      grid-column: 5 / 13;
       grid-row: 1 / 5;
       padding: 40px;
     }
@@ -309,9 +323,41 @@
     grid-column: 1 / -1;
 
     @include respond-to(desktop) {
-      grid-column: 6 / 10;
+      grid-column: 5 / 10;
       grid-row: 5 / 9;
     }
+
+    // Keep the copy above the gradient watermark. The number stays
+    // absolutely positioned (base rule) — only lift it in the stack.
+    .about__bio {
+      position: relative;
+      z-index: 1;
+    }
+    .about__card-num {
+      z-index: 1;
+    }
+  }
+
+  // ─── Card 02 signature: gradient icon watermark ──────────────────────
+  // The added profile-search icon, filled with the animated aurora
+  // gradient through a mask — same DNA as the recommendation's giant
+  // gradient quote mark.
+  &__bio-icon {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 0;
+    width: clamp(6.5rem, 14vw, 10rem);
+    aspect-ratio: 1 / 1;
+    pointer-events: none;
+    opacity: 0.2;
+
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+
+    -webkit-mask: url("/data_loss_prevention.svg") center / contain no-repeat;
+    mask: url("/data_loss_prevention.svg") center / contain no-repeat;
   }
 
   &__card--bio-3 {
@@ -624,5 +670,11 @@
     transition: background $transition-base, color $transition-base, transform $transition-base;
 
     svg { width: 17px; height: 17px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__bio-icon {
+    animation: none;
   }
 }

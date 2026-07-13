@@ -120,7 +120,7 @@
 }
 
 // ─── Metadata strip ────────────────────────────────────────────────────────
-.project-bento {
+.project-info-strip {
   @include project-col;
   max-width: 1140px;
   position: relative;
@@ -568,6 +568,32 @@
   .project-images__item,
   .project-images__item:only-child {
     aspect-ratio: 16 / 9;
+  }
+}
+
+// Concept images: a masonry locked to two columns so the four shots read as a
+// tidy 2×2 block while each keeps its natural ratio (no cropping).
+.concept-images {
+  .project-masonry {
+    columns: 2;
+  }
+
+  // Trim the tall first shot a touch (native ratio 0.622 → 0.6425) so the 16:9
+  // below it lines up with the bottom of the last image in the right column.
+  // Ratio-based, so the alignment holds at any column width.
+  .project-masonry__item:first-child img {
+    aspect-ratio: 0.6425;
+    height: auto;
+    object-fit: cover;
+    object-position: top; // crop the spare margin at the bottom, keep the top intact
+  }
+
+  // The bottom image of each column (2nd = left column, last = right column)
+  // otherwise keeps its inter-item margin, leaving the masonry box 16px taller
+  // than its content. Drop it so the box hugs the images.
+  .project-masonry__item:nth-child(2),
+  .project-masonry__item:last-child {
+    margin-bottom: 0;
   }
 }
 

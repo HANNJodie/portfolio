@@ -6,10 +6,11 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/components/ui/Icons";
 import { ProjectStatus } from "@/types/project";
 
-interface ProjectBentoProps {
+interface ProjectInfoStripProps {
   status: ProjectStatus;
   // Overrides the translated status text (the `status` prop still drives the dot color).
   statusLabel?: string;
+  devPeriod?: string;
   teamLabel?: string;
   roleLabel?: string;
   engine?: string;
@@ -33,14 +34,15 @@ function getMask(showLeft: boolean, showRight: boolean): string {
   return "none";
 }
 
-export default function ProjectBento({
+export default function ProjectInfoStrip({
   status,
   statusLabel,
+  devPeriod,
   teamLabel,
   roleLabel,
   engine,
   genres,
-}: ProjectBentoProps) {
+}: ProjectInfoStripProps) {
   const t = useTranslations("projectPage");
   const ts = useTranslations("projects.status");
   const stripRef = useRef<HTMLDivElement>(null);
@@ -69,51 +71,58 @@ export default function ProjectBento({
   const mask = getMask(showLeft, showRight);
 
   return (
-    <ScrollReveal className="project-bento">
+    <ScrollReveal className="project-info-strip">
       <div
-        className="project-bento__strip"
+        className="project-info-strip__strip"
         ref={stripRef}
         style={{ WebkitMaskImage: mask, maskImage: mask }}
       >
-        <div className="project-bento__col">
-          <span className="project-bento__col-label">{t("statusLabel")}</span>
-          <div className="project-bento__col-value">
+        <div className="project-info-strip__col">
+          <span className="project-info-strip__col-label">{t("statusLabel")}</span>
+          <div className="project-info-strip__col-value">
             <span
-              className="project-bento__dot"
+              className="project-info-strip__dot"
               style={{ backgroundColor: STATUS_DOT[status] }}
             />
             {statusLabel ?? ts(status)}
           </div>
         </div>
 
+        {devPeriod && (
+            <div className="project-info-strip__col">
+              <span className="project-info-strip__col-label">{t("devPeriod")}</span>
+              <div className="project-info-strip__col-value">{devPeriod}</div>
+            </div>
+        )}
+
         {teamLabel && (
-          <div className="project-bento__col">
-            <span className="project-bento__col-label">{t("teamShort")}</span>
-            <div className="project-bento__col-value">{teamLabel}</div>
+          <div className="project-info-strip__col">
+            <span className="project-info-strip__col-label">{t("teamShort")}</span>
+            <div className="project-info-strip__col-value">{teamLabel}</div>
           </div>
         )}
 
         {roleLabel && (
-          <div className="project-bento__col">
-            <span className="project-bento__col-label">{t("mainRole")}</span>
-            <div className="project-bento__col-value">{roleLabel}</div>
+          <div className="project-info-strip__col">
+            <span className="project-info-strip__col-label">{t("mainRole")}</span>
+            <div className="project-info-strip__col-value">{roleLabel}</div>
           </div>
         )}
 
         {engine && (
-          <div className="project-bento__col">
-            <span className="project-bento__col-label">{t("engine")}</span>
-            <div className="project-bento__col-value">{engine}</div>
+          <div className="project-info-strip__col">
+            <span className="project-info-strip__col-label">{t("engine")}</span>
+            <div className="project-info-strip__col-value">{engine}</div>
           </div>
         )}
 
         {genres && genres.length > 0 && (
-          <div className="project-bento__col project-bento__col--genres">
-            <span className="project-bento__col-label">{t("genres")}</span>
-            <div className="project-bento__col-value project-bento__col-value--wrap">
+          <div className="project-info-strip__col project-info-strip__col--genres">
+            <span className="project-info-strip__col-label">{t("genres")}</span>
+            <div className="project-info-strip__col-value project-info-strip__col-value--wrap">
               {genres.map((g, i) => (
                 <Fragment key={g}>
-                  {i > 0 && <span className="project-bento__sep">/</span>}
+                  {i > 0 && <span className="project-info-strip__sep">/</span>}
                   {g}
                 </Fragment>
               ))}
@@ -123,7 +132,7 @@ export default function ProjectBento({
       </div>
 
       <div
-        className="project-bento__scroll-hint project-bento__scroll-hint--left"
+        className="project-info-strip__scroll-hint project-info-strip__scroll-hint--left"
         aria-hidden="true"
         style={{ opacity: showLeft ? 1 : 0, pointerEvents: "none" }}
       >
@@ -131,7 +140,7 @@ export default function ProjectBento({
       </div>
 
       <div
-        className="project-bento__scroll-hint project-bento__scroll-hint--right"
+        className="project-info-strip__scroll-hint project-info-strip__scroll-hint--right"
         aria-hidden="true"
         style={{ opacity: showRight ? 1 : 0, pointerEvents: "none" }}
       >

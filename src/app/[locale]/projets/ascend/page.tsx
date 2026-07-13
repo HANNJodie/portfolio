@@ -1,7 +1,7 @@
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
-import ProjectBento from "@/components/project/ProjectBento";
+import ProjectInfoStrip from "@/components/project/ProjectInfoStrip";
 import ProjectSection from "@/components/project/ProjectSection";
 import RichText from "@/components/project/RichText";
 import ProjectLinkCard from "@/components/project/ProjectLinkCard";
@@ -65,7 +65,7 @@ export default async function AscendPage() {
     <ProjectShell>
       <ProjectHero title="ASCEND" tagline={c.tagline} date={c.date} heroImage={HERO_IMAGE} />
 
-      <ProjectBento
+      <ProjectInfoStrip
         status="in-development"
         teamLabel={c.teamLabel}
         roleLabel={c.roleLabel}
