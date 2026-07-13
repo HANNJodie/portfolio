@@ -177,16 +177,16 @@
 
   &__contact-link {
     @include flex-center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: $radius-full;
     border: 1px solid $color-border;
     color: $color-text-muted;
     transition: border-color $transition-base, color $transition-base, transform $transition-base, box-shadow $transition-base;
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
     }
 
@@ -200,16 +200,16 @@
     @include respond-to(desktop) {
       justify-content: flex-start;
       width: max-content;
-      max-width: 44px;
-      height: 44px;
-      padding: 0 13px;
+      max-width: 52px;
+      height: 52px;
+      padding: 0 15px;
       gap: 8px;
       overflow: hidden;
       transition: max-width 0.4s ease-in-out, border-color $transition-base, color $transition-base, transform $transition-base, box-shadow $transition-base;
 
       svg {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
       }
 
       .hero__contact-label {
