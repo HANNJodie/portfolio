@@ -188,7 +188,7 @@
     box-shadow: $shadow-lg;
 
     @include respond-to(desktop) {
-      grid-column: 1 / 6;
+      grid-column: 1 / 5;
       grid-row: 1 / 9;
       aspect-ratio: auto;
       padding: 16px;
@@ -197,13 +197,13 @@
 
   &__photo-frame {
     position: absolute;
-    inset: 5px;
+    inset: 4px;
     border-radius: 16px;
     overflow: hidden;
     transition: inset $transition-base, border-radius $transition-base;
 
     @include respond-to(desktop) {
-      inset: 5px;
+      inset: 4px;
       border-radius: 20px;
     }
   }
@@ -264,7 +264,7 @@
     justify-content: center;
 
     @include respond-to(desktop) {
-      grid-column: 6 / 13;
+      grid-column: 5 / 13;
       grid-row: 1 / 5;
       padding: 40px;
     }

@@ -106,7 +106,7 @@
     justify-content: space-between;
 
     @include respond-to(desktop) {
-      grid-column: 1 / 10;
+      grid-column: 1 / 11;
       grid-row: 1 / 8;
       padding: 44px 48px;
     }
@@ -269,7 +269,7 @@
     padding: 12px;
 
     @include respond-to(desktop) {
-      grid-column: 10 / 13;
+      grid-column: 11 / 13;
       grid-row: 1 / 8;
       padding: 16px;
     }
@@ -278,7 +278,7 @@
   // Image framed inside the gradient border
   &__photo-frame {
     position: absolute;
-    inset: 5px;
+    inset: 4px;
     border-radius: 16px;
     overflow: hidden;
     transition: inset $transition-base, border-radius $transition-base;
