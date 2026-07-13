@@ -1,7 +1,7 @@
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
-import ProjectBento from "@/components/project/ProjectBento";
+import ProjectInfoStrip from "@/components/project/ProjectInfoStrip";
 import ProjectSection from "@/components/project/ProjectSection";
 import RichText from "@/components/project/RichText";
 import ProjectLinkCard from "@/components/project/ProjectLinkCard";
@@ -67,7 +67,7 @@ const COPY = {
     roleLabel: "Game Lead",
     genres: ["Action", "Aventure", "Infiltration", "Point & clic", "Rétro cyberpunk"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay", story: "Histoire", team: "L'équipe" },
-    cta: "Jouer à la démo",
+    cta: "Démo",
     openLink: "Ouvrir le lien",
     gddExtracts: "Extraits du GDD",
     gddCaption: "Extrait du GDD",
@@ -90,7 +90,7 @@ const COPY = {
     roleLabel: "Game Lead",
     genres: ["Action", "Adventure", "Stealth", "Point & click", "Retro cyberpunk"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay", story: "Story", team: "The team" },
-    cta: "Play the demo",
+    cta: "Demo",
     openLink: "Open link",
     gddExtracts: "GDD extracts",
     gddCaption: "GDD excerpt",
@@ -117,7 +117,7 @@ export default async function SephiraPage() {
     <ProjectShell>
       <ProjectHero title="SEPHIRA-03" tagline={c.tagline} date={c.date} heroImage={HERO_IMAGE} objectPosition="left" />
 
-      <ProjectBento
+      <ProjectInfoStrip
         status="released"
         statusLabel={c.status}
         teamLabel={c.teamLabel}

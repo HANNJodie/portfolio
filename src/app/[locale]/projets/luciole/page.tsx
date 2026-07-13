@@ -1,7 +1,7 @@
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
-import ProjectBento from "@/components/project/ProjectBento";
+import ProjectInfoStrip from "@/components/project/ProjectInfoStrip";
 import ProjectSection from "@/components/project/ProjectSection";
 import RichText from "@/components/project/RichText";
 import ProjectLinkCard from "@/components/project/ProjectLinkCard";
@@ -44,10 +44,11 @@ const COPY = {
     tagline: "Retrouve ta lumière",
     date: "2023 – ? (En pause)",
     status: "En pause (Prototype)",
-    teamLabel: "Jodie Hann (Projet personnel)",
+    devPeriod: "2 semaines",
+    teamLabel: "Jodie Hann",
     genres: ["Plateformer 2D", "Aventure", "Puzzle", "Narratif", "Walking simulator", "Atmosphérique"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay", story: "Histoire", music: "Musique" },
-    cta: "Tester le prototype",
+    cta: "Prototype",
     openLink: "Ouvrir le lien",
     conceptImages: "Images conceptuelles",
     musicCaption: "« Lifetime » — The OWLS are not",
@@ -66,10 +67,11 @@ const COPY = {
     tagline: "Find your light again",
     date: "2023 – ? (On hiatus)",
     status: "On hiatus (Prototype)",
-    teamLabel: "Jodie Hann (Personal project)",
+    devPeriod: "2 weeks",
+    teamLabel: "Jodie Hann",
     genres: ["2D Platformer", "Adventure", "Puzzle", "Narrative", "Walking simulator", "Atmospheric"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay", story: "Story", music: "Music" },
-    cta: "Test the prototype",
+    cta: "Prototype",
     openLink: "Open link",
     conceptImages: "Concept images",
     musicCaption: "“Lifetime” — The OWLS are not",
@@ -96,9 +98,10 @@ export default async function LuciolePage() {
     <ProjectShell>
       <ProjectHero title="LUCIOLE" tagline={c.tagline} date={c.date} heroImage={HERO_IMAGE} />
 
-      <ProjectBento
+      <ProjectInfoStrip
         status="hiatus"
         statusLabel={c.status}
+        devPeriod={c.devPeriod}
         teamLabel={c.teamLabel}
         engine="Unity"
         genres={c.genres}
