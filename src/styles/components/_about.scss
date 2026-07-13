@@ -323,9 +323,41 @@
     grid-column: 1 / -1;
 
     @include respond-to(desktop) {
-      grid-column: 6 / 10;
+      grid-column: 5 / 10;
       grid-row: 5 / 9;
     }
+
+    // Keep the copy above the gradient watermark. The number stays
+    // absolutely positioned (base rule) — only lift it in the stack.
+    .about__bio {
+      position: relative;
+      z-index: 1;
+    }
+    .about__card-num {
+      z-index: 1;
+    }
+  }
+
+  // ─── Card 02 signature: gradient icon watermark ──────────────────────
+  // The added profile-search icon, filled with the animated aurora
+  // gradient through a mask — same DNA as the recommendation's giant
+  // gradient quote mark.
+  &__bio-icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    width: clamp(6.5rem, 14vw, 10rem);
+    aspect-ratio: 1 / 1;
+    pointer-events: none;
+    opacity: 0.2;
+
+    background: $gradient-aurora;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+
+    -webkit-mask: url("/data_loss_prevention.svg") center / contain no-repeat;
+    mask: url("/data_loss_prevention.svg") center / contain no-repeat;
   }
 
   &__card--bio-3 {
@@ -638,5 +670,11 @@
     transition: background $transition-base, color $transition-base, transform $transition-base;
 
     svg { width: 17px; height: 17px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__bio-icon {
+    animation: none;
   }
 }

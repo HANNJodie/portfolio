@@ -120,6 +120,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             initial="hidden"
             animate="visible"
           >
+            <span className="about__bio-icon" aria-hidden />
             <span className="about__card-num">02</span>
             <p className="about__bio">{t("bio2")}</p>
           </motion.div>
