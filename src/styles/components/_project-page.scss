@@ -624,7 +624,7 @@
   margin-top: $space-lg;
 
   @include respond-to(tablet) {
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 250px;
     gap: $space-2xl;
   }
 }
