@@ -288,12 +288,18 @@
   }
 
   &__lead {
-    font-size: $font-size-lg;
+    // Match the responsive sizing of global <p> so paragraphs and the custom
+    // bullet lists (which inherit from this container) stay the same size.
+    font-size: $font-size-base;
     color: $color-text;
     line-height: 1.7;
     // max-width: 62ch;
     margin: 0;
     text-align: justify;
+
+    @include respond-to(tablet) {
+      font-size: $font-size-lg;
+    }
 
     p {
       margin: 0 0 $space-md;
@@ -535,6 +541,204 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+}
+
+// ─── Image block variants (SEPHIRA & co.) ──────────────────────────────────
+// Portrait row: several tall images side by side (e.g. GDD extracts).
+.project-images--portrait {
+  .project-images__grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 3 / 4;
+    grid-column: auto;
+  }
+}
+
+// Wide 16:9 images (e.g. a pair of screenshots).
+.project-images--wide {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+// A single portrait image sitting flush beside text (no top padding).
+.project-images--aside {
+  padding-top: 0;
+
+  .project-images__item:only-child {
+    aspect-ratio: 3 / 4;
+    grid-column: 1 / -1;
+  }
+}
+
+// Masonry of mixed landscape / portrait shots — natural ratios, no cropping.
+.project-masonry-wrap {
+  padding-top: $space-2xl;
+}
+
+.project-masonry {
+  columns: 2;
+  column-gap: $space-md;
+
+  @include respond-to(tablet) {
+    columns: 3;
+  }
+
+  &__item {
+    break-inside: avoid;
+    margin-bottom: $space-md;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    cursor: pointer;
+    transition: transform $transition-base;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// Text + aside image split (e.g. Gameplay).
+.project-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-xl;
+  align-items: start;
+  margin-top: $space-lg;
+
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr 300px;
+    gap: $space-2xl;
+  }
+}
+
+// Minor heading inside a section (e.g. "Extraits du GDD").
+.project-subheading {
+  margin: $space-2xl 0 $space-md;
+  font-family: $font-display;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: $color-text-light;
+  text-align: center;
+}
+
+// ─── Carousel (team gallery) ───────────────────────────────────────────────
+.project-carousel {
+  padding-top: $space-2xl;
+
+  &__viewport {
+    position: relative;
+  }
+
+  &__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-xl;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    aspect-ratio: 19 / 9;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    @include flex-center;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    color: $color-text-heading;
+    backdrop-filter: blur(6px);
+    box-shadow: $shadow-md;
+    cursor: pointer;
+    transition: opacity $transition-fast, transform $transition-fast,
+      background $transition-fast;
+    z-index: 2;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &--prev {
+      left: $space-md;
+    }
+
+    &--next {
+      right: $space-md;
+    }
+
+    &:hover:not(:disabled) {
+      background: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    &:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: $space-sm;
+    margin-top: $space-lg;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: $color-border-hover;
+    cursor: pointer;
+    transition: background $transition-fast, transform $transition-fast;
+
+    &.is-active {
+      background: $color-violet;
+      transform: scale(1.3);
     }
   }
 }

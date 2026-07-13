@@ -8,6 +8,8 @@ import { ProjectStatus } from "@/types/project";
 
 interface ProjectBentoProps {
   status: ProjectStatus;
+  // Overrides the translated status text (the `status` prop still drives the dot color).
+  statusLabel?: string;
   teamLabel?: string;
   roleLabel?: string;
   engine?: string;
@@ -33,6 +35,7 @@ function getMask(showLeft: boolean, showRight: boolean): string {
 
 export default function ProjectBento({
   status,
+  statusLabel,
   teamLabel,
   roleLabel,
   engine,
@@ -79,7 +82,7 @@ export default function ProjectBento({
               className="project-bento__dot"
               style={{ backgroundColor: STATUS_DOT[status] }}
             />
-            {ts(status)}
+            {statusLabel ?? ts(status)}
           </div>
         </div>
 
