@@ -71,7 +71,6 @@ const COPY = {
     openLink: "Ouvrir le lien",
     gddExtracts: "Extraits du GDD",
     gddCaption: "Extrait du GDD",
-    playDemo: "Pour jouer à la démo :",
     concept:
       "SEPHIRA-03 est un point and clic d'aventure et d'infiltration en temps réel, mêlant phases d'énigmes et d'action, tout en suivant une narration prenante dans une ambiance cyberpunk rétrofuturiste des années 80 à 2000. Prenez contrôle des caméras de sécurité pour accomplir votre objectif à l'aide du robot Binah, qui développera au cours de l'histoire une conscience humaine, et tissera des liens avec le personnage du joueur.",
     work:
@@ -95,7 +94,6 @@ const COPY = {
     openLink: "Open link",
     gddExtracts: "GDD extracts",
     gddCaption: "GDD excerpt",
-    playDemo: "To play the demo:",
     concept:
       "SEPHIRA-03 is a real-time adventure and stealth point-and-click, blending puzzle and action phases while following a gripping narrative in a retrofuturistic cyberpunk atmosphere spanning the 80s to the 2000s. Take control of the security cameras to accomplish your objective with the help of the robot Binah, who will develop a human consciousness over the course of the story and forge bonds with the player's character.",
     work:
@@ -117,7 +115,7 @@ export default async function SephiraPage() {
 
   return (
     <ProjectShell>
-      <ProjectHero title="SEPHIRA-03" tagline={c.tagline} date={c.date} heroImage={HERO_IMAGE} />
+      <ProjectHero title="SEPHIRA-03" tagline={c.tagline} date={c.date} heroImage={HERO_IMAGE} objectPosition="left" />
 
       <ProjectBento
         status="released"
@@ -189,7 +187,6 @@ export default async function SephiraPage() {
       <ProjectCTA
         ctaLabel={c.cta}
         ctaUrl={DEMO}
-        note={c.playDemo}
         socialLinks={project?.socialLinks}
       />
 

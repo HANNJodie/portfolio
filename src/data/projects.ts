@@ -118,14 +118,14 @@ export const projects: Project[] = [
       { platform: "Instagram", url: "https://www.instagram.com/sephira003/" },
       { platform: "Email", url: "mailto:equipe.sephira.03@gmail.com" },
     ],
-    status: "in-development",
+    status: "released",
   },
   {
     slug: "luciole",
     title: "LUCIOLE",
     date: {
-      fr: "Janvier 2023 – ? (En cours)",
-      en: "January 2023 – ? (Ongoing)",
+      fr: "2023 – ?",
+      en: "2023 – ?",
     },
     tagline: {
       fr: "Retrouve ta lumière",
