@@ -22,14 +22,6 @@ export async function generateMetadata({
         "x-default": "/",
       },
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-      },
-    },
   };
 }
 

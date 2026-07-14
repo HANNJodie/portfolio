@@ -36,14 +36,11 @@ export const metadata: Metadata = {
     "Portfolio de Jodie Hann, experte en Game, Level & Narrative Design.",
   authors: [{ name: "Jodie Hann" }],
   robots: {
-    index: false,
-    follow: false,
-    noimageindex: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-      "max-image-preview": "none",
+      index: true,
+      follow: true,
     },
   },
   openGraph: {
