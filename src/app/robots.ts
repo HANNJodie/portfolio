@@ -7,7 +7,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/fr$", "/en$"],
+        // Only the two home pages are indexable: "/" (French) and "/en" (English).
+        // The trailing "$" anchors the match so subpaths stay blocked by "disallow: /".
+        allow: ["/$", "/en$"],
         disallow: "/",
       },
     ],

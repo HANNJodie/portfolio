@@ -5,16 +5,33 @@ import Hero from "@/components/home/Hero";
 import ProjectGrid from "@/components/home/ProjectGrid";
 import { Analytics } from "@vercel/analytics/next";
 
-export const metadata: Metadata = {
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    alternates: {
+      // French is the default locale and has no prefix ("/").
+      canonical: locale === "en" ? "/en" : "/",
+      languages: {
+        fr: "/",
+        en: "/en",
+        "x-default": "/",
+      },
+    },
+    robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
-  },
-};
+  };
+}
 
 export default function HomePage() {
   return (
