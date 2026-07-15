@@ -18,6 +18,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // Images optimisées par Next (<Image>)
+        source: "/_next/image",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+      {
+        // Fichiers images statiques dans /public
+        source: "/:path*.(jpg|jpeg|png|gif|webp|avif|svg|ico)",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
