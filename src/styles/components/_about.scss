@@ -509,13 +509,82 @@
   &__card--games,
   &__card--hobbies {
     grid-column: 1 / -1;
-    min-height: 200px;
+    // min-height: 200px;
   }
 
   &__card--games {
     @include respond-to(desktop) {
       grid-column: 1 / 8;
       grid-row: 2 / 3;
+    }
+
+    @include mobile-only {
+      min-height: 0;
+    }
+  }
+
+  &__games-scroll {
+    position: relative;
+  }
+
+  // Desktop: rows dissolve into a single wrapped tag cloud (no scroll/fade).
+  // Mobile: each row is its own independent horizontal scroller.
+  &__games-rows {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    @include mobile-only {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__games-row {
+    display: contents;
+
+    @include mobile-only {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -20px;
+      padding: 0 20px;
+      padding-right: 40px;
+
+      &::-webkit-scrollbar { display: none; }
+
+      .about__tag { flex: 0 0 auto; }
+    }
+  }
+
+  &__games-hint {
+    display: none;
+
+    @include mobile-only {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 32px;
+      color: $color-text-muted;
+      transition: opacity 0.3s ease;
+
+      svg { width: 14px; height: 14px; }
+
+      &--right {
+        right: -20px;
+        animation: hint-bounce 1.4s ease-in-out infinite;
+      }
+
+      &--left {
+        left: -20px;
+        animation: hint-bounce-left 1.4s ease-in-out infinite;
+      }
     }
   }
 
@@ -555,6 +624,7 @@
 
     &--game {
       border-color: rgba(124, 58, 237, 0.18);
+      white-space: nowrap;
     }
   }
 
