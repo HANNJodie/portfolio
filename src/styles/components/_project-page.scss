@@ -655,6 +655,13 @@
   }
 }
 
+// Narrower aside column for a portrait carousel (e.g. character gallery in Histoire).
+.project-split--portrait {
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr 170px;
+  }
+}
+
 // Minor heading inside a section (e.g. "Extraits du GDD").
 .project-subheading {
   margin: $space-2xl 0 $space-md;
@@ -778,7 +785,7 @@
     aspect-ratio: 9 / 16;
 
     img {
-      transform: scale(1.15);
+      transform: scale(1.05);
     }
   }
 }
@@ -787,8 +794,10 @@
 .project-download-cta {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-lg;
   overflow: hidden;
   margin-top: $space-xl;
   padding: $space-xl;
@@ -813,8 +822,13 @@
     transition: opacity $transition-base;
   }
 
-  &__eyebrow {
+  &__text {
     position: relative;
+    min-width: 0;
+  }
+
+  &__eyebrow {
+    display: block;
     font-family: $font-display;
     font-size: $font-size-xs;
     font-weight: 700;
@@ -824,7 +838,6 @@
   }
 
   &__title {
-    position: relative;
     font-family: $font-display;
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     line-height: 1.05;
@@ -837,8 +850,8 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    flex-shrink: 0;
     gap: 10px;
-    margin-top: $space-lg;
     padding: 10px 16px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.18);

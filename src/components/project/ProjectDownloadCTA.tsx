@@ -14,8 +14,10 @@ export default function ProjectDownloadCTA({ href, eyebrow, title, actionLabel, 
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="project-download-cta">
       <div className="project-download-cta__glow" aria-hidden />
-      <span className="project-download-cta__eyebrow">{eyebrow}</span>
-      <h3 className="project-download-cta__title">{title}</h3>
+      <div className="project-download-cta__text">
+        <span className="project-download-cta__eyebrow">{eyebrow}</span>
+        <h3 className="project-download-cta__title">{title}</h3>
+      </div>
       <div className="project-download-cta__action">
         {icon}
         <span>{actionLabel}</span>

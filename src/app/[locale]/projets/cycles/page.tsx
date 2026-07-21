@@ -43,7 +43,8 @@ const COPY = {
     roleLabel: "Game Lead",
     genres: ["Visual novel", "Aventure", "Stratégie", "Science-fiction"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay", story: "Histoire", team: "L'équipe" },
-    cta: "Tester le prototype",
+    cta: "Jouer",
+    topCta: "Jouer au jeu",
     openLink: "Ouvrir le lien",
     gddLabel: "Game Design Document",
     gddTitle: "Télécharger le GDD",
@@ -68,7 +69,8 @@ const COPY = {
     roleLabel: "Game Lead",
     genres: ["Visual novel", "Adventure", "Strategy", "Science fiction"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay", story: "Story", team: "The team" },
-    cta: "Test the prototype",
+    cta: "Play",
+    topCta: "Play the game",
     openLink: "Open link",
     gddLabel: "Game Design Document",
     gddTitle: "Download the GDD",
@@ -114,7 +116,7 @@ export default async function CyclesPage() {
             </div>
             <ProjectLinkCard
               href={DEMO}
-              title={c.cta}
+              title={c.topCta}
               subtitle={c.openLink}
               icon={<GamepadIcon />}
             />
@@ -142,7 +144,7 @@ export default async function CyclesPage() {
         </ProjectSection>
 
         <ProjectSection label={c.labels.story}>
-          <div className="project-split">
+          <div className="project-split project-split--portrait">
             <div className="project-section__lead">
               <RichText text={c.story} />
             </div>
