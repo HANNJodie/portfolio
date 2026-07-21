@@ -198,8 +198,8 @@ export const projects: Project[] = [
     slug: "cycles",
     title: "CYCLES",
     date: {
-      fr: "Janvier – Août 2023",
-      en: "January – August 2023",
+      fr: "Janvier – Mars 2023",
+      en: "January – March 2023",
     },
     tagline: {
       fr: "Sauver l'humanité",

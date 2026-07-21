@@ -68,6 +68,7 @@ const COPY = {
     genres: ["Action", "Aventure", "Infiltration", "Point & clic", "Rétro cyberpunk"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay", story: "Histoire", team: "L'équipe" },
     cta: "Démo",
+    topCta: "Tester la démo",
     openLink: "Ouvrir le lien",
     gddExtracts: "Extraits du GDD",
     gddCaption: "Extrait du GDD",
@@ -91,6 +92,7 @@ const COPY = {
     genres: ["Action", "Adventure", "Stealth", "Point & click", "Retro cyberpunk"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay", story: "Story", team: "The team" },
     cta: "Demo",
+    topCta: "Test the demo",
     openLink: "Open link",
     gddExtracts: "GDD extracts",
     gddCaption: "GDD excerpt",
@@ -134,7 +136,7 @@ export default async function SephiraPage() {
             </div>
             <ProjectLinkCard
               href={DEMO}
-              title={c.cta}
+              title={c.topCta}
               subtitle={c.openLink}
               icon={<GamepadIcon />}
             />

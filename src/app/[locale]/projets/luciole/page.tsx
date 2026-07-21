@@ -49,6 +49,7 @@ const COPY = {
     genres: ["Plateformer 2D", "Aventure", "Puzzle", "Narratif", "Walking simulator", "Atmosphérique"],
     labels: { concept: "Concept", work: "Mon travail", gameplay: "Gameplay", story: "Histoire", music: "Musique" },
     cta: "Prototype",
+    topCta: "Tester le prototype",
     openLink: "Ouvrir le lien",
     conceptImages: "Images conceptuelles",
     musicCaption: "« Lifetime » — The OWLS are not",
@@ -72,6 +73,7 @@ const COPY = {
     genres: ["2D Platformer", "Adventure", "Puzzle", "Narrative", "Walking simulator", "Atmospheric"],
     labels: { concept: "Concept", work: "My work", gameplay: "Gameplay", story: "Story", music: "Music" },
     cta: "Prototype",
+    topCta: "Test the prototype",
     openLink: "Open link",
     conceptImages: "Concept images",
     musicCaption: "“Lifetime” — The OWLS are not",
@@ -115,7 +117,7 @@ export default async function LuciolePage() {
             </div>
             <ProjectLinkCard
               href={DEMO}
-              title={c.cta}
+              title={c.topCta}
               subtitle={c.openLink}
               icon={<GamepadIcon />}
             />
