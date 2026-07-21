@@ -124,8 +124,8 @@ export const projects: Project[] = [
     slug: "luciole",
     title: "LUCIOLE",
     date: {
-      fr: "2023 – ?",
-      en: "2023 – ?",
+      fr: "2024 – ?",
+      en: "2024 – ?",
     },
     tagline: {
       fr: "Retrouve ta lumière",

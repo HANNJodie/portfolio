@@ -42,7 +42,7 @@ const STORY_IMAGES = [
 const COPY = {
   fr: {
     tagline: "Retrouve ta lumière",
-    date: "2023 – ? (En pause)",
+    date: "Janvier 2024 – ? (En pause)",
     status: "En pause (Prototype)",
     devPeriod: "2 semaines",
     teamLabel: "Jodie Hann",
