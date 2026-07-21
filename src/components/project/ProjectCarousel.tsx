@@ -14,11 +14,12 @@ interface CarouselImage {
 
 interface ProjectCarouselProps {
   images: CarouselImage[];
+  className?: string;
 }
 
 // A one-slide-at-a-time, scroll-snapping carousel (16:9-ish wide slides) with
 // prev/next arrows and dot indicators. Slides open in a fullscreen lightbox.
-export default function ProjectCarousel({ images }: ProjectCarouselProps) {
+export default function ProjectCarousel({ images, className = "" }: ProjectCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -46,7 +47,7 @@ export default function ProjectCarousel({ images }: ProjectCarouselProps) {
   if (images.length === 0) return null;
 
   return (
-    <ScrollReveal className="project-carousel">
+    <ScrollReveal className={`project-carousel ${className}`.trim()}>
       <PhotoProvider>
         <div className="project-carousel__viewport">
           <div className="project-carousel__track" ref={trackRef}>
