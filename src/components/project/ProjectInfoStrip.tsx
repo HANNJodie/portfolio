@@ -14,6 +14,8 @@ interface ProjectInfoStripProps {
   teamLabel?: string;
   roleLabel?: string;
   engine?: string;
+  // Overrides the "Engine" column label (e.g. "Support" for a board game).
+  engineLabel?: string;
   genres?: string[];
 }
 
@@ -41,6 +43,7 @@ export default function ProjectInfoStrip({
   teamLabel,
   roleLabel,
   engine,
+  engineLabel,
   genres,
 }: ProjectInfoStripProps) {
   const t = useTranslations("projectPage");
@@ -111,7 +114,7 @@ export default function ProjectInfoStrip({
 
         {engine && (
           <div className="project-info-strip__col">
-            <span className="project-info-strip__col-label">{t("engine")}</span>
+            <span className="project-info-strip__col-label">{engineLabel ?? t("engine")}</span>
             <div className="project-info-strip__col-value">{engine}</div>
           </div>
         )}

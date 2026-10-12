@@ -344,14 +344,14 @@ Une page sans contenu encore prêt garde au minimum Hero + Nav et un `{/* TODO: 
 |---|---|---|
 | `ProjectShell` | Header + `<main className="project-page">` + Footer | toujours la racine |
 | `ProjectHero` | bannière parallax animée | props `title, tagline, date, heroImage, objectPosition?` |
-| `ProjectInfoStrip` | bande de métadonnées | `status` pilote la couleur, `statusLabel` le texte |
+| `ProjectInfoStrip` | bande de métadonnées | `status` pilote la couleur, `statusLabel` le texte ; `engineLabel` renomme la colonne « Moteur » (ex. « Support » pour un jeu de plateau) |
 | `ProjectSection` | section avec label violet + `ScrollReveal` | contenu libre |
 | `RichText` | texte → paragraphes + listes | voir §6.5 |
 | `ProjectLinkCard` | petite carte lien (icône gradient + flèche) | à côté du texte dans `.project-section__concept` ; icône par défaut = lien externe, `GamepadIcon` pour un jeu |
 | `ProjectDownloadCTA` | grande carte sombre « Télécharger le GDD » | même langage que la carte CV de l'À propos |
 | `ProjectImages` | grille d'images avec lightbox | voir §7.2 pour les variantes |
 | `ProjectMasonry` | mosaïque « Pinterest » sans recadrage | exige `width`/`height` réels de chaque image |
-| `ProjectCarousel` | carrousel 1 image à la fois, flèches + points | `project-carousel--portrait` = 9:16 à côté d'un texte |
+| `ProjectCarousel` | carrousel 1 image à la fois, flèches + points | `project-carousel--portrait` = 9:16 à côté d'un texte ; `project-carousel--photo` = 4:3 (galerie photo) |
 | `ProjectVideo` | YouTube 16:9 | prop `videoId` ; légende avec `<p className="project-caption">` |
 | `ProjectCTA` | bouton final + téléchargements + liens | se masque tout seul s'il n'a rien à afficher |
 | `ProjectNav` | précédent / suivant | `getAdjacentProjects(SLUG)` |
@@ -401,7 +401,10 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
   ≠ `Diapositive2.jpg`. Le chemin dans le code doit être **exactement** le nom du fichier.
   En local sous Windows une faute de casse ne se voit pas — vérifier.
 - Formats : `.webp` de préférence pour les photos/couvertures ; `.png`/`.jpg` acceptés ; `.gif`
-  pour les animations. Compresser les gros PNG (plusieurs Mo) avant de les ajouter si possible.
+  pour les animations. Les images sont servies **sans optimisation** (`unoptimized`) : une photo
+  de téléphone brute (8000px, 5–9 Mo) doit être réduite avant usage. `sharp` est déjà installé
+  (dépendance de Next) : redimensionner à 2000px de large et convertir en WebP qualité ~82
+  (≈150–300 Ko par photo), en gardant le même nom de fichier avec l'extension `.webp`.
 - Couverture d'un projet : utilisée **à la fois** par `heroImage` dans `projects.ts` (cartes
   d'accueil, bento) **et** par `HERO_IMAGE` de la page. Garder les deux identiques.
 - Les PDF / documents peuvent être servis depuis `public/` (ex. one pager) ou via une URL externe.
@@ -417,7 +420,10 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
   prend toute la largeur en 21:9.
 - Variantes (combinables) :
   - `project-images--wide` → ratio 16:9 (captures, diapositives, une paire d'images).
-  - `project-images--two-cols` → grille fixée à 2 colonnes (ex. 4 images en 2×2).
+  - `project-images--two-cols` / `--three-cols` → grille fixée à 2 / 3 colonnes (aussi sur mobile).
+  - `project-images--card` → ratio carte à jouer 5:7 (ne pas mettre des cartes en 9:16 : leurs bordures seraient coupées).
+  - `project-images--photo` → ratio 4:3 (photos).
+  - `project-images--sheet` → ratio natif des planches de cartes du Peuple aux mille dieux.
   - `project-images--portrait` → 3:4, 2 colonnes mobile / 4 tablette (extraits de GDD).
   - `project-images--aside` → une image portrait collée à côté d'un texte (avec `.project-split`).
   - `.concept-images` + `ProjectMasonry` → 2×2 sans recadrage (Luciole).
