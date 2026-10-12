@@ -15,6 +15,8 @@ const SLUG = "my-morning-routine";
 const HERO_IMAGE = "/images/MY MORNING ROUTINE/cover.webp";
 const ONE_PAGER_URL = "/images/MY MORNING ROUTINE/DAU_GD_Goals_Jodie_HANN_v2.pdf";
 const LINKEDIN_POST = "https://lnkd.in/p/ehgnphdS";
+// Collapsed embed (text cut with "…more"); its height is set in .project-embed.
+const LINKEDIN_EMBED = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7467236829319090176?collapsed=1";
 
 const PRESENTATION_IMAGES = [
   { src: "/images/MY MORNING ROUTINE/presentation.gif", alt: "Extrait de présentation" },
@@ -50,7 +52,6 @@ const COPY = {
       mentorship: "Le mentorat",
     },
     onePagerTitle: "One pager : concept initial",
-    linkedinTitle: "Voir la publication",
     openLink: "Ouvrir le lien",
     concept:
       "« My Morning Routine » est un jeu solo dans lequel vous accomplissez des tâches en interagissant avec votre environnement et tentez de compléter une simple routine matinale. Mais derrière cette apparente simplicité se cache une histoire aux multiples facettes, ainsi que de nombreux mystères à découvrir.\nRéalisé pendant le mentorat « Develop at Ubisoft » avec l'accompagnement de <b>Nicolaï Maldavsky</b>, il ne s'agit pas que d'un projet, mais d'une grande expérience d'apprentissage qui a énormément enrichi mon parcours.",
@@ -78,7 +79,6 @@ const COPY = {
       mentorship: "The mentorship",
     },
     onePagerTitle: "One pager: initial concept",
-    linkedinTitle: "See the post",
     openLink: "Open link",
     concept:
       "“My Morning Routine” is a single-player game in which you complete tasks by interacting with your environment while trying to get through a simple morning routine. But behind this apparent simplicity lies a multifaceted story, along with many mysteries to uncover.\nMade during the “Develop at Ubisoft” mentorship with the guidance of <b>Nicolaï Maldavsky</b>, it is not just a project, but a great learning experience that has greatly enriched my journey.",
@@ -143,11 +143,11 @@ export default async function MyMorningRoutinePage() {
         </ProjectSection>
 
         <ProjectSection label={c.labels.mentorship}>
-          <div className="project-section__concept">
-            <div className="project-section__lead">
-              <RichText text={c.mentorship} />
-            </div>
-            <ProjectLinkCard href={LINKEDIN_POST} title={c.linkedinTitle} subtitle="LinkedIn" />
+          <div className="project-section__lead">
+            <RichText text={c.mentorship} />
+          </div>
+          <div className="project-embed">
+            <iframe src={LINKEDIN_EMBED} allowFullScreen title="LinkedIn" />
           </div>
         </ProjectSection>
 
