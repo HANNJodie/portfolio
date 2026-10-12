@@ -7,6 +7,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jodiehann.com";
 const paths = [
   "",
   "/a-propos",
+  "/projets/my-morning-routine",
   "/projets/cycles",
   "/projets/le-peuple-aux-mille-dieux",
   "/projets/quest-for-life",

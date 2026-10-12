@@ -2,6 +2,37 @@ import { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
+    slug: "my-morning-routine",
+    title: "MY MORNING ROUTINE",
+    date: {
+      fr: "Novembre 2025 – Mai 2026",
+      en: "November 2025 – May 2026",
+    },
+    tagline: {
+      fr: "L'horreur du quotidien - Mentorat Ubisoft",
+      en: "The horror of everyday life - Ubisoft Mentorship",
+    },
+    description: {
+      fr: "« My Morning Routine » est un jeu solo dans lequel vous accomplissez des tâches en interagissant avec votre environnement et tentez de compléter une simple routine matinale. Mais derrière cette apparente simplicité se cache une histoire aux multiples facettes, ainsi que de nombreux mystères à découvrir.",
+      en: "“My Morning Routine” is a single-player game in which you complete tasks by interacting with your environment while trying to get through a simple morning routine. But behind this apparent simplicity lies a multifaceted story, along with many mysteries to uncover.",
+    },
+    roleSummary: {
+      fr: "Game Designer",
+      en: "Game Designer",
+    },
+    teamSummary: {
+      fr: "Jodie HANN · Mentor : Nicolaï Maldavsky",
+      en: "Jodie HANN · Mentor: Nicolaï Maldavsky",
+    },
+    genres: {
+      fr: ["Puzzle", "Escape game", "Casual", "Cozy", "Horreur psychologique"],
+      en: ["Puzzle", "Escape game", "Casual", "Cozy", "Psychological horror"],
+    },
+    images: [],
+    heroImage: "/images/MY MORNING ROUTINE/cover.webp",
+    status: "released",
+  },
+  {
     slug: "ascend",
     title: "ASCEND",
     date: {
@@ -333,10 +364,6 @@ export const upcomingProjects = [
   {
     title: "Court Métrage Vox Milo 2026",
     titleEn: "Vox Milo 2026 Short Film",
-  },
-  {
-    title: "Projet Mentorat Develop At UBISOFT",
-    titleEn: "Develop At UBISOFT Mentorship",
   },
 ];
 
