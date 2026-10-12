@@ -36,9 +36,9 @@ const GAMEPLAY_IMAGES = [
 
 // Playtest photos.
 const GALLERY_IMAGES = [
+  { src: `${DIR}/IMG_0214.webp`, alt: "Main de cartes « Offrande »" },
   { src: `${DIR}/IMG_0138.webp`, alt: "Cartes « Dieu » sur la table" },
   { src: `${DIR}/IMG_0294.webp`, alt: "Trois cartes « Vase cassé »" },
-  { src: `${DIR}/IMG_0214.webp`, alt: "Main de cartes « Offrande »" },
   { src: `${DIR}/IMG_0210.webp`, alt: "Partie en cours" },
   { src: `${DIR}/IMG_0261.webp`, alt: "Cartes « Sanctuaire » sur la table" },
   { src: `${DIR}/IMG_0236.webp`, alt: "Mélange de la pioche" },
@@ -161,7 +161,12 @@ export default async function PeupleMilleDieuxPage() {
         </ProjectSection>
 
         <ProjectSection label={c.labels.gallery}>
-          <ProjectCarousel className="project-carousel--photo" images={GALLERY_IMAGES} />
+          {/* One big carousel, then two small ones side by side: photos split 3 / 3 / 2 in order. */}
+          <ProjectCarousel className="project-carousel--photo" images={GALLERY_IMAGES.slice(0, 3)} />
+          <div className="project-carousel-pair">
+            <ProjectCarousel className="project-carousel--photo" images={GALLERY_IMAGES.slice(3, 6)} />
+            <ProjectCarousel className="project-carousel--photo" images={GALLERY_IMAGES.slice(6)} />
+          </div>
         </ProjectSection>
       </div>
 

@@ -840,6 +840,22 @@
   }
 }
 
+// Carousel right under a section label: the label already provides the spacing.
+.project-section__label + .project-carousel {
+  padding-top: 0;
+}
+
+// Two small carousels side by side (stacked on phones, where arrows would crowd them).
+.project-carousel-pair {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 $space-md;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 // 4:3 photo carousel (e.g. photo gallery).
 .project-carousel--photo .project-carousel__slide {
   aspect-ratio: 4 / 3;
