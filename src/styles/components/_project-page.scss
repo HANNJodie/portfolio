@@ -603,6 +603,37 @@
   }
 }
 
+// Fixed three-column grid (e.g. three tall images side by side).
+.project-images--three-cols {
+  .project-images__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Playing-card ratio (5:7), so card borders aren't cropped.
+.project-images--card {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 5 / 7;
+  }
+}
+
+// Native ratio of the card sheets (two cards side by side on a scanned page).
+.project-images--sheet {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 2007 / 1289;
+  }
+}
+
+// 4:3 photos.
+.project-images--photo {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 // Concept images: a masonry locked to two columns so the four shots read as a
 // tidy 2×2 block while each keeps its natural ratio (no cropping).
 .concept-images {
@@ -807,6 +838,11 @@
       transform: scale(1.3);
     }
   }
+}
+
+// 4:3 photo carousel (e.g. photo gallery).
+.project-carousel--photo .project-carousel__slide {
+  aspect-ratio: 4 / 3;
 }
 
 // Narrow portrait carousel sitting beside text (e.g. character gallery in Histoire).
