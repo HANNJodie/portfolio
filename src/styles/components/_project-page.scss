@@ -312,7 +312,7 @@
 
   &__list {
     list-style: none;
-    margin: $space-md 0 0;
+    margin: $space-md 0;
     padding: 0;
 
     li {
@@ -568,6 +568,13 @@
   .project-images__item,
   .project-images__item:only-child {
     aspect-ratio: 16 / 9;
+  }
+}
+
+// Fixed two-column grid (e.g. four slides as a 2×2 block).
+.project-images--two-cols {
+  .project-images__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
