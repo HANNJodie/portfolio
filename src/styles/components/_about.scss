@@ -120,7 +120,9 @@
     padding: 20px;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow $transition-base, opacity $transition-fast;
+    // No `opacity` here: framer-motion animates it on entrance, and a CSS
+    // opacity transition makes every card blink white when it ends.
+    transition: box-shadow $transition-base;
 
     @include respond-to(desktop) {
       border-radius: 24px;

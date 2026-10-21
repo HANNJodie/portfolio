@@ -26,8 +26,9 @@ const nextConfig: NextConfig = {
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
       {
-        // Fichiers images statiques dans /public
-        source: "/:path*.(jpg|jpeg|png|gif|webp|avif|svg|ico)",
+        // Fichiers images statiques dans /public (sans .ico : Google doit
+        // pouvoir indexer le favicon pour l'afficher dans les résultats)
+        source: "/:path*.(jpg|jpeg|png|gif|webp|avif|svg)",
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
     ];

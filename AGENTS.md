@@ -511,6 +511,10 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
 - `ProjectHero` cible `.project-page__hero img` : ne pas mettre d'autre `<img>` dans le hero.
 - Les blocs animés démarrent à `opacity: 0` : si GSAP ne s'exécute pas (erreur JS), ils restent
   invisibles. Une section « vide » à l'écran = regarder la console.
+- **Jamais de `transition` CSS sur `opacity` d'un élément dont framer-motion anime l'opacité** :
+  à la fin de l'entrée, framer retire son animation avant d'écrire la valeur finale, la transition
+  CSS repart de 0 et la card « clignote » en blanc. Pour un hover qui atténue, utiliser
+  `filter: opacity(…)` + `transition: filter` (cf. `.hero__card--project`).
 - `Hero` (accueil) suppose **au moins 4 projets** dans `projects.ts`.
 - `about__section` (utilisé par `Recommendation`) a un `max-width: 1400px` et `z-index: 1`.
 - Composants / styles présents mais inutilisés : `PageTransition`, `ProjectGallery`,
