@@ -372,10 +372,12 @@
   &__card--project {
     background: #111;
     text-decoration: none;
-    transition: opacity $transition-fast;
+    // Hover dim via filter, not `opacity`: framer-motion owns opacity for the
+    // entrance, and a CSS opacity transition makes the card blink at its end.
+    transition: filter $transition-fast;
 
     &:hover {
-      opacity: 0.88;
+      filter: opacity(0.88);
     }
 
     // Desktop: tous les projets sur la même ligne (rows 8–11)
@@ -502,7 +504,8 @@
     justify-content: space-between;
     padding: 14px 18px;
     text-align: left;
-    transition: opacity $transition-fast;
+    // Same as project cards: never transition `opacity` (entrance blink).
+    transition: filter $transition-fast;
 
     &::before {
       content: '';
@@ -516,7 +519,7 @@
     }
 
     &:hover {
-      opacity: 0.85;
+      filter: opacity(0.85);
       &::before { opacity: 1; }
     }
 
