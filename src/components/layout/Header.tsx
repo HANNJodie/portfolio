@@ -61,12 +61,14 @@ export default function Header() {
     }
   }, [isHomePage]);
 
-  // Close menu and dropdown on route change
-  useEffect(() => {
+  // Close menu and dropdown on route change (reset during render, no effect)
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
     setDropdownOpen(false);
     setMobileProjectsOpen(false);
-  }, [pathname]);
+  }
 
   // Close dropdown when clicking outside
   useEffect(() => {
