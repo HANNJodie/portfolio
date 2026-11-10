@@ -634,6 +634,30 @@
   }
 }
 
+// A4 landscape pages (e.g. storyboard), so their text isn't cropped.
+.project-images--a4 {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 297 / 210;
+  }
+}
+
+// Film poster at its native ratio (≈ 2:3), so the credits aren't cropped.
+.project-images--poster {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 2560 / 3955;
+  }
+}
+
+// Tall 9:16 images (e.g. phone stories).
+.project-images--tall {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 9 / 16;
+  }
+}
+
 // Concept images: a masonry locked to two columns so the four shots read as a
 // tidy 2×2 block while each keeps its natural ratio (no cropping).
 .concept-images {
@@ -722,6 +746,19 @@
 .project-split--portrait {
   @include respond-to(tablet) {
     grid-template-columns: 1fr 170px;
+  }
+}
+
+// Poster on the left, text on the right, vertically centered (e.g. film poster in Histoire).
+.project-split--poster {
+  align-items: center;
+
+  @include respond-to(tablet) {
+    grid-template-columns: 320px 1fr;
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: 420px 1fr;
   }
 }
 
@@ -859,6 +896,11 @@
 // 4:3 photo carousel (e.g. photo gallery).
 .project-carousel--photo .project-carousel__slide {
   aspect-ratio: 4 / 3;
+}
+
+// 16:9 carousel (e.g. film photo gallery).
+.project-carousel--wide .project-carousel__slide {
+  aspect-ratio: 16 / 9;
 }
 
 // Narrow portrait carousel sitting beside text (e.g. character gallery in Histoire).

@@ -8,6 +8,7 @@ const paths = [
   "",
   "/a-propos",
   "/projets/my-morning-routine",
+  "/projets/n-etre-qu-humain",
   "/projets/cycles",
   "/projets/le-peuple-aux-mille-dieux",
   "/projets/quest-for-life",

@@ -17,6 +17,8 @@ interface ProjectInfoStripProps {
   // Overrides the "Engine" column label (e.g. "Support" for a board game).
   engineLabel?: string;
   genres?: string[];
+  // Overrides the "Genres" column label (e.g. "Thèmes" for a film).
+  genresLabel?: string;
 }
 
 const STATUS_DOT: Record<ProjectStatus, string> = {
@@ -45,6 +47,7 @@ export default function ProjectInfoStrip({
   engine,
   engineLabel,
   genres,
+  genresLabel,
 }: ProjectInfoStripProps) {
   const t = useTranslations("projectPage");
   const ts = useTranslations("projects.status");
@@ -121,7 +124,7 @@ export default function ProjectInfoStrip({
 
         {genres && genres.length > 0 && (
           <div className="project-info-strip__col project-info-strip__col--genres">
-            <span className="project-info-strip__col-label">{t("genres")}</span>
+            <span className="project-info-strip__col-label">{genresLabel ?? t("genres")}</span>
             <div className="project-info-strip__col-value project-info-strip__col-value--wrap">
               {genres.map((g, i) => (
                 <Fragment key={g}>
