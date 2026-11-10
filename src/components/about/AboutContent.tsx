@@ -4,7 +4,11 @@ import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { LinkedInIcon, MailIcon, PhoneIcon, DownloadIcon, OpenInNewIcon, ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/Icons";
+import {
+  LinkedInIcon, MailIcon, PhoneIcon, DownloadIcon, OpenInNewIcon, ArrowLeftIcon, ArrowRightIcon,
+  HeartIcon, PencilIcon, FootprintsIcon, FeatherIcon, ScissorsIcon, MusicIcon, FilmIcon,
+  RocketIcon, WandIcon, GhostIcon, LeafIcon,
+} from "@/components/ui/Icons";
 import Recommendation from "@/components/about/Recommendation";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -42,17 +46,20 @@ const favoriteGames = [
   "Little Nightmares"
 ];
 
+// Highlighted with a heart. TODO: placeholder pick until Jodie chooses her favourites.
+const topGames = new Set(["Zelda: BOTW"]);
+
 const hobbies = [
-  { fr: "Dessin", en: "Drawing", emoji: "✏️" },
-  { fr: "Danse", en: "Dance", emoji: "💃" },
-  { fr: "Écriture", en: "Writing", emoji: "📝" },
-  { fr: "Craft", en: "Craft", emoji: "✂️" },
-  { fr: "Musique", en: "Music", emoji: "🎵" },
-  { fr: "Cinéma", en: "Cinema", emoji: "🎬" },
-  { fr: "Sci-Fi", en: "Sci-Fi", emoji: "🚀" },
-  { fr: "Fantastique", en: "Fantasy", emoji: "🧙" },
-  { fr: "Horreur", en: "Horror", emoji: "👻" },
-  { fr: "Nature et Science", en: "Nature & Science", emoji: "🌿" },
+  { fr: "Dessin", en: "Drawing", icon: <PencilIcon /> },
+  { fr: "Danse", en: "Dance", icon: <FootprintsIcon /> },
+  { fr: "Écriture", en: "Writing", icon: <FeatherIcon /> },
+  { fr: "Craft", en: "Craft", icon: <ScissorsIcon /> },
+  { fr: "Musique", en: "Music", icon: <MusicIcon /> },
+  { fr: "Cinéma", en: "Cinema", icon: <FilmIcon /> },
+  { fr: "Sci-Fi", en: "Sci-Fi", icon: <RocketIcon /> },
+  { fr: "Fantastique", en: "Fantasy", icon: <WandIcon /> },
+  { fr: "Horreur", en: "Horror", icon: <GhostIcon /> },
+  { fr: "Nature et Science", en: "Nature & Science", icon: <LeafIcon /> },
 ];
 
 function getGamesMask(showLeft: boolean, showRight: boolean): string {
@@ -202,7 +209,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             <div className="about__cv-glow" aria-hidden />
             <span className="about__card-eyebrow">{t("cv")}</span>
             <h2 className="about__card-title">{t("downloadCV")}</h2>
-            <div className="about__cv-action">
+            <div className="about__card-action">
               <DownloadIcon />
               <span>PDF</span>
             </div>
@@ -221,7 +228,10 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             <span className="about__card-eyebrow">{t("moreWork")}</span>
             <h3 className="about__card-title">{t("itchioPage")}</h3>
             <p className="about__card-desc">{t("moreWorkDesc")}</p>
-            <div className="about__itch-arrow"><OpenInNewIcon /></div>
+            <div className="about__card-action">
+              <span>{t("itchProfile")}</span>
+              <OpenInNewIcon />
+            </div>
           </motion.a>
 
           {/* Games */}
@@ -240,8 +250,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
                   style={{ WebkitMaskImage: gamesRow1Mask, maskImage: gamesRow1Mask }}
                 >
                   {gamesRow1.map((game) => (
-                    <span key={game} className="about__tag about__tag--game">
-                      <span className="about__tag-icon">🎮</span>
+                    <span
+                      key={game}
+                      className={`about__tag about__tag--game${topGames.has(game) ? " about__tag--top" : ""}`}
+                    >
+                      {topGames.has(game) && <span className="about__tag-icon"><HeartIcon /></span>}
                       {game}
                     </span>
                   ))}
@@ -252,8 +265,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
                   style={{ WebkitMaskImage: gamesRow2Mask, maskImage: gamesRow2Mask }}
                 >
                   {gamesRow2.map((game) => (
-                    <span key={game} className="about__tag about__tag--game">
-                      <span className="about__tag-icon">🎮</span>
+                    <span
+                      key={game}
+                      className={`about__tag about__tag--game${topGames.has(game) ? " about__tag--top" : ""}`}
+                    >
+                      {topGames.has(game) && <span className="about__tag-icon"><HeartIcon /></span>}
                       {game}
                     </span>
                   ))}
@@ -287,7 +303,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             <div className="about__tags">
               {hobbies.map((hobby) => (
                 <span key={hobby.en} className="about__tag">
-                  <span className="about__tag-icon">{hobby.emoji}</span>
+                  <span className="about__tag-icon">{hobby.icon}</span>
                   {locale === "fr" ? hobby.fr : hobby.en}
                 </span>
               ))}
