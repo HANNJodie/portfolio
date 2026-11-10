@@ -18,7 +18,8 @@
     "cta": "Voir mes projets",
     "ctaAll": "Voir tous mes projets",
     "ctaAbout": "À propos de moi",
-    "scroll": "Défiler"
+    "scroll": "Défiler",
+    "discover": "Découvrir"
   },
   "projects": {
     "title": "Projets réalisés",
@@ -90,7 +91,8 @@
       "relation": "Mentor de Jodie · Programme DAU",
       "date": "Juin 2026",
       "link": "Voir sur LinkedIn"
-    }
+    },
+    "itchProfile": "Voir le profil"
   },
   "footer": {
     "thanks": "Merci pour votre attention.",
