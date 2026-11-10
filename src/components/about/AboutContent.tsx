@@ -24,6 +24,27 @@ const fromRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: BASE_DELAY } },
 };
 
+// Cards below the fold play when scrolled into view, not on page load.
+// `load` is the card's slot in the page-load sequence: a card already on
+// screen at load still waits for it, so it never beats the cards above.
+// Once that moment has passed, only `row` staggers cards entering together.
+const IN_VIEW = { once: true, amount: 0.25 } as const;
+
+type Stagger = { load: number; row: number; start: number };
+
+const delayFor = ({ load, row, start }: Stagger) =>
+  Math.max(row, BASE_DELAY + load - (performance.now() - start) / 1000);
+
+const riseInView = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (s: Stagger) => ({ opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: delayFor(s) } }),
+};
+
+const fromLeftInView = {
+  hidden: { opacity: 0, x: -40 },
+  visible: (s: Stagger) => ({ opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE, delay: delayFor(s) } }),
+};
+
 const fromBottom = (delay: number) => ({
   hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: BASE_DELAY + delay } },
@@ -74,6 +95,8 @@ function getGamesMask(showLeft: boolean, showRight: boolean): string {
 
 export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
   const t = useTranslations("about");
+  const [start] = useState(() => performance.now());
+  const at = (load: number, row: number): Stagger => ({ load, row, start });
 
   const gamesRow1Ref = useRef<HTMLDivElement>(null);
   const gamesRow2Ref = useRef<HTMLDivElement>(null);
@@ -202,9 +225,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--cv"
-            variants={fromBottom(0.54)}
+            variants={riseInView}
+            custom={at(0.54, 0)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <div className="about__cv-glow" aria-hidden />
             <span className="about__card-eyebrow">{t("cv")}</span>
@@ -221,9 +246,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--itch"
-            variants={fromBottom(0.66)}
+            variants={riseInView}
+            custom={at(0.66, 0.12)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <span className="about__card-eyebrow">{t("moreWork")}</span>
             <h3 className="about__card-title">{t("itchioPage")}</h3>
@@ -237,9 +264,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           {/* Games */}
           <motion.div
             className="about__card about__card--games"
-            variants={fromBottom(0.78)}
+            variants={riseInView}
+            custom={at(0.78, 0)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <span className="about__card-eyebrow">{t("favoriteGames")}</span>
             <div className="about__games-scroll">
@@ -295,9 +324,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           {/* Hobbies */}
           <motion.div
             className="about__card about__card--hobbies"
-            variants={fromBottom(0.9)}
+            variants={riseInView}
+            custom={at(0.9, 0.12)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <span className="about__card-eyebrow">{t("hobbies")}</span>
             <div className="about__tags">
@@ -320,9 +351,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
         <div className="about__bento about__bento--contact">
           <motion.div
             className="about__card about__card--contact-title"
-            variants={fromLeft}
+            variants={fromLeftInView}
+            custom={at(0.96, 0)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <span className="about__card-eyebrow">{locale === "fr" ? "Travaillons ensemble." : "Let's work together."}</span>
             <h2 className="about__card-title">
@@ -335,9 +368,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--contact about__card--contact-linkedin"
-            variants={fromBottom(1.02)}
+            variants={riseInView}
+            custom={at(1.02, 0.12)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <div className="about__contact-info">
               <LinkedInIcon />
@@ -352,9 +387,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           <motion.a
             href="mailto:jodieml.hann@gmail.com"
             className="about__card about__card--contact about__card--contact-mail"
-            variants={fromBottom(1.14)}
+            variants={riseInView}
+            custom={at(1.14, 0.24)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <div className="about__contact-info">
               <MailIcon />
@@ -369,9 +406,11 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
           <motion.a
             href="tel:+33659823037"
             className="about__card about__card--contact about__card--contact-phone"
-            variants={fromBottom(1.26)}
+            variants={riseInView}
+            custom={at(1.26, 0.36)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={IN_VIEW}
           >
             <div className="about__contact-info">
               <PhoneIcon />
