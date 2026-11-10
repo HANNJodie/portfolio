@@ -1078,6 +1078,14 @@
   aspect-ratio: 16 / 9;
 }
 
+// Game box art at its native ratio (e.g. Quest for Life case cover).
+.project-images--box {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 19 / 22;
+  }
+}
+
 // Transparent illustration shown as-is: no frame, no crop (e.g. Game Over screen).
 .project-images--bare {
   .project-images__grid {
