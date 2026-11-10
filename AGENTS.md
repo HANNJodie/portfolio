@@ -225,7 +225,7 @@ Repères utilisés dans les pages projet :
 |---|---|---|
 | Apparition au scroll d'un bloc | `<ScrollReveal>` (GSAP, start `top 85%`, y 40, 0.8 s) | sections, images, carrousels, cartes |
 | Hero de projet | GSAP timeline : tagline → titre → date → indicateur « Défiler » + parallax de l'image (`y: 80`, scrub) | `ProjectHero` |
-| Entrées du bento (accueil / À propos) | framer-motion `variants` `hidden`/`visible`, `BASE_DELAY = 0.35`, cartes du bas décalées de `0.12 s` | `Hero`, `AboutContent` |
+| Entrées du bento (accueil / À propos) | framer-motion `variants` `hidden`/`visible`, `BASE_DELAY = 0.35`, cartes du bas décalées de `0.12 s` ; sous la ligne de flottaison : `whileInView` + `viewport={IN_VIEW}` (décalage par ligne seulement) | `Hero`, `AboutContent` |
 | Menus (dropdown, menu mobile) | framer-motion `AnimatePresence` + spring (`stiffness 300–400`, `damping 20–25`) | `Header` |
 | Titre de section accueil | GSAP stagger 0.15 s | `SectionTitle` |
 | Recommandation | framer-motion `whileInView`, `once`, `amount: 0.25` | `Recommendation` |
