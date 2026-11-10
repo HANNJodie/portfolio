@@ -43,7 +43,7 @@ const COPY = {
     teamLabel: "1 GD · 4 3D · 5 graphistes",
     roleLabel: "Game Designer / Dev",
     genres: ["Aventure", "Énigmes", "Speedrun", "Horreur"],
-    labels: { concept: "Concept", work: "Mon travail", story: "Histoire", team: "L'équipe", box: "Jaquette" },
+    labels: { concept: "Concept", work: "Mon travail", story: "Histoire", team: "L'équipe" },
     cta: "Jouer",
     topCta: "Jouer au jeu",
     openLink: "Ouvrir le lien",
@@ -63,7 +63,7 @@ const COPY = {
     teamLabel: "1 GD · 4 3D · 5 artists",
     roleLabel: "Game Designer / Dev",
     genres: ["Adventure", "Puzzle", "Speedrun", "Horror"],
-    labels: { concept: "Concept", work: "My work", story: "Story", team: "The team", box: "Box art" },
+    labels: { concept: "Concept", work: "My work", story: "Story", team: "The team" },
     cta: "Play",
     topCta: "Play the game",
     openLink: "Open link",
@@ -130,14 +130,7 @@ export default async function QuestForLifePage() {
           <div className="project-section__lead">
             <RichText text={c.team} />
           </div>
-        </ProjectSection>
-
-        <ProjectSection label={c.labels.box}>
-          <ProjectImages
-            images={BOX_IMAGES}
-            className="project-images--box project-images--two-cols"
-            style={{ paddingTop: 0 }}
-          />
+          <ProjectImages images={BOX_IMAGES} className="project-images--box project-images--two-cols" />
         </ProjectSection>
       </div>
 
