@@ -206,7 +206,7 @@ export default async function NEtreQuHumainPage() {
             <div className="project-section__lead">
               <RichText text={c.team} />
             </div>
-            <ProjectLinkCard href={TEAM_REEL} title={c.teamCard} subtitle={c.teamCardSub} />
+            <ProjectLinkCard href={TEAM_REEL} title={c.teamCard} subtitle={c.teamCardSub} kind="video" />
           </div>
         </ProjectSection>
 
