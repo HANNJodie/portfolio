@@ -441,8 +441,8 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
 
 - **L'ordre du tableau = l'ordre partout** : grille de l'accueil, menu déroulant « Mes projets »,
   menu mobile, navigation précédent/suivant, et les 4 cartes du bento d'accueil
-  (`projects.slice(0, 4)`, la 1ʳᵉ marquée « À la une »). Le 1ᵉʳ projet est aussi la grande carte
-  pleine largeur de la grille. Ajouter un projet « en numéro 1 » = l'insérer en tête du tableau.
+  (`projects.slice(0, 4)`, la 1ʳᵉ marquée « À la une »). Dans la grille, toutes les cartes ont la
+  même taille. Ajouter un projet « en numéro 1 » = l'insérer en tête du tableau.
 - Champs obligatoires : `slug`, `title`, `date {fr,en}`, `tagline {fr,en}`, `description {fr,en}`
   (extrait de la carte, tronqué à 3 lignes), `images` (souvent `[]`), `heroImage`, `status`.
 - Le `slug` = nom du dossier de la page = segment d'URL (`/projets/<slug>`), en kebab-case.
