@@ -352,7 +352,7 @@ Une page sans contenu encore prêt garde au minimum Hero + Nav et un `{/* TODO: 
 | `ProjectImages` | grille d'images avec lightbox | voir §7.2 pour les variantes |
 | `ProjectMasonry` | mosaïque « Pinterest » sans recadrage | exige `width`/`height` réels de chaque image |
 | `ProjectCarousel` | carrousel 1 image à la fois, flèches + points | `project-carousel--portrait` = 9:16 à côté d'un texte ; `project-carousel--photo` = 4:3 (galerie photo) |
-| `ProjectInstagram` | publication Instagram intégrée (`embed.js` officiel, hauteur automatique) | props `url`, `fallback` (texte du lien avant chargement) |
+| `ProjectInstagram` | publication Instagram refaite dans le style du site (carrousel à gauche, texte + lien à droite), sans script tiers | props `url`, `account`, `meta`, `title`, `text`, `credit`, `linkLabel`, `images` (la 1ʳᵉ image est celle affichée d'abord) |
 | `ProjectVideo` | YouTube 16:9 | prop `videoId` ; légende avec `<p className="project-caption">` |
 | `ProjectCTA` | bouton final + téléchargements + liens | se masque tout seul s'il n'a rien à afficher |
 | `ProjectNav` | précédent / suivant | `getAdjacentProjects(SLUG)` |

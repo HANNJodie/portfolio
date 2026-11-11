@@ -16,7 +16,8 @@ import { getAdjacentProjects } from "@/data/projects";
 const SLUG = "n-etre-qu-humain";
 const DIR = "/images/VOX MILO";
 const HERO_IMAGE = `${DIR}/cover.webp`;
-const FILM_URL = "https://youtu.be/ok_76FNiaVE";
+const FILM_ID = "ok_76FNiaVE";
+const FILM_URL = `https://youtu.be/${FILM_ID}`;
 const SOUNDTRACK_ID = "2QwlIPYhqQs";
 const TEAM_REEL = "https://www.instagram.com/reels/DWWGFbxAGU_/";
 const AWARD_POST = "https://www.instagram.com/p/DWJhb6dCH9g";
@@ -31,6 +32,13 @@ const STORYBOARD_IMAGES = [1, 2, 3, 4].map((n) => ({
 }));
 const POSTER_IMAGES = [{ src: `${DIR}/affiche.webp`, alt: "Affiche — N'Être qu'Humain" }];
 const AWARD_IMAGES = [{ src: `${DIR}/remise-des-prix.webp`, alt: "Remise des prix Vox Milo 2026" }];
+// The 14 photos of the Quinzaine's Instagram post (numbered in the post's
+// order), starting with the last one, where Jodie takes the mic.
+const QUINZAINE_POST_IMAGES = [14, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((n) => ({
+  src: `${DIR}/quinzaine-post-${String(n).padStart(2, "0")}.webp`,
+  alt: `Rencontre pro autour de Carmen, l'oiseau rebelle (${n}/14)`,
+}));
+
 const QUINZAINE_IMAGES = [
   { src: `${DIR}/quinzaine-1.webp`, alt: "Quinzaine des Réalisateurs, Cannes 2026" },
   { src: `${DIR}/quinzaine-2.webp`, alt: "Rencontre avec l'équipe du film" },
@@ -62,7 +70,6 @@ const COPY = {
       gallery: "En images",
     },
     watch: "Voir le film",
-    watchSub: "Sur YouTube",
     teamCard: "L'équipe en vidéo",
     teamCardSub: "Sur Instagram",
     storyboardHeading: "Extraits du storyboard",
@@ -79,6 +86,13 @@ const COPY = {
       "Le projet a été réalisé par une équipe de 8 jeunes amateurs : <b>Jodie HANN</b>, <b>Océane CASTEL--GICQUEL</b>, <b>Gabriel ROBINET</b>, <b>Nicolas GUIQUE</b>, <b>Celena ESCOBAR</b>, <b>Elyne LEFEVRE</b> et <b>Lola BELLET</b>.\nLe tout sous le regard bienveillant de <b>Nicolas MINISCALCO</b>, accompagnateur de la Mission Locale du Coudon au Gapeau.",
     quinzaine:
       "En tant que réalisatrice, j'ai eu la chance de pouvoir me rendre à la Quinzaine des Réalisateurs à Cannes en mai 2026, où j'ai pu voir de nombreux films d'auteurs et de grands réalisateurs, discuter avec leurs créateurs et leurs équipes, et assister et participer à des sessions de Q&A. Ce fut une expérience particulièrement enrichissante, où j'ai pu grandement cultiver mes compétences et mes connaissances dans le domaine de la narration et du cinéma.",
+    post: {
+      meta: "Cannes · mai 2026",
+      title: "Rencontre pro #2, retour en images",
+      text: "Deuxième rencontre pro autour du film d'animation <i>Carmen, l'oiseau rebelle</i> réalisé par Sébastien Laudenbach, avec Santiago Otheguy, Cyril Pedrosa, Soumaye Bocoum et Maude Gravas.",
+      credit: "Photos : @guillaume_hart",
+      link: "Voir sur Instagram",
+    },
     soundtrack: "Auteure-compositrice-interprète : <b>Jodie HANN</b> · Piano : <b>Nicolas GUIQUE</b>",
   },
   en: {
@@ -102,7 +116,6 @@ const COPY = {
       gallery: "In pictures",
     },
     watch: "Watch the film",
-    watchSub: "On YouTube",
     teamCard: "Meet the team",
     teamCardSub: "On Instagram",
     storyboardHeading: "Storyboard excerpts",
@@ -119,6 +132,13 @@ const COPY = {
       "The project was made by a team of 8 young amateurs: <b>Jodie HANN</b>, <b>Océane CASTEL--GICQUEL</b>, <b>Gabriel ROBINET</b>, <b>Nicolas GUIQUE</b>, <b>Celena ESCOBAR</b>, <b>Elyne LEFEVRE</b> and <b>Lola BELLET</b>.\nAll under the caring eye of <b>Nicolas MINISCALCO</b>, youth advisor at the Mission Locale du Coudon au Gapeau.",
     quinzaine:
       "As the director, I had the chance to attend the Directors' Fortnight in Cannes in May 2026, where I watched many auteur films and works by great directors, talked with their creators and crews, and attended and took part in Q&A sessions. It was a particularly enriching experience that greatly helped me grow my skills and knowledge of storytelling and filmmaking.",
+    post: {
+      meta: "Cannes · May 2026",
+      title: "Pro talk #2, a look back",
+      text: "Second professional talk around the animated film <i>Carmen, l'oiseau rebelle</i> directed by Sébastien Laudenbach, with Santiago Otheguy, Cyril Pedrosa, Soumaye Bocoum and Maude Gravas.",
+      credit: "Photos: @guillaume_hart",
+      link: "View on Instagram",
+    },
     soundtrack: "Songwriter, composer & performer: <b>Jodie HANN</b> · Piano: <b>Nicolas GUIQUE</b>",
   },
 };
@@ -152,12 +172,11 @@ export default async function NEtreQuHumainPage() {
 
       <div className="project-sections">
         <ProjectSection label={c.labels.project}>
-          <div className="project-section__concept">
-            <div className="project-section__lead">
-              <RichText text={c.project} />
-            </div>
-            <ProjectLinkCard href={FILM_URL} title={c.watch} subtitle={c.watchSub} />
+          <div className="project-section__lead">
+            <RichText text={c.project} />
           </div>
+          {/* The film is the project: play it right here. */}
+          <ProjectVideo videoId={FILM_ID} title={c.watch} />
         </ProjectSection>
 
         <ProjectSection label={c.labels.work}>
@@ -208,7 +227,16 @@ export default async function NEtreQuHumainPage() {
             className="project-images--tall project-images--two-cols"
             images={QUINZAINE_IMAGES}
           />
-          <ProjectInstagram url={QUINZAINE_POST} fallback={c.seePost} />
+          <ProjectInstagram
+            url={QUINZAINE_POST}
+            account="laquinzaineenactions"
+            meta={c.post.meta}
+            title={c.post.title}
+            text={c.post.text}
+            credit={c.post.credit}
+            linkLabel={c.post.link}
+            images={QUINZAINE_POST_IMAGES}
+          />
         </ProjectSection>
 
         <ProjectSection label={c.labels.soundtrack}>
