@@ -10,18 +10,19 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 interface ProjectCardProps {
   project: Project;
   index: number;
-  featured?: boolean;
 }
 
-export default function ProjectCard({ project, index, featured = false }: ProjectCardProps) {
+export default function ProjectCard({ project, index }: ProjectCardProps) {
   const t = useTranslations("projects");
   const locale = useLocale() as "fr" | "en";
 
   return (
-    <ScrollReveal delay={index * 0.1}>
+    // Stagger within a row only (2 columns): a delay growing with the index
+    // made lower cards wait up to a second after they scrolled into view.
+    <ScrollReveal delay={(index % 2) * 0.1}>
       <Link href={`/projets/${project.slug}` as `/projets/${string}`}>
         <motion.article
-          className={`project-card ${featured ? "project-card--featured" : ""}`}
+          className="project-card"
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <div className="project-card__image">
@@ -29,7 +30,7 @@ export default function ProjectCard({ project, index, featured = false }: Projec
               src={project.heroImage}
               alt={project.title}
               fill
-              sizes={featured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+              sizes="(max-width: 768px) 100vw, 50vw"
               style={{ objectFit: "cover" }}
               unoptimized
             />
