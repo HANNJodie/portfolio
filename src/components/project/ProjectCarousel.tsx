@@ -40,8 +40,9 @@ export default function ProjectCarousel({ images, className = "" }: ProjectCarou
   const scrollToIndex = useCallback((index: number) => {
     const track = trackRef.current;
     if (!track) return;
-    const clamped = Math.max(0, Math.min(index, images.length - 1));
-    track.scrollTo({ left: clamped * track.clientWidth, behavior: "smooth" });
+    // Wrap around: past the last slide goes back to the first, and vice versa.
+    const wrapped = (index + images.length) % images.length;
+    track.scrollTo({ left: wrapped * track.clientWidth, behavior: "smooth" });
   }, [images.length]);
 
   if (images.length === 0) return null;
@@ -71,7 +72,6 @@ export default function ProjectCarousel({ images, className = "" }: ProjectCarou
             type="button"
             className="project-carousel__arrow project-carousel__arrow--prev"
             onClick={() => scrollToIndex(active - 1)}
-            disabled={active === 0}
             aria-label="Précédent"
           >
             <ArrowLeftIcon />
@@ -80,7 +80,6 @@ export default function ProjectCarousel({ images, className = "" }: ProjectCarou
             type="button"
             className="project-carousel__arrow project-carousel__arrow--next"
             onClick={() => scrollToIndex(active + 1)}
-            disabled={active === images.length - 1}
             aria-label="Suivant"
           >
             <ArrowRightIcon />
