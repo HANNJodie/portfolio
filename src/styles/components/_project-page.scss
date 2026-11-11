@@ -447,6 +447,186 @@
   }
 }
 
+// ─── Instagram post rebuilt in the site's style ───────────────────────────
+// Photos (our carousel) on the left, the post's text on the right.
+.project-post {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: $space-2xl;
+  overflow: hidden;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+
+  @include respond-to(tablet) {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  }
+
+  &__media {
+    position: relative;
+    background: $color-text-heading;
+
+    // Side by side: the photo column is as tall as the text, never squat.
+    @include respond-to(tablet) {
+      min-height: 420px;
+    }
+  }
+
+  &__body {
+    @include flex-column;
+    gap: $space-md;
+    padding: $space-lg;
+
+    @include respond-to(tablet) {
+      padding: $space-xl;
+    }
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+  }
+
+  &__avatar {
+    @include flex-center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    background: $color-bg-alt;
+    color: $color-violet;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__who {
+    @include flex-column;
+    min-width: 0;
+  }
+
+  &__account {
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $color-text-heading;
+  }
+
+  &__meta {
+    font-size: $font-size-xs;
+    color: $color-text-light;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    line-height: 1.25;
+    color: $color-text-heading;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: $font-size-sm;
+    line-height: 1.7;
+    color: $color-text-muted;
+  }
+
+  &__credit {
+    margin: 0;
+    font-size: $font-size-xs;
+    color: $color-text-light;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 9px 16px;
+    border: 1px solid rgba($color-violet, 0.3);
+    border-radius: $radius-full;
+    font-family: $font-display;
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-violet;
+    text-decoration: none;
+    transition: background $transition-fast, border-color $transition-fast, color $transition-fast;
+    @include focus-ring;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    &:hover {
+      background: $color-violet;
+      border-color: $color-violet;
+      color: white;
+    }
+  }
+}
+
+// Carousel filling the post's photo column: no frame of its own, dots over the image.
+// Phones: a 3:2 photo above the text. Tablet+: fills the whole column height.
+// Scoped under .project-post so it beats the base .project-carousel declared further down.
+.project-post .project-carousel--post {
+  position: relative;
+  padding-top: 0;
+
+  .project-carousel__track {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .project-carousel__slide {
+    aspect-ratio: 3 / 2;
+  }
+
+  @include respond-to(tablet) {
+    position: absolute;
+    inset: 0;
+
+    .project-carousel__viewport,
+    .project-carousel__track {
+      height: 100%;
+    }
+
+    .project-carousel__slide {
+      aspect-ratio: auto;
+      height: 100%;
+    }
+  }
+
+  .project-carousel__arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .project-carousel__dots {
+    position: absolute;
+    bottom: $space-md;
+    left: 0;
+    right: 0;
+    margin: 0;
+    z-index: 2;
+  }
+
+  .project-carousel__dot {
+    background: rgba(255, 255, 255, 0.5);
+
+    &.is-active {
+      background: white;
+    }
+  }
+}
+
 // ─── Third-party embed (e.g. LinkedIn post) ────────────────────────────────
 // A cross-origin iframe can't size itself to its content: the heights below are
 // measured on the collapsed LinkedIn post at each breakpoint.
@@ -634,6 +814,30 @@
   }
 }
 
+// A4 landscape pages (e.g. storyboard), so their text isn't cropped.
+.project-images--a4 {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 297 / 210;
+  }
+}
+
+// Film poster at its native ratio (≈ 2:3), so the credits aren't cropped.
+.project-images--poster {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 2560 / 3955;
+  }
+}
+
+// Tall 9:16 images (e.g. phone stories).
+.project-images--tall {
+  .project-images__item,
+  .project-images__item:only-child {
+    aspect-ratio: 9 / 16;
+  }
+}
+
 // Concept images: a masonry locked to two columns so the four shots read as a
 // tidy 2×2 block while each keeps its natural ratio (no cropping).
 .concept-images {
@@ -722,6 +926,19 @@
 .project-split--portrait {
   @include respond-to(tablet) {
     grid-template-columns: 1fr 170px;
+  }
+}
+
+// Poster on the left, text on the right, vertically centered (e.g. film poster in Histoire).
+.project-split--poster {
+  align-items: center;
+
+  @include respond-to(tablet) {
+    grid-template-columns: 320px 1fr;
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: 420px 1fr;
   }
 }
 
@@ -859,6 +1076,11 @@
 // 4:3 photo carousel (e.g. photo gallery).
 .project-carousel--photo .project-carousel__slide {
   aspect-ratio: 4 / 3;
+}
+
+// 16:9 carousel (e.g. film photo gallery).
+.project-carousel--wide .project-carousel__slide {
+  aspect-ratio: 16 / 9;
 }
 
 // Narrow portrait carousel sitting beside text (e.g. character gallery in Histoire).

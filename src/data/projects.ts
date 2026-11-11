@@ -33,6 +33,29 @@ export const projects: Project[] = [
     status: "released",
   },
   {
+    slug: "n-etre-qu-humain",
+    title: "N'ÊTRE QU'HUMAIN",
+    date: {
+      fr: "Octobre 2025 – Mai 2026",
+      en: "October 2025 – May 2026",
+    },
+    tagline: {
+      fr: "Court métrage - Vox Milo 2026",
+      en: "Short film - Vox Milo 2026",
+    },
+    description: {
+      fr: "« N'Être qu'Humain » est un court métrage de 7 minutes, lauréat du prix « Graine de Cinéaste » au Festival Vox Milo 2026. Il traite de la solitude croissante chez les jeunes malgré l'avènement d'un monde hyperconnecté.",
+      en: "“N'Être qu'Humain” (Only Human) is a 7-minute short film that won the “Graine de Cinéaste” award at the Vox Milo 2026 Festival. It explores the growing loneliness of young people in a hyperconnected world.",
+    },
+    roleSummary: {
+      fr: "Réalisatrice",
+      en: "Director",
+    },
+    images: [],
+    heroImage: "/images/VOX MILO/cover.webp",
+    status: "released",
+  },
+  {
     slug: "ascend",
     title: "ASCEND",
     date: {
@@ -360,12 +383,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const upcomingProjects = [
-  {
-    title: "Court Métrage Vox Milo 2026",
-    titleEn: "Vox Milo 2026 Short Film",
-  },
-];
+export const upcomingProjects: { title: string; titleEn: string }[] = [];
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
