@@ -9,7 +9,7 @@ import ProjectDownloadCTA from "@/components/project/ProjectDownloadCTA";
 import ProjectCarousel from "@/components/project/ProjectCarousel";
 import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
-import { GamepadIcon, DownloadIcon } from "@/components/ui/Icons";
+import { DownloadIcon } from "@/components/ui/Icons";
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
 
 const SLUG = "cycles";
@@ -118,7 +118,7 @@ export default async function CyclesPage() {
               href={DEMO}
               title={c.topCta}
               subtitle={c.openLink}
-              icon={<GamepadIcon />}
+              kind="game"
             />
           </div>
         </ProjectSection>

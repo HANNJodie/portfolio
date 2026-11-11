@@ -357,73 +357,115 @@
 }
 
 // ─── Concept link card ─────────────────────────────────────────────────────
+// Compact sibling of .project-download-cta: same dark surface and glow, with
+// the link type shown as a large watermark icon cropped in the corner.
 .project-link-card {
+  position: relative;
+  overflow: hidden;
   flex-shrink: 0;
   width: 100%;
-  text-decoration: none;
+  min-height: 170px;
   @include flex-column;
-  gap: $space-md;
-  background: $color-bg-white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: $radius-md;
-  padding: $space-md;
-  box-shadow: $shadow-md;
-  transition: transform $transition-base, box-shadow $transition-base,
-    border-color $transition-base;
+  justify-content: space-between;
+  gap: $space-lg;
+  padding: $space-lg;
+  border-radius: $radius-xl;
+  background: $color-text-heading;
+  color: white;
+  text-decoration: none;
+  box-shadow: $shadow-lg;
+  transition: transform $transition-base, box-shadow $transition-base;
+  @include focus-ring;
 
   @include respond-to(tablet) {
-    width: 180px;
+    width: 210px;
   }
 
   &:hover {
-    border-color: rgba($color-violet, 0.3);
     transform: translateY(-3px);
-    box-shadow: $shadow-lg;
+    box-shadow: $shadow-xl;
   }
 
-  &__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  &__glow {
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at 80% 20%, rgba($color-violet, 0.45), transparent 55%),
+                radial-gradient(circle at 20% 80%, rgba($color-pink, 0.35), transparent 55%);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity $transition-base;
 
-  &__icon {
-    width: 34px;
-    height: 34px;
-    border-radius: $radius-sm;
-    background: $gradient-aurora;
-    background-size: 200% 200%;
-    animation: gradient-shift 5s ease infinite;
-    color: #fff;
-    @include flex-center;
-
-    svg {
-      width: 16px;
-      height: 16px;
+    .project-link-card:hover & {
+      opacity: 1;
     }
   }
 
-  &__arrow {
-    color: $color-text-light;
+  &__watermark {
+    position: absolute;
+    right: -22px;
+    bottom: -26px;
+    color: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+    transition: transform $transition-slow, color $transition-base;
 
     svg {
-      width: 17px;
-      height: 17px;
+      width: 130px;
+      height: 130px;
     }
+
+    .project-link-card:hover & {
+      color: rgba(255, 255, 255, 0.12);
+      transform: rotate(-8deg) scale(1.05);
+    }
+  }
+
+  &__eyebrow,
+  &__body {
+    position: relative;
+  }
+
+  &__eyebrow,
+  &__sub {
+    font-family: $font-display;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  &__body {
+    @include flex-column;
+    gap: $space-sm;
   }
 
   &__title {
     font-family: $font-display;
-    font-size: $font-size-base;
+    font-size: $font-size-lg;
     font-weight: 600;
-    color: $color-text-heading;
-    margin-bottom: 3px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
   &__sub {
-    font-size: $font-size-xs;
-    color: $color-text-light;
-    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color $transition-fast;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      transition: transform $transition-base;
+    }
+
+    .project-link-card:hover & {
+      color: white;
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
   }
 }
 

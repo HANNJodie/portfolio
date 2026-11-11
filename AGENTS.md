@@ -109,7 +109,7 @@ espacement, un rayon ou une ombre en dur** si un token existe. Chaque fichier SC
 Règles :
 - Le **violet** est la couleur d'interaction : labels de section, puces, liens, hover, focus.
 - Le **dégradé aurora** est réservé aux éléments « signature » : nom dans le hero, bouton CTA
-  final, icône des link cards, soulignement du menu, guillemet de la recommandation, 404.
+  final, soulignement du menu, guillemet de la recommandation, 404.
   Il est **toujours animé** (`background-size: 200% 200%` + `animation: gradient-shift 4–5s ease infinite`).
 - Transparences : `rgba($color-violet, 0.1)` etc., pas de nouvelles couleurs hexadécimales.
 - Seule couleur de marque externe tolérée : bleu LinkedIn `#0A66C2` (badge recommandation).
@@ -168,7 +168,7 @@ Repères utilisés dans les pages projet :
   carrousel), `2xl 2rem`, `full` (pills/boutons). Bento accueil / À propos / recommandation :
   `20px` mobile, `24px` desktop.
 - Ombres : `$shadow-sm` → `$shadow-xl` + `$shadow-glow`. Images : `$shadow-lg`. Vidéo / carrousel :
-  `$shadow-xl`. Link card : `$shadow-md` → `$shadow-lg` au survol.
+  `$shadow-xl`. Link card : `$shadow-lg` → `$shadow-xl` au survol.
 - z-index : `$z-base 1`, `$z-header 100`, `$z-modal 200`, `$z-loader 300`, `$z-cursor 400`.
 
 ### 3.6 Transitions
@@ -347,7 +347,7 @@ Une page sans contenu encore prêt garde au minimum Hero + Nav et un `{/* TODO: 
 | `ProjectInfoStrip` | bande de métadonnées | `status` pilote la couleur, `statusLabel` le texte ; `engineLabel` renomme la colonne « Moteur » (ex. « Support » pour un jeu de plateau) |
 | `ProjectSection` | section avec label violet + `ScrollReveal` | contenu libre |
 | `RichText` | texte → paragraphes + listes | voir §6.5 |
-| `ProjectLinkCard` | petite carte lien (icône gradient + flèche) | à côté du texte dans `.project-section__concept` ; icône par défaut = lien externe, `GamepadIcon` pour un jeu |
+| `ProjectLinkCard` | petite carte lien sombre (version compacte de `ProjectDownloadCTA`) | à côté du texte dans `.project-section__concept` ; prop `kind` (`game`, `document`, `video`, `devblog`, `link` par défaut) = sur-titre + grande icône en filigrane |
 | `ProjectDownloadCTA` | grande carte sombre « Télécharger le GDD » | même langage que la carte CV de l'À propos |
 | `ProjectImages` | grille d'images avec lightbox | voir §7.2 pour les variantes |
 | `ProjectMasonry` | mosaïque « Pinterest » sans recadrage | exige `width`/`height` réels de chaque image |

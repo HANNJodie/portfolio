@@ -9,7 +9,6 @@ import ProjectVideo from "@/components/project/ProjectVideo";
 import ProjectImages from "@/components/project/ProjectImages";
 import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
-import { CodeIcon } from "@/components/ui/Icons";
 import { getAdjacentProjects } from "@/data/projects";
 
 const SLUG = "ascend";
@@ -83,7 +82,7 @@ export default async function AscendPage() {
               href={DEVBLOG}
               title={c.cta}
               subtitle={c.openLink}
-              icon={<CodeIcon />}
+              kind="devblog"
             />
           </div>
         </ProjectSection>
