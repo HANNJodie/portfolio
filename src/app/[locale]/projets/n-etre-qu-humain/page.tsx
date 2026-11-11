@@ -8,6 +8,7 @@ import ProjectLinkCard from "@/components/project/ProjectLinkCard";
 import ProjectImages from "@/components/project/ProjectImages";
 import ProjectCarousel from "@/components/project/ProjectCarousel";
 import ProjectVideo from "@/components/project/ProjectVideo";
+import ProjectInstagram from "@/components/project/ProjectInstagram";
 import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
 import { getAdjacentProjects } from "@/data/projects";
@@ -78,11 +79,6 @@ const COPY = {
       "Le projet a été réalisé par une équipe de 8 jeunes amateurs : <b>Jodie HANN</b>, <b>Océane CASTEL--GICQUEL</b>, <b>Gabriel ROBINET</b>, <b>Nicolas GUIQUE</b>, <b>Celena ESCOBAR</b>, <b>Elyne LEFEVRE</b> et <b>Lola BELLET</b>.\nLe tout sous le regard bienveillant de <b>Nicolas MINISCALCO</b>, accompagnateur de la Mission Locale du Coudon au Gapeau.",
     quinzaine:
       "En tant que réalisatrice, j'ai eu la chance de pouvoir me rendre à la Quinzaine des Réalisateurs à Cannes en mai 2026, où j'ai pu voir de nombreux films d'auteurs et de grands réalisateurs, discuter avec leurs créateurs et leurs équipes, et assister et participer à des sessions de Q&A. Ce fut une expérience particulièrement enrichissante, où j'ai pu grandement cultiver mes compétences et mes connaissances dans le domaine de la narration et du cinéma.",
-    quinzaineCaption: (
-      <>
-        Rencontre pro autour du film d&apos;animation <i>Carmen, l&apos;oiseau rebelle</i> réalisé par Sébastien Laudenbach
-      </>
-    ),
     soundtrack: "Auteure-compositrice-interprète : <b>Jodie HANN</b> · Piano : <b>Nicolas GUIQUE</b>",
   },
   en: {
@@ -123,11 +119,6 @@ const COPY = {
       "The project was made by a team of 8 young amateurs: <b>Jodie HANN</b>, <b>Océane CASTEL--GICQUEL</b>, <b>Gabriel ROBINET</b>, <b>Nicolas GUIQUE</b>, <b>Celena ESCOBAR</b>, <b>Elyne LEFEVRE</b> and <b>Lola BELLET</b>.\nAll under the caring eye of <b>Nicolas MINISCALCO</b>, youth advisor at the Mission Locale du Coudon au Gapeau.",
     quinzaine:
       "As the director, I had the chance to attend the Directors' Fortnight in Cannes in May 2026, where I watched many auteur films and works by great directors, talked with their creators and crews, and attended and took part in Q&A sessions. It was a particularly enriching experience that greatly helped me grow my skills and knowledge of storytelling and filmmaking.",
-    quinzaineCaption: (
-      <>
-        Professional talk around the animated film <i>Carmen, l&apos;oiseau rebelle</i> directed by Sébastien Laudenbach
-      </>
-    ),
     soundtrack: "Songwriter, composer & performer: <b>Jodie HANN</b> · Piano: <b>Nicolas GUIQUE</b>",
   },
 };
@@ -216,12 +207,8 @@ export default async function NEtreQuHumainPage() {
           <ProjectImages
             className="project-images--tall project-images--two-cols"
             images={QUINZAINE_IMAGES}
-            credit={
-              <>
-                {c.quinzaineCaption} · {postLink(QUINZAINE_POST)}
-              </>
-            }
           />
+          <ProjectInstagram url={QUINZAINE_POST} fallback={c.seePost} />
         </ProjectSection>
 
         <ProjectSection label={c.labels.soundtrack}>

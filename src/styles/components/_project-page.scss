@@ -447,6 +447,26 @@
   }
 }
 
+// ─── Instagram post (official embed.js, self-sizing) ──────────────────────
+.project-instagram {
+  display: flex;
+  justify-content: center;
+  margin-top: $space-2xl;
+
+  // Before embed.js runs: a plain centered link, same width as the post.
+  .instagram-media {
+    width: 100%;
+    max-width: 540px;
+    margin: 0;
+    text-align: center;
+
+    a {
+      color: $color-violet;
+      font-weight: 600;
+    }
+  }
+}
+
 // ─── Third-party embed (e.g. LinkedIn post) ────────────────────────────────
 // A cross-origin iframe can't size itself to its content: the heights below are
 // measured on the collapsed LinkedIn post at each breakpoint.
