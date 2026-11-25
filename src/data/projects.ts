@@ -208,47 +208,6 @@ export const projects: Project[] = [
     status: "hiatus",
   },
   {
-    slug: "rejoins-moi",
-    title: "REJOINS-MOI AVANT LA FIN DU MONDE",
-    date: {
-      fr: "23 – 26 Janvier 2024",
-      en: "January 23 – 26, 2024",
-    },
-    tagline: {
-      fr: "Angoisse & Labyrinthe",
-      en: "Anxiety & Labyrinth",
-    },
-    description: {
-      fr: "Ce petit jeu développé sur UNREAL ENGINE 5 à l'occasion de la GAME JAM BRASSART 2024 propose un gameplay qui joue sur l'ambiance et le stress. Développé autour du thème « Connexion Lost ».",
-      en: "This small game developed in UNREAL ENGINE 5 for the BRASSART 2024 GAME JAM features gameplay that plays on atmosphere and stress. Built around the theme 'Connection Lost'.",
-    },
-    role: {
-      fr: "Scénariste, Narrative Designer, Level designer, et System Designer.",
-      en: "Screenwriter, Narrative Designer, Level Designer, and System Designer.",
-    },
-    story: {
-      fr: "Vous êtes réveillés avant l'aube par des tremblements et de l'agitation. Vous décidez d'allumer votre télévision, et découvrez que votre ville est en alerte suite à un problème dans sa centrale nucléaire. Est-ce la fin du monde ? C'est alors que votre téléphone reçoit quelques derniers messages avant que la connexion ne soit coupée. C'est votre bien aimé qui est paniqué. Vous voulez le revoir une dernière fois.",
-      en: "You're woken before dawn by tremors and commotion. You turn on the TV and discover your city is on alert due to a nuclear plant malfunction. Is this the end? Your phone receives a few last messages before the connection drops. It's your panicked loved one. You want to see them one last time.",
-    },
-    goal: {
-      fr: "Trouver des bornes électriques pour rallumer les lumières et retrouver temporairement du réseau. Suivez les indications de votre partenaire à travers ses messages, pour trouver un chemin jusqu'à lui avant la fin.",
-      en: "Find electrical terminals to restore lights and temporarily regain signal. Follow your partner's directions through their messages, to find a path to them before the end.",
-    },
-    gameplay: {
-      fr: "Exploration, horreur. Avancez à travers la ville alors que les phases d'apocalypse la rendent de plus en plus dangereuse.",
-      en: "Exploration, horror. Navigate through the city as apocalyptic phases make it increasingly dangerous.",
-    },
-    team: {
-      fr: "Réalisé dans le cadre de la Game Jam Brassart 2024 par une équipe de 9 élèves, en seulement 3 jours.",
-      en: "Created during the Brassart 2024 Game Jam by a team of 9 students in just 3 days.",
-    },
-    images: [],
-    heroImage: "/images/RMALFDM/cover.webp",
-    ctaLabel: { fr: "JOUER", en: "PLAY" },
-    ctaUrl: "https://jodie-hann.itch.io/rejoins-moi-avant-la-fin-du-monde",
-    status: "released",
-  },
-  {
     slug: "cycles",
     title: "CYCLES",
     date: {
@@ -297,47 +256,6 @@ export const projects: Project[] = [
     status: "released",
   },
   {
-    slug: "quest-for-life",
-    title: "QUEST FOR LIFE",
-    date: {
-      fr: "Avril 2023",
-      en: "April 2023",
-    },
-    tagline: {
-      fr: "Angoisse et Labyrinthe",
-      en: "Dread and Labyrinth",
-    },
-    description: {
-      fr: "Mélangeant énigmes, ambiance horrifique, et course contre la montre, Quest For Life vous fait vivre une expérience stressante et immersive. Le jeu fut développé à l'occasion de la Game Jam Brassart 2023, pour PC sur UNREAL Engine 4. Il est le gagnant de la catégorie Jeux Vidéos.",
-      en: "Blending puzzles, horrific atmosphere, and a race against time, Quest For Life delivers a stressful and immersive experience. Developed for the Brassart 2023 Game Jam on PC using UNREAL Engine 4. Winner of the Video Games category.",
-    },
-    role: {
-      fr: "Seul Game Designer sur ce projet, j'ai conceptualisé l'idée du jeu, sa narration, ainsi que ses mécaniques, tout en respectant les contraintes complexes d'une Game Jam. J'ai également été en charge complète du développement sur Unreal.",
-      en: "As the sole Game Designer, I conceptualized the game idea, its narrative, and mechanics, all while respecting the complex constraints of a Game Jam. I was also fully in charge of development in Unreal.",
-    },
-    story: {
-      fr: "Vous ouvrez les yeux dans une salle mystérieuse, sans savoir ce qui vous est arrivé. Très vite, vous allez découvrir que vous êtes la proie d'un dangereux psychopathe, et devrez trouver un moyen de lui échapper.",
-      en: "You open your eyes in a mysterious room, not knowing what happened. You'll quickly discover you're the prey of a dangerous psychopath and must find a way to escape.",
-    },
-    goal: {
-      fr: "Trouvez une échappatoire à la planque de votre poursuivant. Cherchez et comprenez les indices jusqu'à ce que vous puissiez parcourir le labyrinthe sans qu'il ne vous rattrape.",
-      en: "Find an escape from your pursuer's hideout. Search and understand the clues until you can navigate the maze without being caught.",
-    },
-    gameplay: {
-      fr: "Jeu runner speedrun en première personne.",
-      en: "First-person runner speedrun game.",
-    },
-    team: {
-      fr: "Ce jeu a été réalisé en seulement 3 jours par une équipe de 10 élèves : 4 en 3D, 4 en arts graphiques, 1 en design graphique, et 1 en Game design.",
-      en: "Created in just 3 days by a team of 10 students: 4 in 3D, 4 in graphic arts, 1 in graphic design, and 1 in Game design.",
-    },
-    images: [],
-    heroImage: "/images/QUEST FOR LIFE/cover.webp",
-    ctaLabel: { fr: "JOUER", en: "PLAY" },
-    ctaUrl: "https://jodie-hann.itch.io/quest-for-life",
-    status: "released",
-  },
-  {
     slug: "le-peuple-aux-mille-dieux",
     title: "LE PEUPLE AUX MILLE DIEUX",
     date: {
@@ -380,6 +298,92 @@ export const projects: Project[] = [
     ],
     heroImage: "/images/LE PEUPLE AUX MILLE DIEUX/cover.webp",
     status: "released",
+  },
+  {
+    slug: "rejoins-moi",
+    title: "REJOINS-MOI AVANT LA FIN DU MONDE",
+    date: {
+      fr: "23 – 26 Janvier 2024",
+      en: "January 23 – 26, 2024",
+    },
+    tagline: {
+      fr: "Apocalypse & course contre la montre",
+      en: "Apocalypse & race against time",
+    },
+    description: {
+      fr: "Ce petit jeu développé sur UNREAL ENGINE 5 à l'occasion de la GAME JAM BRASSART 2024 propose un gameplay qui joue sur l'ambiance et le stress. Développé autour du thème « Connexion Lost ».",
+      en: "This small game developed in UNREAL ENGINE 5 for the BRASSART 2024 GAME JAM features gameplay that plays on atmosphere and stress. Built around the theme 'Connection Lost'.",
+    },
+    role: {
+      fr: "Scénariste, Narrative Designer, Level designer, et System Designer.",
+      en: "Screenwriter, Narrative Designer, Level Designer, and System Designer.",
+    },
+    story: {
+      fr: "Vous êtes réveillés avant l'aube par des tremblements et de l'agitation. Vous décidez d'allumer votre télévision, et découvrez que votre ville est en alerte suite à un problème dans sa centrale nucléaire. Est-ce la fin du monde ? C'est alors que votre téléphone reçoit quelques derniers messages avant que la connexion ne soit coupée. C'est votre bien aimé qui est paniqué. Vous voulez le revoir une dernière fois.",
+      en: "You're woken before dawn by tremors and commotion. You turn on the TV and discover your city is on alert due to a nuclear plant malfunction. Is this the end? Your phone receives a few last messages before the connection drops. It's your panicked loved one. You want to see them one last time.",
+    },
+    goal: {
+      fr: "Trouver des bornes électriques pour rallumer les lumières et retrouver temporairement du réseau. Suivez les indications de votre partenaire à travers ses messages, pour trouver un chemin jusqu'à lui avant la fin.",
+      en: "Find electrical terminals to restore lights and temporarily regain signal. Follow your partner's directions through their messages, to find a path to them before the end.",
+    },
+    gameplay: {
+      fr: "Exploration, horreur. Avancez à travers la ville alors que les phases d'apocalypse la rendent de plus en plus dangereuse.",
+      en: "Exploration, horror. Navigate through the city as apocalyptic phases make it increasingly dangerous.",
+    },
+    team: {
+      fr: "Réalisé dans le cadre de la Game Jam Brassart 2024 par une équipe de 9 élèves, en seulement 3 jours.",
+      en: "Created during the Brassart 2024 Game Jam by a team of 9 students in just 3 days.",
+    },
+    images: [],
+    heroImage: "/images/RMALFDM/cover.webp",
+    ctaLabel: { fr: "JOUER", en: "PLAY" },
+    ctaUrl: "https://jodie-hann.itch.io/rejoins-moi-avant-la-fin-du-monde",
+    engine: "UE5",
+    status: "released",
+    jam: true,
+  },
+  {
+    slug: "quest-for-life",
+    title: "QUEST FOR LIFE",
+    date: {
+      fr: "Avril 2023",
+      en: "April 2023",
+    },
+    tagline: {
+      fr: "Angoisse et Labyrinthe",
+      en: "Dread and Labyrinth",
+    },
+    description: {
+      fr: "Mélangeant énigmes, ambiance horrifique, et course contre la montre, Quest For Life vous fait vivre une expérience stressante et immersive. Le jeu fut développé à l'occasion de la Game Jam Brassart 2023, pour PC sur UNREAL Engine 4. Il est le gagnant de la catégorie Jeux Vidéos.",
+      en: "Blending puzzles, horrific atmosphere, and a race against time, Quest For Life delivers a stressful and immersive experience. Developed for the Brassart 2023 Game Jam on PC using UNREAL Engine 4. Winner of the Video Games category.",
+    },
+    role: {
+      fr: "Seul Game Designer sur ce projet, j'ai conceptualisé l'idée du jeu, sa narration, ainsi que ses mécaniques, tout en respectant les contraintes complexes d'une Game Jam. J'ai également été en charge complète du développement sur Unreal.",
+      en: "As the sole Game Designer, I conceptualized the game idea, its narrative, and mechanics, all while respecting the complex constraints of a Game Jam. I was also fully in charge of development in Unreal.",
+    },
+    story: {
+      fr: "Vous ouvrez les yeux dans une salle mystérieuse, sans savoir ce qui vous est arrivé. Très vite, vous allez découvrir que vous êtes la proie d'un dangereux psychopathe, et devrez trouver un moyen de lui échapper.",
+      en: "You open your eyes in a mysterious room, not knowing what happened. You'll quickly discover you're the prey of a dangerous psychopath and must find a way to escape.",
+    },
+    goal: {
+      fr: "Trouvez une échappatoire à la planque de votre poursuivant. Cherchez et comprenez les indices jusqu'à ce que vous puissiez parcourir le labyrinthe sans qu'il ne vous rattrape.",
+      en: "Find an escape from your pursuer's hideout. Search and understand the clues until you can navigate the maze without being caught.",
+    },
+    gameplay: {
+      fr: "Jeu runner speedrun en première personne.",
+      en: "First-person runner speedrun game.",
+    },
+    team: {
+      fr: "Ce jeu a été réalisé en seulement 3 jours par une équipe de 10 élèves : 4 en 3D, 4 en arts graphiques, 1 en design graphique, et 1 en Game design.",
+      en: "Created in just 3 days by a team of 10 students: 4 in 3D, 4 in graphic arts, 1 in graphic design, and 1 in Game design.",
+    },
+    images: [],
+    heroImage: "/images/QUEST FOR LIFE/cover.webp",
+    ctaLabel: { fr: "JOUER", en: "PLAY" },
+    ctaUrl: "https://jodie-hann.itch.io/quest-for-life",
+    engine: "UE4",
+    status: "released",
+    jam: true,
   },
 ];
 

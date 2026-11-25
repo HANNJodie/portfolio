@@ -65,12 +65,11 @@ export default function SectionTitle({
           {label}
         </motion.p>
       )}
-      <h2
-        className="section-title__el"
-        style={{ opacity: 0 }}
-      >
-        {title}
-      </h2>
+      <div className="section-title__row section-title__el" style={{ opacity: 0 }}>
+        <span className="section-title__line" aria-hidden="true" />
+        <h2 className="section-title__heading">{title}</h2>
+        <span className="section-title__line" aria-hidden="true" />
+      </div>
       {subtitle && (
         <p
           className="section-title__el"
