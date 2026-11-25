@@ -67,6 +67,7 @@ const COPY = {
       project: "Le projet",
       work: "Mon travail",
       story: "Histoire",
+      synopsis: "Synopsis",
       team: "L'équipe",
       award: "Remise des prix à Cannes",
       quinzaine: "La Quinzaine des Réalisateurs",
@@ -119,6 +120,7 @@ const COPY = {
       project: "The project",
       work: "My work",
       story: "Story",
+      synopsis: "Synopsis",
       team: "The team",
       award: "Award ceremony in Cannes",
       quinzaine: "The Directors' Fortnight",
@@ -205,9 +207,10 @@ export default async function NEtreQuHumainPage() {
         <ProjectSection label={c.labels.story}>
           <div className="project-split project-split--poster">
             <ProjectImages className="project-images--poster" images={POSTER_IMAGES} style={{ paddingTop: 0 }} />
-            <div className="project-section__lead">
-              <RichText text={c.story} />
-            </div>
+            <blockquote className="project-synopsis">
+              <span className="project-synopsis__label">{c.labels.synopsis}</span>
+              <p className="project-synopsis__text">{c.story}</p>
+            </blockquote>
           </div>
         </ProjectSection>
 
