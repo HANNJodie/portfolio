@@ -221,7 +221,7 @@ export default function AboutContent({ locale }: { locale: "fr" | "en" }) {
         <div className="about__bento about__bento--skills">
           {/* CV — dark gradient hero card */}
           <motion.a
-            href="https://jodiehann.wordpress.com/wp-content/uploads/2025/01/hann_jodie_cv-1.pdf"
+            href="/documents/HANN_Jodie_CV_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="about__card about__card--cv"
