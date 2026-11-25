@@ -31,7 +31,11 @@ const STORYBOARD_IMAGES = [1, 2, 3, 4].map((n) => ({
   alt: `Storyboard ${n}`,
 }));
 const POSTER_IMAGES = [{ src: `${DIR}/affiche.webp`, alt: "Affiche — N'Être qu'Humain" }];
-const AWARD_IMAGES = [{ src: `${DIR}/remise-des-prix.webp`, alt: "Remise des prix Vox Milo 2026" }];
+// Photos of the award ceremony Instagram post, in the post's order.
+const AWARD_POST_IMAGES = Array.from({ length: 5 }, (_, i) => ({
+  src: `${DIR}/remise-post-${String(i + 1).padStart(2, "0")}.webp`,
+  alt: `Remise des prix Vox Milo 2026 (${i + 1}/5)`,
+}));
 // The 14 photos of the Quinzaine's Instagram post (numbered in the post's
 // order), starting with the last one, where Jodie takes the mic.
 const QUINZAINE_POST_IMAGES = [14, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((n) => ({
@@ -73,7 +77,13 @@ const COPY = {
     teamCard: "L'équipe en vidéo",
     teamCardSub: "Sur Instagram",
     storyboardHeading: "Extraits du storyboard",
-    seePost: "Voir la publication",
+    award: {
+      meta: "Cannes · Vox Milo 2026",
+      title: "Remise des prix Vox Milo 2026",
+      text: "Retour sur la cérémonie du festival Vox Milo à Cannes, où <i>N'Être qu'Humain</i> a remporté le prix « Graine de Cinéaste ».",
+      credit: "Photos : @didi.innocent",
+      link: "Voir sur Instagram",
+    },
     project:
       "« N'Être qu'Humain » est un court métrage de 7 minutes réalisé par une équipe de jeunes amateurs dans le cadre du Festival Vox Milo 2026. Lauréat de sa catégorie, il a remporté le prix « Graine de Cinéaste », permettant à ses membres d'être invités à la Quinzaine des Réalisateurs de Cannes en mai 2026.\nLe court métrage traite de la solitude croissante chez les jeunes malgré l'avènement d'un monde hyperconnecté, ainsi que des dangers d'une barrière de plus en plus floue entre le réel et le virtuel.",
     work:
@@ -119,7 +129,13 @@ const COPY = {
     teamCard: "Meet the team",
     teamCardSub: "On Instagram",
     storyboardHeading: "Storyboard excerpts",
-    seePost: "See the post",
+    award: {
+      meta: "Cannes · Vox Milo 2026",
+      title: "Vox Milo 2026 award ceremony",
+      text: "A look back at the Vox Milo festival ceremony in Cannes, where <i>N'Être qu'Humain</i> won the “Graine de Cinéaste” award.",
+      credit: "Photos: @didi.innocent",
+      link: "View on Instagram",
+    },
     project:
       "“N'Être qu'Humain” (Only Human) is a 7-minute short film made by a team of young amateurs for the Vox Milo 2026 Festival. Winner of its category, it received the “Graine de Cinéaste” award, which earned its members an invitation to the Directors' Fortnight (Quinzaine des Réalisateurs) in Cannes in May 2026.\nThe film explores the growing loneliness of young people despite the rise of a hyperconnected world, as well as the dangers of an ever-blurrier line between the real and the virtual.",
     work:
@@ -147,12 +163,6 @@ export default async function NEtreQuHumainPage() {
   const locale = (await getLocale()) as "fr" | "en";
   const c = COPY[locale];
   const { prev, next } = getAdjacentProjects(SLUG);
-
-  const postLink = (href: string) => (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {c.seePost}
-    </a>
-  );
 
   return (
     <ProjectShell>
@@ -211,11 +221,16 @@ export default async function NEtreQuHumainPage() {
         </ProjectSection>
 
         <ProjectSection label={c.labels.award}>
-          <ProjectImages
-            className="project-images--photo"
-            images={AWARD_IMAGES}
-            style={{ paddingTop: 0 }}
-            credit={postLink(AWARD_POST)}
+          <ProjectInstagram
+            url={AWARD_POST}
+            account="mlcoudongapeau"
+            meta={c.award.meta}
+            title={c.award.title}
+            text={c.award.text}
+            credit={c.award.credit}
+            linkLabel={c.award.link}
+            images={AWARD_POST_IMAGES}
+            className="project-post--stacked"
           />
         </ProjectSection>
 

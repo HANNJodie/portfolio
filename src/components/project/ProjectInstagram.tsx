@@ -11,6 +11,7 @@ interface ProjectInstagramProps {
   credit: string;
   linkLabel: string;
   images: { src: string; alt?: string }[];
+  className?: string;
 }
 
 // An Instagram post rebuilt in the site's style: our own carousel on the left,
@@ -24,9 +25,10 @@ export default function ProjectInstagram({
   credit,
   linkLabel,
   images,
+  className,
 }: ProjectInstagramProps) {
   return (
-    <article className="project-post">
+    <article className={className ? `project-post ${className}` : "project-post"}>
       <div className="project-post__media">
         <ProjectCarousel className="project-carousel--post" images={images} />
       </div>
