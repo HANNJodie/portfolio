@@ -10,7 +10,6 @@ import ProjectCarousel from "@/components/project/ProjectCarousel";
 import ProjectVideo from "@/components/project/ProjectVideo";
 import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
-import { GamepadIcon } from "@/components/ui/Icons";
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
 
 const SLUG = "luciole";
@@ -119,7 +118,7 @@ export default async function LuciolePage() {
               href={DEMO}
               title={c.topCta}
               subtitle={c.openLink}
-              icon={<GamepadIcon />}
+              kind="game"
             />
           </div>
         </ProjectSection>

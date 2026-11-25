@@ -8,7 +8,6 @@ import ProjectLinkCard from "@/components/project/ProjectLinkCard";
 import ProjectImages from "@/components/project/ProjectImages";
 import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
-import { GamepadIcon } from "@/components/ui/Icons";
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
 
 const SLUG = "quest-for-life";
@@ -107,7 +106,7 @@ export default async function QuestForLifePage() {
               href={DEMO}
               title={c.topCta}
               subtitle={c.openLink}
-              icon={<GamepadIcon />}
+              kind="game"
             />
           </div>
         </ProjectSection>

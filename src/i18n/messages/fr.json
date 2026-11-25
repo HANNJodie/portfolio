@@ -55,7 +55,14 @@
     "download": "Télécharger",
     "prev": "Projet précédent",
     "next": "Projet suivant",
-    "backToProjects": "Retour aux projets"
+    "backToProjects": "Retour aux projets",
+    "linkKind": {
+      "link": "Lien",
+      "game": "Jeu",
+      "document": "Document",
+      "video": "Vidéo",
+      "devblog": "Devblog"
+    }
   },
   "about": {
     "label": "À propos",

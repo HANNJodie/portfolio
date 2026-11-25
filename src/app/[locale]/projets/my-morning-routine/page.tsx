@@ -116,7 +116,7 @@ export default async function MyMorningRoutinePage() {
               <RichText text={c.concept} />
             </div>
             {ONE_PAGER_URL && (
-              <ProjectLinkCard href={ONE_PAGER_URL} title={c.onePagerTitle} subtitle={c.openLink} />
+              <ProjectLinkCard href={ONE_PAGER_URL} title={c.onePagerTitle} subtitle={c.openLink} kind="document" />
             )}
           </div>
         </ProjectSection>
