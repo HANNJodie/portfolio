@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { OpenInNewIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/ui/Icons";
+import { OpenInNewIcon, ArrowRightIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/ui/Icons";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 
@@ -149,7 +149,10 @@ export default function Hero() {
           </div>
           <span className="hero__photo-badge">● {t("ctaAbout")}</span>
           <span className="hero__photo-location">Lyon, FR</span>
-          <div className="hero__photo-cta"><OpenInNewIcon /></div>
+          <div className="hero__photo-cta">
+            <span>{t("discover")}</span>
+            <ArrowRightIcon />
+          </div>
         </MotionLink>
 
         {/* Projects 1–3 — slide from bottom, staggered */}

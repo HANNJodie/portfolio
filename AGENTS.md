@@ -225,7 +225,7 @@ Repères utilisés dans les pages projet :
 |---|---|---|
 | Apparition au scroll d'un bloc | `<ScrollReveal>` (GSAP, start `top 85%`, y 40, 0.8 s) | sections, images, carrousels, cartes |
 | Hero de projet | GSAP timeline : tagline → titre → date → indicateur « Défiler » + parallax de l'image (`y: 80`, scrub) | `ProjectHero` |
-| Entrées du bento (accueil / À propos) | framer-motion `variants` `hidden`/`visible`, `BASE_DELAY = 0.35`, cartes du bas décalées de `0.12 s` | `Hero`, `AboutContent` |
+| Entrées du bento (accueil / À propos) | framer-motion `variants` `hidden`/`visible`, `BASE_DELAY = 0.35`, cartes du bas décalées de `0.12 s` ; sous la ligne de flottaison : `whileInView` + `viewport={IN_VIEW}` (décalage par ligne seulement) | `Hero`, `AboutContent` |
 | Menus (dropdown, menu mobile) | framer-motion `AnimatePresence` + spring (`stiffness 300–400`, `damping 20–25`) | `Header` |
 | Titre de section accueil | GSAP stagger 0.15 s | `SectionTitle` |
 | Recommandation | framer-motion `whileInView`, `once`, `amount: 0.25` | `Recommendation` |
@@ -441,8 +441,8 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
 
 - **L'ordre du tableau = l'ordre partout** : grille de l'accueil, menu déroulant « Mes projets »,
   menu mobile, navigation précédent/suivant, et les 4 cartes du bento d'accueil
-  (`projects.slice(0, 4)`, la 1ʳᵉ marquée « À la une »). Le 1ᵉʳ projet est aussi la grande carte
-  pleine largeur de la grille. Ajouter un projet « en numéro 1 » = l'insérer en tête du tableau.
+  (`projects.slice(0, 4)`, la 1ʳᵉ marquée « À la une »). Dans la grille, toutes les cartes ont la
+  même taille. Ajouter un projet « en numéro 1 » = l'insérer en tête du tableau.
 - Champs obligatoires : `slug`, `title`, `date {fr,en}`, `tagline {fr,en}`, `description {fr,en}`
   (extrait de la carte, tronqué à 3 lignes), `images` (souvent `[]`), `heroImage`, `status`.
 - Le `slug` = nom du dossier de la page = segment d'URL (`/projets/<slug>`), en kebab-case.

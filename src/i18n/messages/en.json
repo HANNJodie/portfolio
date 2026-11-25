@@ -18,7 +18,8 @@
     "cta": "View my projects",
     "ctaAll": "View all my projects",
     "ctaAbout": "About me",
-    "scroll": "Scroll"
+    "scroll": "Scroll",
+    "discover": "Discover"
   },
   "projects": {
     "title": "Projects",
@@ -90,7 +91,8 @@
       "relation": "Jodie's mentor · DAU program",
       "date": "June 2026",
       "link": "View on LinkedIn"
-    }
+    },
+    "itchProfile": "View profile"
   },
   "footer": {
     "thanks": "Thanks for your attention.",

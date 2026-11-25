@@ -38,7 +38,6 @@ export default function ProjectGrid() {
             key={project.slug}
             project={project}
             index={index}
-            featured={index === 0}
           />
         ))}
       </div>
