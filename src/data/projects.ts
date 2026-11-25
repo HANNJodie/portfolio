@@ -300,8 +300,8 @@ export const projects: Project[] = [
     slug: "quest-for-life",
     title: "QUEST FOR LIFE",
     date: {
-      fr: "25 – 27 Janvier 2023",
-      en: "January 25 – 27, 2023",
+      fr: "Avril 2023",
+      en: "April 2023",
     },
     tagline: {
       fr: "Angoisse et Labyrinthe",
@@ -328,8 +328,8 @@ export const projects: Project[] = [
       en: "First-person runner speedrun game.",
     },
     team: {
-      fr: "Ce jeu a été réalisé en seulement 3 jours par une équipe de 9 élèves : 4 en 3D, 4 en arts graphiques, 1 en design graphique, et 1 en Game design.",
-      en: "Created in just 3 days by a team of 9 students: 4 in 3D, 4 in graphic arts, 1 in graphic design, and 1 in Game design.",
+      fr: "Ce jeu a été réalisé en seulement 3 jours par une équipe de 10 élèves : 4 en 3D, 4 en arts graphiques, 1 en design graphique, et 1 en Game design.",
+      en: "Created in just 3 days by a team of 10 students: 4 in 3D, 4 in graphic arts, 1 in graphic design, and 1 in Game design.",
     },
     images: [],
     heroImage: "/images/QUEST FOR LIFE/cover.webp",
