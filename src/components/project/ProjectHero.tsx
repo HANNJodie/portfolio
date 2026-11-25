@@ -16,9 +16,11 @@ interface ProjectHeroProps {
   heroImage: string;
   // Frame the hero image horizontally/vertically (CSS object-position). Defaults to centre.
   objectPosition?: string;
+  // Lower banner for short pages (game jams).
+  compact?: boolean;
 }
 
-export default function ProjectHero({ title, tagline, date, heroImage, objectPosition }: ProjectHeroProps) {
+export default function ProjectHero({ title, tagline, date, heroImage, objectPosition, compact }: ProjectHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("hero");
 
@@ -65,7 +67,7 @@ export default function ProjectHero({ title, tagline, date, heroImage, objectPos
   }, { scope: heroRef });
 
   return (
-    <div className="project-page__hero" ref={heroRef}>
+    <div className={`project-page__hero${compact ? " project-page__hero--compact" : ""}`} ref={heroRef}>
       <Image
         src={heroImage}
         alt={title}

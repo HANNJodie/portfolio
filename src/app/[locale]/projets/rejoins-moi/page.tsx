@@ -2,14 +2,13 @@ import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
 import ProjectInfoStrip from "@/components/project/ProjectInfoStrip";
-import ProjectSection from "@/components/project/ProjectSection";
+import ProjectTabs from "@/components/project/ProjectTabs";
 import RichText from "@/components/project/RichText";
 import ProjectLinkCard from "@/components/project/ProjectLinkCard";
 import ProjectCarousel from "@/components/project/ProjectCarousel";
 import ProjectImages from "@/components/project/ProjectImages";
-import ProjectCTA from "@/components/project/ProjectCTA";
 import ProjectNav from "@/components/project/ProjectNav";
-import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
+import { getAdjacentProjects } from "@/data/projects";
 
 const SLUG = "rejoins-moi";
 const DIR = "/images/RMALFDM";
@@ -55,7 +54,6 @@ const COPY = {
     labels: { concept: "Concept", work: "Mon travail", story: "Histoire", team: "L'équipe" },
     brainstorm: "Extraits de brainstorming",
     devCaption: "Images issues du développement",
-    cta: "Jouer",
     topCta: "Jouer au jeu",
     openLink: "Ouvrir le lien",
     concept:
@@ -77,7 +75,6 @@ const COPY = {
     labels: { concept: "Concept", work: "My work", story: "Story", team: "The team" },
     brainstorm: "Brainstorming excerpts",
     devCaption: "Development screenshots",
-    cta: "Play",
     topCta: "Play the game",
     openLink: "Open link",
     concept:
@@ -95,7 +92,6 @@ export default async function RejoinsMoiPage() {
   const locale = (await getLocale()) as "fr" | "en";
   const c = COPY[locale];
   const { prev, next } = getAdjacentProjects(SLUG);
-  const project = getProjectBySlug(SLUG);
 
   return (
     <ProjectShell>
@@ -104,6 +100,7 @@ export default async function RejoinsMoiPage() {
         tagline={c.tagline}
         date={c.date}
         heroImage={HERO_IMAGE}
+        compact
       />
 
       <ProjectInfoStrip
@@ -115,47 +112,61 @@ export default async function RejoinsMoiPage() {
         genres={c.genres}
       />
 
-      <div className="project-sections">
-        <ProjectSection label={c.labels.concept}>
-          <div className="project-section__concept">
-            <div className="project-section__lead">
-              <RichText text={c.concept} />
-            </div>
-            <ProjectLinkCard
-              href={DEMO}
-              title={c.topCta}
-              subtitle={c.openLink}
-              kind="game"
-            />
-          </div>
-        </ProjectSection>
+      <ProjectTabs
+        tabs={[
+          {
+            label: c.labels.concept,
+            content: (
+              <div className="project-section__concept">
+                <div className="project-section__lead">
+                  <RichText text={c.concept} />
+                </div>
+                <ProjectLinkCard href={DEMO} title={c.topCta} subtitle={c.openLink} kind="game" />
+              </div>
+            ),
+          },
+          {
+            label: c.labels.work,
+            content: (
+              <>
+                <div className="project-section__lead">
+                  <RichText text={c.work} />
+                </div>
+                <p className="project-subheading">{c.brainstorm}</p>
+                <ProjectImages images={BRAINSTORM_IMAGES} className="project-images--photo" style={{ paddingTop: 0 }} />
+              </>
+            ),
+          },
+          {
+            label: c.labels.story,
+            content: (
+              <>
+                <div className="project-section__lead">
+                  <RichText text={c.story} />
+                </div>
+                {/* Same 4:3 ratio on both so the pair lines up */}
+                <div className="project-carousel-pair">
+                  <ProjectCarousel className="project-carousel--photo" images={POSTER_IMAGES} />
+                  <ProjectCarousel className="project-carousel--photo" images={DEV_IMAGES} />
+                </div>
+                <p className="project-caption">{c.devCaption}</p>
+              </>
+            ),
+          },
+          {
+            label: c.labels.team,
+            content: (
+              <>
+                <div className="project-section__lead">
+                  <RichText text={c.team} />
+                </div>
+                <ProjectImages images={GAME_OVER_IMAGES} className="project-images--bare" />
+              </>
+            ),
+          },
+        ]}
+      />
 
-        <ProjectSection label={c.labels.work}>
-          <div className="project-section__lead">
-            <RichText text={c.work} />
-          </div>
-          <p className="project-subheading">{c.brainstorm}</p>
-          <ProjectImages images={BRAINSTORM_IMAGES} className="project-images--photo" style={{ paddingTop: 0 }} />
-        </ProjectSection>
-
-        <ProjectSection label={c.labels.story}>
-          <div className="project-section__lead">
-            <RichText text={c.story} />
-          </div>
-          <ProjectCarousel className="project-carousel--wide" images={POSTER_IMAGES} />
-          <ProjectCarousel className="project-carousel--photo" images={DEV_IMAGES} />
-          <p className="project-caption">{c.devCaption}</p>
-        </ProjectSection>
-
-        <ProjectSection label={c.labels.team}>
-          <div className="project-section__lead">
-            <RichText text={c.team} />
-          </div>
-          <ProjectImages images={GAME_OVER_IMAGES} className="project-images--bare" />
-        </ProjectSection>
-      </div>
-
-      <ProjectCTA ctaLabel={c.cta} ctaUrl={DEMO} socialLinks={project?.socialLinks} />
       <ProjectNav prev={prev} next={next} />
     </ProjectShell>
   );
