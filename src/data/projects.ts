@@ -215,8 +215,8 @@ export const projects: Project[] = [
       en: "January 23 – 26, 2024",
     },
     tagline: {
-      fr: "Amour & Apocalypse",
-      en: "Love & Apocalypse",
+      fr: "Angoisse & Labyrinthe",
+      en: "Anxiety & Labyrinth",
     },
     description: {
       fr: "Ce petit jeu développé sur UNREAL ENGINE 5 à l'occasion de la GAME JAM BRASSART 2024 propose un gameplay qui joue sur l'ambiance et le stress. Développé autour du thème « Connexion Lost ».",
@@ -239,8 +239,8 @@ export const projects: Project[] = [
       en: "Exploration, horror. Navigate through the city as apocalyptic phases make it increasingly dangerous.",
     },
     team: {
-      fr: "Réalisé dans le cadre de la Game Jam Brassart 2024 par une équipe de 7 étudiants, en seulement 3 jours.",
-      en: "Created during the Brassart 2024 Game Jam by a team of 7 students in just 3 days.",
+      fr: "Réalisé dans le cadre de la Game Jam Brassart 2024 par une équipe de 9 élèves, en seulement 3 jours.",
+      en: "Created during the Brassart 2024 Game Jam by a team of 9 students in just 3 days.",
     },
     images: [],
     heroImage: "/images/RMALFDM/cover.webp",
