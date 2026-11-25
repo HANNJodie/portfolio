@@ -23,6 +23,8 @@
   }
 
   &__grid {
+    // Air below the section title (and the upcoming badges, when any).
+    margin-top: $space-3xl;
     display: grid;
     grid-template-columns: 1fr;
     gap: $space-xl;
@@ -39,7 +41,6 @@
 
   &__upcoming {
     margin-top: $space-lg;
-    margin-bottom: $space-3xl;
     @include flex-column;
     align-items: center;
     gap: $space-md;
