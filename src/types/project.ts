@@ -40,6 +40,8 @@ export interface Project {
   socialLinks?: ProjectSocialLink[];
   downloadables?: ProjectDownloadable[];
   status: ProjectStatus;
+  // Overrides the translated status text on the card (the status still drives the color).
+  statusLabel?: LocalizedString;
   featured?: boolean;
   // Game jam entry: listed as a text row under the "Game Jam" separator on the home page.
   jam?: boolean;

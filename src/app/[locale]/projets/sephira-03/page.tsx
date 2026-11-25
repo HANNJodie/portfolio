@@ -85,7 +85,7 @@ const COPY = {
   en: {
     tagline: "Adventure, Infiltration, Robots and Yakuzas",
     date: "April 2023 – July 2024",
-    status: "Finished (Demo)",
+    status: "Completed (Demo)",
     teamLabel: "4 GD · 3 3D · 3 OST",
     roleLabel: "Game Lead",
     genres: ["Action", "Adventure", "Stealth", "Point & click", "Retro cyberpunk"],

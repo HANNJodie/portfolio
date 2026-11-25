@@ -63,7 +63,7 @@ const COPY = {
   en: {
     tagline: "Save humanity",
     date: "January – March 2023",
-    status: "Finished",
+    status: "Completed",
     devPeriod: "3 months",
     teamLabel: "4 GD",
     roleLabel: "Game Lead",

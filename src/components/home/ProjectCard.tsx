@@ -43,7 +43,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
           <div className="project-card__body">
             <span className={`project-card__status project-card__status--${project.status}`}>
-              {t(`status.${project.status}`)}
+              {project.statusLabel?.[locale] ?? t(`status.${project.status}`)}
             </span>
             <h3 className="project-card__title">{project.title}</h3>
             <p className="project-card__date">{project.date[locale]}</p>

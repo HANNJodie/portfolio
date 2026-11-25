@@ -36,7 +36,7 @@ const BOX_IMAGES = [
 
 const COPY = {
   fr: {
-    tagline: "Angoisse et Labyrinthe",
+    tagline: "Angoisse & Labyrinthe",
     date: "Avril 2023",
     status: "Game Jam (3 jours)",
     teamLabel: "1 GD · 4 3D · 5 graphistes",
@@ -59,7 +59,7 @@ const COPY = {
       "Ce jeu a été réalisé en seulement 3 jours par une équipe de 10 élèves : 4 en 3D, 4 en arts graphiques, 1 en design graphique et 1 en game design.",
   },
   en: {
-    tagline: "Dread and Labyrinth",
+    tagline: "Dread & Labyrinth",
     date: "April 2023",
     status: "Game Jam (3 days)",
     teamLabel: "1 GD · 4 3D · 5 artists",

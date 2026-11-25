@@ -54,6 +54,8 @@ export const projects: Project[] = [
     images: [],
     heroImage: "/images/VOX MILO/cover.webp",
     status: "released",
+    // A film is "released", not "completed"
+    statusLabel: { fr: "Publié", en: "Released" },
   },
   {
     slug: "ascend",
@@ -350,8 +352,8 @@ export const projects: Project[] = [
       en: "April 2023",
     },
     tagline: {
-      fr: "Angoisse et Labyrinthe",
-      en: "Dread and Labyrinth",
+      fr: "Angoisse & Labyrinthe",
+      en: "Dread & Labyrinth",
     },
     description: {
       fr: "Mélangeant énigmes, ambiance horrifique, et course contre la montre, Quest For Life vous fait vivre une expérience stressante et immersive. Le jeu fut développé à l'occasion de la Game Jam Brassart 2023, pour PC sur UNREAL Engine 4. Il est le gagnant de la catégorie Jeux Vidéos.",

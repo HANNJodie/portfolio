@@ -56,7 +56,7 @@ const COPY = {
   fr: {
     tagline: "Court métrage - Vox Milo 2026",
     date: "Octobre 2025 – Mai 2026",
-    status: "Terminé · Primé",
+    status: "Publié · Primé",
     devPeriod: "7 mois",
     teamLabel: "8 personnes",
     roleLabel: "Réalisatrice",
@@ -109,7 +109,7 @@ const COPY = {
   en: {
     tagline: "Short film - Vox Milo 2026",
     date: "October 2025 – May 2026",
-    status: "Finished · Award-winning",
+    status: "Released · Award-winning",
     devPeriod: "7 months",
     teamLabel: "8 people",
     roleLabel: "Director",

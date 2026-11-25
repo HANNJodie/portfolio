@@ -76,7 +76,7 @@ const COPY = {
   en: {
     tagline: "Cards and Mythology",
     date: "November – December 2021",
-    status: "Finished",
+    status: "Completed",
     devPeriod: "1 month",
     teamLabel: "4 GD, 2 graphic artists, 1 illustrator",
     roleLabel: "Art Director, UI/UX Designer",

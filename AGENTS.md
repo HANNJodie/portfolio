@@ -120,7 +120,7 @@ Le statut (`ProjectStatus`) pilote une couleur partout (pastille de l'info strip
 
 | Statut | Couleur | Libellé FR / EN |
 |---|---|---|
-| `released` | cyan | Terminé / Finished |
+| `released` | cyan | Terminé / Completed (N'être qu'humain : Publié / Released) |
 | `in-development` | violet | En développement / In development |
 | `hiatus` | ambre | En pause / On hiatus |
 | `upcoming` | rose | À venir / Upcoming |
