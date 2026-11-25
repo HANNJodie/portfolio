@@ -46,7 +46,7 @@ const GAME_OVER_IMAGES = [{ src: `${DIR}/game-over.webp`, alt: "Écran Game Over
 
 const COPY = {
   fr: {
-    tagline: "Angoisse & Labyrinthe",
+    tagline: "Apocalypse & course contre la montre",
     date: "23 – 26 Janvier 2024",
     status: "Game Jam (3 jours)",
     teamLabel: "3 GD · 3 3D · 3 graphistes",
@@ -68,7 +68,7 @@ const COPY = {
       "Ce jeu a été réalisé en seulement 3 jours par une équipe de 9 élèves : 3 en 3D, 2 en arts graphiques, 1 en design graphique et 3 en game design.",
   },
   en: {
-    tagline: "Anxiety & Labyrinth",
+    tagline: "Apocalypse & race against time",
     date: "January 23 – 26, 2024",
     status: "Game Jam (3 days)",
     teamLabel: "3 GD · 3 3D · 3 artists",

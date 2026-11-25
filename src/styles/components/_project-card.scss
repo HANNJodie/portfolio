@@ -39,6 +39,15 @@
     }
   }
 
+  // ─── Game jam block ───────────────────────
+  &__jams {
+    margin-top: $space-5xl;
+
+    .jam-list {
+      margin-top: $space-2xl;
+    }
+  }
+
   &__upcoming {
     margin-top: $space-lg;
     @include flex-column;
@@ -196,5 +205,141 @@
     border-radius: $radius-full;
     background: $color-pink;
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+
+// ─── Game jam list ───────────────────────
+.jam-list {
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &__row {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) 20px;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-lg $space-sm;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    color: $color-text-light;
+    transition: background $transition-fast;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 4rem minmax(0, 1fr) 20px;
+      gap: $space-lg;
+    }
+
+    > :not(.jam-list__bg) {
+      position: relative;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: $color-surface-hover;
+    }
+
+    &:hover .jam-list__bg,
+    &:focus-visible .jam-list__bg {
+      opacity: 0.9;
+      transform: translateX(0);
+    }
+
+    &:hover .jam-list__arrow,
+    &:focus-visible .jam-list__arrow {
+      opacity: 0;
+    }
+
+    @include focus-ring;
+  }
+
+  // Cover sliding in from the right, fading toward the center
+  &__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity $transition-slow, transform $transition-slow;
+    mask-image: linear-gradient(270deg, #000 20%, transparent);
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__year {
+    font-family: $font-display;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: $font-size-lg;
+    color: $color-text-heading;
+
+    @include respond-to(tablet) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__meta {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+  &__arrow {
+    display: flex;
+    transition: opacity $transition-fast;
+  }
+}
+
+// ─── Section title (big heading between two fading lines) ───────────────────────
+.section-title {
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: $space-lg;
+
+    @include respond-to(tablet) {
+      gap: 2.5rem;
+    }
+  }
+
+  &__line {
+    flex: 1;
+    min-width: $space-lg;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1));
+
+    &:last-child {
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent);
+    }
+  }
+
+  &__heading {
+    font-family: $font-display;
+    font-weight: 700;
+    // 1.75rem floor keeps "Projets réalisés" on one line at 375px
+    font-size: clamp(1.75rem, 6vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: $color-text-heading;
+    white-space: nowrap;
+    margin: 0;
   }
 }

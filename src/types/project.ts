@@ -41,4 +41,6 @@ export interface Project {
   downloadables?: ProjectDownloadable[];
   status: ProjectStatus;
   featured?: boolean;
+  // Game jam entry: listed as a text row under the "Game Jam" separator on the home page.
+  jam?: boolean;
 }
