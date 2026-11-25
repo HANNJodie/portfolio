@@ -979,7 +979,41 @@
   }
 
   @include respond-to(desktop) {
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+// Short synopsis set as a featured quote next to a poster: big display type,
+// left-aligned (justified display type leaves gaps), violet rule.
+.project-synopsis {
+  margin: 0;
+  padding-left: $space-lg;
+  border-left: 3px solid $color-violet;
+  font-style: normal; // blockquote is italic by default
+
+  @include respond-to(desktop) {
+    padding-left: $space-xl;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $space-md;
+    font-family: $font-display;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: $color-text-light;
+  }
+
+  &__text {
+    margin: 0;
+    font-family: $font-display;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left;
+    color: $color-text-heading;
   }
 }
 
