@@ -50,25 +50,27 @@ const fromBottom = (delay: number) => ({
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay: BASE_DELAY + delay } },
 });
 
+// Even indexes form row 1, odd ones row 2 (see gamesRow1/2): the order spreads
+// the hearted favourites across both rows.
 const favoriteGames = [
+  "Jusant",
+  "Rayman Origins",
+  "Gris",
+  "Tomb Raider (2013)",
+  "Alice Madness Returns",
+  "Honkai: Star Rail",
+  "Castle Crashers",
+  "Minecraft",
   "Zelda: BOTW",
   "Zelda: Wind Waker",
-  "Gris",
-  "Rayman Origins",
-  "Jusant",
-  "Trine 2",
-  "Alice Madness Returns",
-  "Tomb Raider (2013)",
-  "Castle Crashers",
-  "Honkai: Star Rail",
   "The Last of Us",
-  "Minecraft",
+  "Little Nightmares",
   "Control",
-  "Little Nightmares"
+  "Trine 2"
 ];
 
-// Highlighted with a heart. TODO: placeholder pick until Jodie chooses her favourites.
-const topGames = new Set(["Zelda: BOTW"]);
+// Jodie's favourites, highlighted with a heart.
+const topGames = new Set(["Zelda: BOTW", "Gris", "Zelda: Wind Waker", "Rayman Origins", "Trine 2"]);
 
 const hobbies = [
   { fr: "Dessin", en: "Drawing", icon: <PencilIcon /> },

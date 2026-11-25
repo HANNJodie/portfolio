@@ -616,15 +616,19 @@
     }
 
     // Favourite game: filled violet with a heart.
+    // Same animated warm gradient as the itch.io card
     &--top {
-      background: $color-violet;
-      border-color: $color-violet;
+      background: $gradient-warm;
+      background-size: 200% 200%;
+      animation: gradient-shift 6s ease infinite;
+      border-color: transparent;
       color: white;
       font-weight: 600;
 
       &:hover {
-        background: $color-violet;
-        border-color: $color-violet;
+        background: $gradient-warm;
+        background-size: 200% 200%;
+        border-color: transparent;
       }
 
       .about__tag-icon {
