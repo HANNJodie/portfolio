@@ -571,6 +571,35 @@
       color: white;
     }
   }
+
+  // Photo on top at full width, text below: account/title/text left, link right.
+  &--stacked {
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr;
+
+      .project-post__media {
+        min-height: 0;
+      }
+
+      .project-post__body {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: $space-xl;
+        row-gap: $space-sm;
+        align-items: center;
+
+        > :not(.project-post__link) {
+          grid-column: 1;
+        }
+      }
+
+      .project-post__link {
+        grid-column: 2;
+        grid-row: 1 / span 4;
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 // Carousel filling the post's photo column: no frame of its own, dots over the image.
@@ -623,6 +652,18 @@
 
     &.is-active {
       background: white;
+    }
+  }
+}
+
+// Stacked variant (.project-post--stacked): big full-width 4:3 photo, not stretched to the text.
+.project-post--stacked .project-carousel--post {
+  @include respond-to(tablet) {
+    position: relative;
+
+    .project-carousel__slide {
+      aspect-ratio: 4 / 3;
+      height: auto;
     }
   }
 }
