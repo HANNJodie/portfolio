@@ -1,3 +1,4 @@
+import { projectMetadata } from "@/i18n/metadata";
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
@@ -14,6 +15,10 @@ import ProjectNav from "@/components/project/ProjectNav";
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
 
 const SLUG = "sephira-03";
+
+export const generateMetadata = ({ params }: { params: Promise<{ locale: string }> }) =>
+  projectMetadata(SLUG, params);
+
 const HERO_IMAGE = "/images/SEPHIRA/city_baniere_1.webp";
 const DEMO = "https://myusernameisskave.itch.io/sephira-03";
 const VIDEO_ID = "7flM6P4W3zo";

@@ -270,8 +270,13 @@ navigation précédent/suivant.
 import { getLocale } from "next-intl/server";
 // …imports des briques utilisées uniquement
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
+import { projectMetadata } from "@/i18n/metadata";
 
 const SLUG = "mon-projet";
+
+export const generateMetadata = ({ params }: { params: Promise<{ locale: string }> }) =>
+  projectMetadata(SLUG, params);
+
 const HERO_IMAGE = "/images/MON PROJET/cover.webp";
 const DEMO = "https://…";               // liens = constantes en MAJUSCULES
 const GAMEPLAY_IMAGES = [{ src: "/images/MON PROJET/…", alt: "…" }];  // médias = constantes
@@ -470,7 +475,14 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
 ## 10. SEO
 
 - Metadata globales dans `src/app/[locale]/layout.tsx` (titre `%s | Jodie Hann`, Open Graph,
-  `og-image.jpg`). L'accueil déclare `alternates` (canonical + hreflang).
+  `og-image.jpg`).
+- **Chaque page déclare son canonical + hreflang** via `src/i18n/metadata.ts` :
+  `projectMetadata(SLUG, params)` pour une page projet (titre + description tirés de
+  `projects.ts`), `localizedAlternates(path, locale)` pour les autres. Sans ça, Google voit
+  FR et EN comme des doublons et n'en indexe qu'une.
+- `localeDetection: false` dans `routing.ts` : une URL sans préfixe sert **toujours** le
+  français. Ne pas réactiver la détection : Googlebot (en `Accept-Language: en`) était
+  redirigé vers `/en` et n'indexait jamais la version française.
 - **Nouvelle page = l'ajouter à la liste `paths` de `src/app/sitemap.ts`** (chemin FR sans
   préfixe ; la version EN est générée automatiquement).
 - `robots.ts` autorise tout le site.
@@ -520,7 +532,7 @@ quelle dans une page projet (cf. `my-morning-routine`), en lui donnant de la mar
 - `about__section` (utilisé par `Recommendation`) a un `max-width: 1400px` et `z-index: 1`.
 - Composants / styles présents mais inutilisés : `PageTransition`, `ProjectGallery`,
   `GradientText`, `.loader`. Ne pas s'en servir comme modèle sans vérifier.
-- Les pages projet n'ont pas de `generateMetadata` propre (titre global du site).
+- Une page sans `generateMetadata` n'a pas de canonical : voir §10.
 
 ---
 

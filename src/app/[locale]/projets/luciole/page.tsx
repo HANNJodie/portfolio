@@ -1,3 +1,4 @@
+import { projectMetadata } from "@/i18n/metadata";
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
@@ -13,6 +14,10 @@ import ProjectNav from "@/components/project/ProjectNav";
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
 
 const SLUG = "luciole";
+
+export const generateMetadata = ({ params }: { params: Promise<{ locale: string }> }) =>
+  projectMetadata(SLUG, params);
+
 const HERO_IMAGE = "/images/LUCIOLE/cover.webp";
 const DEMO = "https://jodie-hann.itch.io/luciole";
 const MUSIC_VIDEO_ID = "gqvsZ6Q8eBs"; // « Lifetime » — The OWLS are not (Sophie Laporte)

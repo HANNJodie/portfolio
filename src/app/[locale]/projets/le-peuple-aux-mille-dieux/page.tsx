@@ -1,3 +1,4 @@
+import { projectMetadata } from "@/i18n/metadata";
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
@@ -10,6 +11,10 @@ import ProjectNav from "@/components/project/ProjectNav";
 import { getAdjacentProjects } from "@/data/projects";
 
 const SLUG = "le-peuple-aux-mille-dieux";
+
+export const generateMetadata = ({ params }: { params: Promise<{ locale: string }> }) =>
+  projectMetadata(SLUG, params);
+
 const DIR = "/images/LE PEUPLE AUX MILLE DIEUX";
 const HERO_IMAGE = `${DIR}/cover.webp`;
 

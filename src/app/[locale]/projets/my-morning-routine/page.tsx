@@ -1,3 +1,4 @@
+import { projectMetadata } from "@/i18n/metadata";
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
@@ -12,6 +13,10 @@ import Recommendation from "@/components/about/Recommendation";
 import { getAdjacentProjects } from "@/data/projects";
 
 const SLUG = "my-morning-routine";
+
+export const generateMetadata = ({ params }: { params: Promise<{ locale: string }> }) =>
+  projectMetadata(SLUG, params);
+
 const HERO_IMAGE = "/images/MY MORNING ROUTINE/cover.webp";
 const ONE_PAGER_URL = "/images/MY MORNING ROUTINE/DAU_GD_Goals_Jodie_HANN_v2.pdf";
 const LINKEDIN_POST = "https://lnkd.in/p/ehgnphdS";

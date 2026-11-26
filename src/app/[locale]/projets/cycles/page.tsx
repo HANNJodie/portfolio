@@ -1,3 +1,4 @@
+import { projectMetadata } from "@/i18n/metadata";
 import { getLocale } from "next-intl/server";
 import ProjectShell from "@/components/project/ProjectShell";
 import ProjectHero from "@/components/project/ProjectHero";
@@ -13,6 +14,10 @@ import { DownloadIcon } from "@/components/ui/Icons";
 import { getAdjacentProjects, getProjectBySlug } from "@/data/projects";
 
 const SLUG = "cycles";
+
+export const generateMetadata = ({ params }: { params: Promise<{ locale: string }> }) =>
+  projectMetadata(SLUG, params);
+
 const HERO_IMAGE = "/images/CYCLES/cover.png";
 const DEMO = "https://jodie-hann.itch.io/cycles";
 const GDD_URL = "https://jodiehann.wordpress.com/wp-content/uploads/2024/03/gdd_cycles-2.docx";
