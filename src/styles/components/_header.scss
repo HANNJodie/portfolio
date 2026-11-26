@@ -146,6 +146,19 @@
         background: $color-surface-hover;
       }
     }
+
+    // Labelled divider between main projects and game jams
+    &-separator {
+      margin: $space-sm $space-lg 0;
+      padding: $space-sm 0 $space-xs;
+      border-top: 1px solid $color-border;
+      font-family: $font-display;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: $color-text-light;
+    }
   }
 
   &__actions {
@@ -328,6 +341,19 @@
       &:hover {
         @include gradient-text;
       }
+    }
+
+    // Labelled divider between main projects and game jams
+    &-separator {
+      margin-top: $space-sm;
+      padding-top: $space-sm;
+      border-top: 1px solid $color-border;
+      font-family: $font-display;
+      font-size: $font-size-xs;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: $color-text-light;
     }
   }
 }

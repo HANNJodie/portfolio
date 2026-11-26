@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { Fragment, useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { motion, AnimatePresence } from "framer-motion";
@@ -168,6 +168,9 @@ export default function Header() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.03, duration: 0.2 }}
                       >
+                        {project.jam && !projects[i - 1]?.jam && (
+                          <div className="header__dropdown-separator">{t("jams")}</div>
+                        )}
                         <Link
                           href={`/projets/${project.slug}`}
                           className="header__dropdown-item"
@@ -250,15 +253,19 @@ export default function Header() {
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        {projects.map((project) => (
-                          <Link
-                            key={project.slug}
-                            href={`/projets/${project.slug}`}
-                            className="mobile-menu__projects-item"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            {project.title}
-                          </Link>
+                        {projects.map((project, i) => (
+                          <Fragment key={project.slug}>
+                            {project.jam && !projects[i - 1]?.jam && (
+                              <span className="mobile-menu__projects-separator">{t("jams")}</span>
+                            )}
+                            <Link
+                              href={`/projets/${project.slug}`}
+                              className="mobile-menu__projects-item"
+                              onClick={() => setMenuOpen(false)}
+                            >
+                              {project.title}
+                            </Link>
+                          </Fragment>
                         ))}
                       </motion.div>
                     )}

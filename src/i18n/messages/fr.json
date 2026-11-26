@@ -6,7 +6,8 @@
   "nav": {
     "home": "Accueil",
     "projects": "Mes projets",
-    "about": "À propos"
+    "about": "À propos",
+    "jams": "Game Jam"
   },
   "hero": {
     "subtitle": "Game Designer",
