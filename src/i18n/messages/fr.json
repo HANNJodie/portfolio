@@ -7,7 +7,7 @@
     "home": "Accueil",
     "projects": "Mes projets",
     "about": "À propos",
-    "jams": "Game Jam"
+    "jams": "Game Jams"
   },
   "hero": {
     "subtitle": "Game Designer",
@@ -27,7 +27,7 @@
     "subtitle": "Une sélection de mes travaux",
     "upcoming": "À venir",
     "viewProject": "Voir le projet",
-    "jams": "Game Jam",
+    "jams": "Game Jams",
     "status": {
       "released": "Terminé",
       "in-development": "En développement",
